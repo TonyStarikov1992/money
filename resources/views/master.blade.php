@@ -45,6 +45,9 @@
                     </li>
                 @endguest
                 @auth()
+                    <li class="nav-item">
+                        <a class="nav-link fs-2" href="{{ route('userHome') }}">Home</a>
+                    </li>
                     <form id="logout-form" action="{{ url('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-primary fs-2">Logout</button>
