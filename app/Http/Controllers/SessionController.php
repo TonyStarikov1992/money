@@ -75,4 +75,14 @@ class SessionController extends Controller
 
         return redirect()->route('analytics');
     }
+
+    public function show($id)
+    {
+        $sessions = Session::get();
+        $session = $sessions->where('id', $id)->first();
+
+        $deals = $session->deals;
+
+        return view('user.session', compact('session', 'deals'));
+    }
 }

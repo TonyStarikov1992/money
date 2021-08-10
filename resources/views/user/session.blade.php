@@ -5,9 +5,7 @@
 @section('main')
     <div class="container-fluid">
         <div class="row">
-            <h1>UserHome</h1>
-
-            <h3>Money: {{ $user_check }}$</h3>
+            <h1>Session {{ $session->id }}</h1>
 
             <h2>Deals:</h2>
 
@@ -30,24 +28,6 @@
 
                     @endforeach
                 @endif
-
-            </div>
-
-            <h2>Sessions:</h2>
-
-            <div class="row">
-
-                @foreach($sessions as $session)
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <a href="{{ route('userSessionShow', $session->id) }}">
-                                    <h5 class="card-title">Session id {{ $session->id }}</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
 
             </div>
 

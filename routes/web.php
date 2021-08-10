@@ -38,7 +38,11 @@ Route::group([
             'prefix' => 'user',
         ], function () {
             Route::get('/home', 'HomeUserController@index')->name('userHome');
+
+
         });
+
+        Route::get('user/session/{id}', 'SessionController@show')->name('userSessionShow');
 
         Route::group([
             'namespace' => 'Admin',
