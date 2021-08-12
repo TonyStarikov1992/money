@@ -4,8 +4,8 @@
 
 @section('main')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
                 <h1>Analytics</h1>
 
                 @if($session_stop_time)
@@ -23,7 +23,21 @@
 
                         @if(!$current_session_id)
                             <form action="{{ route('sessionStart')}}" method="POST">
-                                <button type="submit" class="btn btn-primary">
+                                <select name="hour" class="m-2 form-select" aria-label="Default select example">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <button type="submit" class="m-2 btn btn-primary">
                                     START
                                 </button>
                                 @csrf

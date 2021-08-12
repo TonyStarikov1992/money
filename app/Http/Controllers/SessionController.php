@@ -9,14 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
-    public function start()
+    public function start(Request $request)
     {
+        $hour = $request->hour;
         if (Auth::user()) {
             if (Auth::user()->current_session_id === null) {
                 $session = Session::create();
                 $session->user_id = Auth::user()->id;
                 $session->start_time = time();
-                $session_stop_time = time() + 3600;
+                $session_stop_time = time() + 3600 * $hour;
                 $session->stop_time = $session_stop_time;
                 $session->save();
 

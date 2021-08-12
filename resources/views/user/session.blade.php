@@ -7,6 +7,9 @@
         <div class="row">
             <h1>Session {{ $session->id }}</h1>
 
+            <h3>Session start time {{ date("Y-m-d H:i:s", $session->start_time)  }}</h3>
+            <h3>Session end time {{ date("Y-m-d H:i:s", $session->stop_time)  }}</h3>
+
             <h2>Deals:</h2>
 
             <div class="row">
