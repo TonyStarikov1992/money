@@ -14,6 +14,7 @@ class HomeUserController extends Controller
     {
         $deals = null;
         $sessions = null;
+        $current_session_rate = null;
 
         $user = Auth::user();
 
@@ -29,16 +30,20 @@ class HomeUserController extends Controller
                     $this_deal->status = 1;
                     $this_deal->save();
 
-                    $user->check += $this_deal->bonus;
-                    $user->save();
+                    $current_session->rate += $this_deal->bonus;
+                    $current_session->save();
                 }
 
             }
+
+            $current_session_rate = $current_session->rate;
         }
 
         if ($user->current_session_id !== null) {
             $session = Session::find($user->current_session_id);
             if ($session->stop_time <= time()) {
+                Auth::user()->check += $session->rate;
+                $session->rate = 0;
                 $session->status = 0;
                 $session->save();
 
@@ -47,7 +52,7 @@ class HomeUserController extends Controller
             }
         }
 
-        $sessions = $user->sessions;
-        return view('user.main', compact('sessions', 'deals', 'user_check'));
+        $sessions = $user->sessions()->orderBy('id', 'DESC')->get();
+        return view('user.main', compact('sessions', 'deals', 'user_check', 'current_session_rate'));
     }
 }

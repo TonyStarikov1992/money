@@ -11,15 +11,20 @@ class SessionController extends Controller
 {
     public function start(Request $request)
     {
+        $rate = $request->rate;
         $hour = $request->hour;
         if (Auth::user()) {
             if (Auth::user()->current_session_id === null) {
                 $session = Session::create();
                 $session->user_id = Auth::user()->id;
                 $session->start_time = time();
-                $session_stop_time = time() + 3600 * $hour;
+                $session_stop_time = time() + (3600 * $hour);
                 $session->stop_time = $session_stop_time;
+                $session->rate = $rate;
+                $session->start_rate = $rate;
                 $session->save();
+
+                Auth::user()->check -= $rate;
 
                 Auth::user()->current_session_id = $session->id;
                 Auth::user()->save();
@@ -30,11 +35,13 @@ class SessionController extends Controller
 
                     $deal = Deal::create(['session_id' => $session->id]);
 
+                    $deal->start_time = $time;
+
                     $random_percent = random_int(1, 2);
 
                     $random_sign = random_int(1, 20);
 
-                    $bonus = 1 * $random_percent;
+                    $bonus = ($rate/100) * $random_percent;
 
                     if ($random_sign > 15) {
                         $bonus = -$bonus;
@@ -42,13 +49,15 @@ class SessionController extends Controller
 
                     $deal->bonus = $bonus;
 
-                    $random_time = random_int(1200, 1800);
+                    $duration = random_int(1200, 1800);
 
-                    $deal_time = $time + $random_time;
+                    $deal->duration = $duration/60;
+
+                    $deal_time = $time + $duration;
 
                     $deal->time = $deal_time;
 
-                    $time += $random_time;
+                    $time += $duration;
 
                     $deal->save();
                 }
@@ -66,6 +75,8 @@ class SessionController extends Controller
             if (Auth::user()->current_session_id !== null) {
                 $session = Session::find(Auth::user()->current_session_id);
                 $session->status = 0;
+                Auth::user()->check += $session->rate;
+                $session->rate = 0;
                 $session->save();
 
                 Auth::user()->current_session_id = null;

@@ -23,7 +23,11 @@
 
                         @if(!$current_session_id)
                             <form action="{{ route('sessionStart')}}" method="POST">
-                                <select name="hour" class="m-2 form-select" aria-label="Default select example">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Rate</label>
+                                    <input name="rate" type="text" class="form-control" id="exampleFormControlInput1" placeholder="rate">
+                                </div>
+                                <select name="hour" class="mb-3 form-select" aria-label="Default select example">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -37,7 +41,7 @@
                                     <option value="11">11</option>
                                     <option value="12">12</option>
                                 </select>
-                                <button type="submit" class="m-2 btn btn-primary">
+                                <button type="submit" class="mb-3 btn btn-primary">
                                     START
                                 </button>
                                 @csrf
