@@ -47,6 +47,12 @@ class SessionController extends Controller
                         $bonus = -$bonus;
                     }
 
+                    if ($random_sign > 10) {
+                        $deal->sell_or_buy = 'sell';
+                    } else {
+                        $deal->sell_or_buy = 'buy';
+                    }
+
                     $deal->bonus = $bonus;
 
                     $duration = random_int(1200, 1800);
