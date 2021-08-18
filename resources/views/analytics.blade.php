@@ -21,11 +21,12 @@
 
 
 
-                        @if(!$current_session_id)
+                        @if(!$current_session_id and $user_money > 0)
+                            <p>Money: {{ $user_money }} $</p>
                             <form action="{{ route('sessionStart')}}" method="POST">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Rate</label>
-                                    <input name="rate" type="text" class="form-control" id="exampleFormControlInput1" placeholder="rate">
+                                    <input name="rate" type="text" class="form-control" id="exampleFormControlInput1" placeholder="min rate 200$, max rate {{ $user_money }}$">
                                 </div>
                                 <select name="hour" class="mb-3 form-select" aria-label="Default select example">
                                     <option value="1">1</option>

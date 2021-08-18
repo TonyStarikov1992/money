@@ -14,6 +14,9 @@ class SessionController extends Controller
         $rate = $request->rate;
         $hour = $request->hour;
         if (Auth::user()) {
+            if ($rate < 200 or (Auth::user()->check - $rate) < 0) {
+                return redirect()->route('analytics');
+            }
             if (Auth::user()->current_session_id === null) {
                 $session = Session::create();
                 $session->user_id = Auth::user()->id;

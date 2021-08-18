@@ -29,6 +29,7 @@ class PageController extends Controller
         $session_stop_time = null;
 
         if (Auth::user()) {
+            $user_money = Auth::user()->check;
             if (Auth::user()->current_session_id !== null) {
                 $session = Session::find(Auth::user()->current_session_id);
                 if ($session->stop_time <= time()) {
@@ -74,6 +75,6 @@ class PageController extends Controller
 //            Auth::user()->save();
 //
 //        }
-        return view('analytics', compact('current_session_id', 'session_stop_time'));
+        return view('analytics', compact('current_session_id', 'session_stop_time', 'user_money'));
     }
 }
