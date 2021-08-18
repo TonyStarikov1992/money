@@ -27,6 +27,7 @@ class PageController extends Controller
     {
         $current_session_id = null;
         $session_stop_time = null;
+        $user_money = 0;
 
         if (Auth::user()) {
             $user_money = Auth::user()->check;
@@ -48,33 +49,6 @@ class PageController extends Controller
             }
         }
 
-
-
-//        $user_money = null;
-//        $random_percent = null;
-//        $random_sign = null;
-//        $bonus = null;
-//
-//        if (Auth::user()) {
-//
-//            $user_id = Auth::user()->id;
-//            dd($user_id);
-//
-//            $user_money = Auth::user()->check;
-//            $random_percent = random_int(1, 2);
-//            $random_sign = random_int(1, 20);
-//            $bonus = ($user_money/100) * $random_percent;
-//            if ($random_sign > 15) {
-//                $user_money += -$bonus;
-//                $random_sign = '-';
-//            } else {
-//                $user_money += $bonus;
-//                $random_sign = '+';
-//            }
-//            Auth::user()->check = $user_money;
-//            Auth::user()->save();
-//
-//        }
         return view('analytics', compact('current_session_id', 'session_stop_time', 'user_money'));
     }
 }
