@@ -91,7 +91,7 @@
                             @if($deal->status == 1)
 
                                 <tr>
-                                    <th scope="row">BTC/USD</th>
+                                    <th scope="row">{{ $deal->ticker }}</th>
                                     <td>{{ $deal->sell_or_buy }}</td>
                                     <td>@if($deal->start_time){{ date("Y-m-d H:i:s", $deal->start_time)  }}@endif</td>
                                     <td>@if($deal->time){{ date("Y-m-d H:i:s", $deal->time)  }}@endif</td>

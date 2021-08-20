@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCheckToUsersTable extends Migration
+class AddTickerToDealsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCheckToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('check')->nullable();
+        Schema::table('deals', function (Blueprint $table) {
+            $table->string('ticker')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddCheckToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('check');
+        Schema::table('deals', function (Blueprint $table) {
+            $table->dropColumn('ticker');
         });
     }
 }
