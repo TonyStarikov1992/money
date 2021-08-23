@@ -42,7 +42,31 @@
                                     <option value="11">11</option>
                                     <option value="12">12</option>
                                 </select>
-                                <button type="submit" class="mb-3 btn btn-primary">
+
+                                <select name="tickers[]" class="form-select form-select-lg" multiple aria-label="multiple select example">
+                                    <option value="BTC/USD">BTC/USD</option>
+                                    <option value="SHIB/USD">SHIB/USD</option>
+                                    <option value="ETH/USD">ETH/USD</option>
+                                    <option value="DOGE/USD">DOGE/USD</option>
+                                    <option value="XRP/USD">XRP/USD</option>
+                                    <option value="MATIC/USD">MATIC/USD</option>
+                                    <option value="ADA/USD">ADA/USD</option>
+                                    <option value="SOL/USD">SOL/USD</option>
+                                    <option value="DATA/USD">DATA/USD</option>
+                                    <option value="BNB/USD">BNB/USD</option>
+                                    <option value="BTTN/USD">BTTN/USD</option>
+                                    <option value="PZM/USD">PZM/USD</option>
+                                    <option value="pDOTn/USD">pDOTn/USD</option>
+                                    <option value="XLM/USD">XLM/USD</option>
+                                    <option value="TRX/USD">TRX/USD</option>
+                                    <option value="HT/USD">HT/USD</option>
+                                    <option value="DOT/USD">DOT/USD</option>
+                                    <option value="LINK/USD">LINK/USD</option>
+                                    <option value="BCH/USD">BCH/USD</option>
+                                    <option value="LTC/USD">LTC/USD</option>
+                                </select>
+
+                                <button type="submit" class="my-3 btn btn-primary">
                                     START
                                 </button>
                                 @csrf
