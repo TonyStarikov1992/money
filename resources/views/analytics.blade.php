@@ -44,26 +44,26 @@
                                 </select>
 
                                 <select name="tickers[]" class="form-select form-select-lg" multiple aria-label="multiple select example">
-                                    <option value="BTC/USD">BTC/USD</option>
-                                    <option value="SHIB/USD">SHIB/USD</option>
-                                    <option value="ETH/USD">ETH/USD</option>
-                                    <option value="DOGE/USD">DOGE/USD</option>
-                                    <option value="XRP/USD">XRP/USD</option>
-                                    <option value="MATIC/USD">MATIC/USD</option>
-                                    <option value="ADA/USD">ADA/USD</option>
-                                    <option value="SOL/USD">SOL/USD</option>
-                                    <option value="DATA/USD">DATA/USD</option>
-                                    <option value="BNB/USD">BNB/USD</option>
-                                    <option value="BTTN/USD">BTTN/USD</option>
-                                    <option value="PZM/USD">PZM/USD</option>
-                                    <option value="pDOTn/USD">pDOTn/USD</option>
-                                    <option value="XLM/USD">XLM/USD</option>
-                                    <option value="TRX/USD">TRX/USD</option>
-                                    <option value="HT/USD">HT/USD</option>
-                                    <option value="DOT/USD">DOT/USD</option>
-                                    <option value="LINK/USD">LINK/USD</option>
-                                    <option value="BCH/USD">BCH/USD</option>
-                                    <option value="LTC/USD">LTC/USD</option>
+                                    <option value="BTC">BTC</option>
+                                    <option value="SHIB">SHIB</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="DOGE">DOGE</option>
+                                    <option value="XRP">XRP</option>
+                                    <option value="MATIC">MATIC</option>
+                                    <option value="ADA">ADA</option>
+                                    <option value="SOL">SOL</option>
+                                    <option value="DATA">DATA</option>
+                                    <option value="BNB">BNB</option>
+                                    <option value="BTTN">BTTN</option>
+                                    <option value="PZM">PZM</option>
+                                    <option value="pDOTn">pDOTn</option>
+                                    <option value="XLM">XLM</option>
+                                    <option value="TRX">TRX</option>
+                                    <option value="HT">HT</option>
+                                    <option value="DOT">DOT</option>
+                                    <option value="LINK">LINK</option>
+                                    <option value="BCH">BCH</option>
+                                    <option value="LTC">LTC</option>
                                 </select>
 
                                 <button type="submit" class="my-3 btn btn-primary">
