@@ -42,9 +42,15 @@ class SessionController extends Controller
         $hour = $request->hour;
         $tickers = $request->tickers;
 
-        $res = array_diff($allTickers, $tickers);
+//        dd($tickers);
 
-        $num = array_rand($res, 1);
+        if ($tickers === null) {
+            $res = $allTickers;
+            $num = array_rand($res, 1);
+        } else {
+            $res = array_diff($allTickers, $tickers);
+            $num = array_rand($res, 1);
+        }
 
         if (Auth::user()) {
             if ($rate < 200 or (Auth::user()->check - $rate) < 0) {
