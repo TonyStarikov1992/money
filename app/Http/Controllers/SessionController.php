@@ -12,40 +12,39 @@ class SessionController extends Controller
     public function start(Request $request)
     {
         $allTickers = [
-            'BTC/USD',
-            'SHIB/USD',
-            'ETH/USD',
-            'DOGE/USD',
-            'XRP/USD',
-            'MATIC/USD',
-            'ADA/USD',
-            'SOL/USD',
-            'DATA/USD',
-            'BNB/USD',
-            'BTTN/USD',
-            'PZM/USD',
-            'pDOTn/USD',
-            'XLM/USD',
-            'TRX/USD',
-            'HT/USD',
-            'DOT/USD',
-            'LINK/USD',
-            'BCH/USD',
-            'LTC/USD',
+            'BTC',
+            'SHIB',
+            'ETH',
+            'DOGE',
+            'XRP',
+            'MATIC',
+            'ADA',
+            'SOL',
+            'DATA',
+            'BNB',
+            'BTTN',
+            'PZM',
+            'pDOTn',
+            'XLM',
+            'TRX',
+            'HT',
+            'DOT',
+            'LINK',
+            'BCH',
+            'LTC',
         ];
 
         $rate = null;
         $hour = null;
         $tickers = null;
+
         $rate = $request->rate;
         $hour = $request->hour;
         $tickers = $request->tickers;
-//        dd($tickers);
 
         $res = array_diff($allTickers, $tickers);
 
         $num = array_rand($res, 1);
-//        dd($res[$num]);
 
         if (Auth::user()) {
             if ($rate < 200 or (Auth::user()->check - $rate) < 0) {
@@ -79,86 +78,6 @@ class SessionController extends Controller
                     $random_sign = random_int(1, 20);
 
                     $deal->ticker = $res[$num];
-//
-//                    if ($random_sign == 1) {
-//                        $deal->ticker = 'BTC/USD';
-//                    }
-//
-//                    if ($random_sign == 2) {
-//                        $deal->ticker = 'SHIB/USD';
-//                    }
-//
-//                    if ($random_sign == 3) {
-//                        $deal->ticker = 'ETH/USD';
-//                    }
-//
-//                    if ($random_sign == 4) {
-//                        $deal->ticker = 'DOGE/USD';
-//                    }
-//
-//                    if ($random_sign == 5) {
-//                        $deal->ticker = 'XRP/USD';
-//                    }
-//
-//                    if ($random_sign == 6) {
-//                        $deal->ticker = 'MATIC/USD';
-//                    }
-//
-//                    if ($random_sign == 7) {
-//                        $deal->ticker = 'ADA/USD';
-//                    }
-//
-//                    if ($random_sign == 8) {
-//                        $deal->ticker = 'SOL/USD';
-//                    }
-//
-//                    if ($random_sign == 9) {
-//                        $deal->ticker = 'DATA/USD';
-//                    }
-//
-//                    if ($random_sign == 10) {
-//                        $deal->ticker = 'BNB/USD';
-//                    }
-//
-//                    if ($random_sign == 11) {
-//                        $deal->ticker = 'BTTN/USD';
-//                    }
-//
-//                    if ($random_sign == 12) {
-//                        $deal->ticker = 'PZM/USD';
-//                    }
-//
-//                    if ($random_sign == 13) {
-//                        $deal->ticker = 'pDOTn/USD';
-//                    }
-//
-//                    if ($random_sign == 14) {
-//                        $deal->ticker = 'XLM/USD';
-//                    }
-//
-//                    if ($random_sign == 15) {
-//                        $deal->ticker = 'TRX/USD';
-//                    }
-//
-//                    if ($random_sign == 16) {
-//                        $deal->ticker = 'HT/USD';
-//                    }
-//
-//                    if ($random_sign == 17) {
-//                        $deal->ticker = 'DOT/USD';
-//                    }
-//
-//                    if ($random_sign == 18) {
-//                        $deal->ticker = 'LINK/USD';
-//                    }
-//
-//                    if ($random_sign == 19) {
-//                        $deal->ticker = 'BCH/USD';
-//                    }
-//
-//                    if ($random_sign == 20) {
-//                        $deal->ticker = 'LTC/USD';
-//                    }
 
                     $bonus = ($rate/100) * $random_percent;
 
