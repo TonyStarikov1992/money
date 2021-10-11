@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'status',
     ];
 
     /**
@@ -46,7 +47,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->is_admin === 1;
+        return $this->is_admin == 1;
     }
 
     public function sessions()

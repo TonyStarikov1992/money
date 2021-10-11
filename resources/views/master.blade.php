@@ -37,9 +37,13 @@
                 <a class="btn btn btn-primary" href="{{ route('register') }}">Sign-up</a>
             @endguest
 
+
             @auth()
-                <a class="btn btn-outline-primary me-2" href="{{ route('userHome') }}">Home</a>
-{{--                <a class="btn btn btn-primary" href="{{ route('logout') }}">Logout</a>--}}
+                    @if(Auth::user()->isAdmin())
+                        <a class="btn btn-outline-primary me-2" href="{{ route('adminHome') }}">Admin</a>
+                    @else
+                        <a class="btn btn-outline-primary me-2" href="{{ route('userHome') }}">Home</a>
+                    @endif
                 <form class="d-inline" id="logout-form" action="{{ url('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn btn-primary">Logout</button>

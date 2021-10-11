@@ -41,20 +41,18 @@ Route::group([
 
 
         });
-
-        Route::get('user/session/{id}', 'SessionController@show')->name('userSessionShow');
-
-        Route::group([
-            'namespace' => 'Admin',
-            'prefix' => 'admin',
-        ], function () {
-            Route::group([
-                'middleware' => 'is_admin',
-            ], function () {
-                Route::get('/home', 'OrderController@index')->name('adminHome');
-
-            });
-        });
     });
 
+});
+
+Route::group([
+    'middleware' => 'auth',
+    'namespace' => 'Admin',
+    'prefix' => 'admin',
+], function () {
+    Route::group(['middleware' => 'is_admin'], function () {
+        Route::get('', 'HomeController@index')->name('adminHome');
+
+        Route::resource('users', 'UserController');
+    });
 });
