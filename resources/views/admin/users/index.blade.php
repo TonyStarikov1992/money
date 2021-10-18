@@ -5,37 +5,34 @@
 @section('main')
     <div class="container">
 
-        <hr>
-
         <h1>USERS</h1>
 
-        <hr>
-
-{{--        <a class="btn btn-success" type="button" href="{{ route('software.create') }}">ADD SOFTWARE</a>--}}
-
-        <hr>
-
         <div class="row ">
-            @foreach($users as $user)
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                            <p>id: {{ $user->id }} | name: {{ $user->name }}</p>
-{{--                            <div class="d-flex justify-content-between align-items-center">--}}
-{{--                                <div class="btn-group">--}}
-{{--                                    <a href="{{ route('software.show', $soft) }}"><button type="button" class="btn btn-link">SHOW</button></a>--}}
-{{--                                    <a href="{{ route('software.edit', $soft) }}"><button type="button" class="btn btn-link">EDIT</button></a>--}}
-{{--                                </div>--}}
-{{--                                <form id="delete-form" action="{{ route('software.destroy', $soft) }}" method="POST">--}}
-{{--                                    @method('DELETE')--}}
-{{--                                    @csrf--}}
-{{--                                    <button type="submit" class="btn btn-primary">DELETE</button>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-                        </div>
-                    </div>
+
+                <div class="col-12">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Second Name</th>
+                                <th scope="col">Functions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($users as $user)
+                            <tr>
+                                <th scope="row">{{ $user->id }}</th>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->surname }}</td>
+                                <td>Edit, block, delete</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
-            @endforeach
         </div>
     </div> <!-- /container -->
 @endsection
