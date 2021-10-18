@@ -22,12 +22,14 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                            <tr>
-                                <th scope="row">{{ $user->id }}</th>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->surname }}</td>
-                                <td>Edit, block, delete</td>
-                            </tr>
+                            @if($user->is_admin == 0)
+                                <tr>
+                                    <th scope="row">{{ $user->id }}</th>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->surname }}</td>
+                                    <td>Edit, block, delete</td>
+                                </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>
