@@ -20,7 +20,7 @@
 
             <div class="input-group flex-nowrap mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">NAME</span>
+                    <span class="input-group-text" id="addon-wrapping">Name</span>
                 </div>
                 <input type="text" name="name" id="name" class="form-control" placeholder="REQUIRED" aria-describedby="addon-wrapping">
             </div>
