@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $parameters = $request->all();
+
+        $parameters['password'] = bcrypt($parameters['password']);
+
+        User::create($parameters);
+
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -48,7 +55,15 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        if ($user->status == 0) {
+            $parameters['status'] = 1;
+        } else {
+            $parameters['status'] = 0;
+        }
+
+        $user->update($parameters);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -59,7 +74,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return  view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +86,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $parameters = $request->all();
+
+        if ($user->password != $request->password) {
+            $parameters['password'] = bcrypt($parameters['password']);
+        }
+
+        $user->update($parameters);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -82,6 +105,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
