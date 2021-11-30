@@ -19,6 +19,8 @@ class UsersTableSeeder extends Seeder
                 'phone' => '000000000',
                 'password' => bcrypt('admin'),
                 'is_admin' => 1,
+                'check' => 500,
+
             ],
             [
                 'name' => 'user',
@@ -26,6 +28,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '000000001',
                 'password' => bcrypt('user'),
                 'is_admin' => 0,
+                'check' => 500,
             ],
             [
                 'name' => 'user1',
@@ -33,6 +36,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '000000002',
                 'password' => bcrypt('user'),
                 'is_admin' => 0,
+                'check' => 500,
             ],
             [
                 'name' => 'user2',
@@ -40,6 +44,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '000000003',
                 'password' => bcrypt('user'),
                 'is_admin' => 0,
+                'check' => 500,
             ],
             [
                 'name' => 'user3',
@@ -47,6 +52,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '000000004',
                 'password' => bcrypt('user'),
                 'is_admin' => 0,
+                'check' => 500,
             ],
         ]);
     }
