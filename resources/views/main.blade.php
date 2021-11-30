@@ -38,67 +38,71 @@
         </div>
     </div>
 
-    <div class="py-5" id="icon-grid">
-
-        <h2 class="pb-2 text-center">Start trading crypto</h2>
+    <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom">Start trading crypto</h2>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
 
             <div class="col d-flex align-items-start">
+                <i class="fas fa-shield-alt fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-shield-alt fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Strong security</h4>
-                    <p>Protection against DDoS attacks, full data encryption, cryptocurrency cold storage, and compliance with PCI DSS standards to safeguard your funds</p>
+                    <h4 class="fw-bold mb-0">Strong security</h4>
+                    <p>Protection against DDoS attacks, full data encryption, cryptocurrency cold storage, and compliance with PCI DSS standards to safeguard your funds.</p>
                 </div>
             </div>
 
             <div class="col d-flex align-items-start">
+                <i class="fas fa-credit-card fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-credit-card fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Payment options</h4>
-                    <p>Multiple payment methods: Visa, Mastercard, bank transfer (SWIFT, SEPA, ACH, Faster Payments), cryptocurrency</p>
+                    <h4 class="fw-bold mb-0">Payment options</h4>
+                    <p>Multiple payment methods: Visa, Mastercard, bank transfer (SWIFT, SEPA, ACH, Faster Payments), cryptocurrency.</p>
                 </div>
             </div>
 
             <div class="col d-flex align-items-start">
+                <i class="fas fa-headset fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-headset fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">24/7 support</h4>
-                    <p>Dedicated support via email, phone, and live chat around the clock to answer your questions at any time</p>
+                    <h4 class="fw-bold mb-0">24/7 support</h4>
+                    <p>Dedicated support via email, phone, and live chat around the clock to answer your questions at any time.</p>
                 </div>
             </div>
+
             <div class="col d-flex align-items-start">
+                <i class="fas fa-donate fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-donate fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Competitive commissions</h4>
-                    <p>Reasonable fees for takers and makers, special conditions for high-volume traders, and strong offers for market makers</p>
+                    <h4 class="fw-bold mb-0">Competitive commissions</h4>
+                    <p>Reasonable fees for takers and makers, special conditions for high-volume traders, and strong offers for market makers.</p>
                 </div>
             </div>
+
             <div class="col d-flex align-items-start">
+                <i class="fas fa-sort-amount-up fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-sort-amount-up fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Reliable order execution</h4>
-                    <p>Advanced order matching algorithms, a high-liquidity order book, favorable conditions for market making, high-frequency trading, and scalping strategies</p>
+                    <h4 class="fw-bold mb-0">Reliable order execution</h4>
+                    <p>Advanced order matching algorithms, a high-liquidity order book, favorable conditions for market making, high-frequency trading, and scalping strategies.</p>
                 </div>
             </div>
+
             <div class="col d-flex align-items-start">
+                <i class="fas fa-user-tie fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-user-tie fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Professional connectivity</h4>
+                    <h4 class="fw-bold mb-0">Professional connectivity</h4>
                     <p>Corporate accounts and professional traders can take advantage of the fastest trading speeds through institutional-grade connectivity and co-location services with direct access to our digital asset gateway.</p>
                 </div>
             </div>
+
             <div class="col d-flex align-items-start">
+                <i class="fas fa-tools fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-tools fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Advanced tools</h4>
-                    <p>facilitates a graphical trading experience with advanced charting functionality that allows traders to visualise orders, positions and price alerts, tap to modify order properties, and annotate to their trading strategy.</p>
+                    <h4 class="fw-bold mb-0">Advanced tools</h4>
+                    <p>Facilitates a graphical trading experience with advanced charting functionality that allows traders to visualise orders, positions and price alerts.</p>
                 </div>
             </div>
+
             <div class="col d-flex align-items-start">
+                <i class="fas fa-coins fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
                 <div>
-                    <i class="fas fa-coins fa-2x bi text-muted flex-shrink-0 me-3 mb-2"></i>
-                    <h4 class="fw-bold mb-3 text-primary">Trade with confidence</h4>
+                    <h4 class="fw-bold mb-0">Trade with confidence</h4>
                     <p>Our platform provides world class financial stability by maintaining full reserves, healthy banking relationships and the highest standards of legal compliance.</p>
                 </div>
             </div>
