@@ -23,6 +23,8 @@ Route::group([
 
     Route::get('/markets', 'PageController@markets')->name('markets');
 
+    Route::get('/charity', 'PageController@charity')->name('charity');
+
     Route::get('/trading', 'PageController@trading')->name('trading');
 
     Route::get('/analytics', 'PageController@analytics')->name('analytics');

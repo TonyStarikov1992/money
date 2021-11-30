@@ -23,6 +23,11 @@ class PageController extends Controller
         return view('trading');
     }
 
+    public function charity()
+    {
+        return view('charity');
+    }
+
     public function analytics()
     {
         $current_session_id = null;
