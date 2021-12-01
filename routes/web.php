@@ -25,6 +25,8 @@ Route::group([
 
     Route::get('/charity', 'PageController@charity')->name('charity');
 
+    Route::get('/charity/{type}', 'PageController@charityPay')->name('charityPay');
+
     Route::get('/trading', 'PageController@trading')->name('trading');
 
     Route::get('/analytics', 'PageController@analytics')->name('analytics');

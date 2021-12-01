@@ -28,6 +28,19 @@ class PageController extends Controller
         return view('charity');
     }
 
+    public function charityPay($type)
+    {
+        if ($type == 'covid') {
+            return view('charity_covid');
+        } elseif ($type == 'food') {
+            return view('charity_food');
+        }  elseif ($type == 'earth') {
+            return view('charity_earth');
+        } else {
+            return redirect()->route('charity');
+        }
+    }
+
     public function analytics()
     {
         $current_session_id = null;

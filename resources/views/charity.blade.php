@@ -40,7 +40,7 @@
                         <h3>Total donated</h3>
                     </div>
                     <div class="col text-center">
-                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="/">Donate</a>
+                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="/charity/covid">Donate</a>
                     </div>
 
                 </div>
@@ -70,7 +70,7 @@
                         <h3>Total donated</h3>
                     </div>
                     <div class="col text-center">
-                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="/">Donate</a>
+                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="/charity/food">Donate</a>
                     </div>
 
                 </div>
@@ -100,7 +100,7 @@
                         <h3>Total donated</h3>
                     </div>
                     <div class="col text-center">
-                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="/">Donate</a>
+                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="/charity/earth">Donate</a>
                     </div>
 
                 </div>
