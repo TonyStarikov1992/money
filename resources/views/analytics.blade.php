@@ -53,10 +53,6 @@
             </div>
         </div>
 
-        @auth()
-            Hello user
-        @endauth
-
         <div class="row d-flex justify-content-center">
             <div class="col-12">
 
