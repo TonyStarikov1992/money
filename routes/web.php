@@ -23,13 +23,19 @@ Route::group([
 
     Route::get('/markets', 'PageController@markets')->name('markets');
 
+    Route::get('/trading', 'PageController@trading')->name('trading');
+
+    Route::get('/analytics', 'PageController@analytics')->name('analytics');
+
+    Route::get('/analytics/order/{month}', 'PageController@order')->name('analyticsOrder');
+
+    Route::get('/analytics/order/create', 'PageController@orderCreate')->name('analyticsOrderCreate');
+
     Route::get('/charity', 'PageController@charity')->name('charity');
 
     Route::get('/charity/{type}', 'PageController@charityPay')->name('charityPay');
 
-    Route::get('/trading', 'PageController@trading')->name('trading');
-
-    Route::get('/analytics', 'PageController@analytics')->name('analytics');
+    Route::get('/conditions', 'PageController@conditions')->name('conditions');
 
     Route::post('session/start', 'SessionController@start')->name('sessionStart');
 

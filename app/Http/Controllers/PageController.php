@@ -41,6 +41,24 @@ class PageController extends Controller
         }
     }
 
+    public function order($month)
+    {
+        if ($month == 1) {
+            return view('analytics_order_1');
+        } elseif ($month == 2) {
+            return view('analytics_order_2');
+        }  elseif ($month == 3) {
+            return view('analytics_order_3');
+        } else {
+            return redirect()->route('analytics');
+        }
+    }
+
+    public function conditions()
+    {
+        return view('terms_and_conditions');
+    }
+
     public function analytics()
     {
         $current_session_id = null;
