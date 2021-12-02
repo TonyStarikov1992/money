@@ -13,10 +13,10 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h1 class="display-6 fw-bold lh-1 mb-3">Purchased Licenses</h1>
+                    <h1 class="display-6 fw-bold lh-1 mb-3">Order created</h1>
                     <h3>
                         License validity period:
-                        1 month
+                        {{ $month }} month(s)
                     </h3>
                     <h3>
                         License type:
@@ -24,7 +24,7 @@
                     </h3>
                     <h3>
                         Price:
-                        $2000 in BTC
+                        ${{ $money }} in BTC
                     </h3>
                     <h3>
                         Payment method:
@@ -40,13 +40,9 @@
                         <p>
                             After confirmation of payment, you will be contacted by our manager using the contact information provided during registration to provide a license to use ELANNCE analytics.
                         </p>
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col text-center">
-                        <h2>199jAuHtXS3N5i5pBy7Wyio1FmRTsSHHqQ</h2>
-                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="{{ route('analyticsOrderCreate', 1) }}">CREATE ORDER</a>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="{{ route('analyticsOrderCreate', $month) }}">Create order</a>
+                        </div>
                     </div>
                 </div>
 

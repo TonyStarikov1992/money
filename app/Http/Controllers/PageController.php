@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,12 +44,20 @@ class PageController extends Controller
 
     public function order($month)
     {
-        if ($month == 1) {
-            return view('analytics_order_1');
-        } elseif ($month == 2) {
-            return view('analytics_order_2');
-        }  elseif ($month == 3) {
-            return view('analytics_order_3');
+        if (1 * $month < 4) {
+
+            if ($month == 1) {
+                $money = 2000;
+            } elseif ($month == 2) {
+                $money = 3800;
+            } elseif ($month == 3) {
+                $money = 5400;
+            } else {
+                return redirect()->route('analytics');
+            }
+
+            return view('analytics_order', compact('month', 'money'));
+
         } else {
             return redirect()->route('analytics');
         }
@@ -56,15 +65,35 @@ class PageController extends Controller
 
     public function orderCreate($month)
     {
-        if ($month == 1) {
-            return view('analytics_order_created_1');
-        } elseif ($month == 2) {
-            return view('analytics_order_created_2');
-        }  elseif ($month == 3) {
-            return view('analytics_order_created_3');
+        if ($month) {
+
+            $parameters = [];
+
+            $parameters['expires_time'] = time() + (2592000 * $month);
+
+            if (1 * $month < 4) {
+                $type = $month;
+            } else {
+                return redirect()->route('analytics');
+            }
+
+            $parameters['type'] = $type;
+
+            $userId = Auth::id();
+
+            $parameters['user_id'] = $userId;
+
+            Order::create($parameters);
+
+            return redirect()->route('analyticsOrderCreated');
         } else {
             return redirect()->route('analytics');
         }
+    }
+
+    public function orderCreated()
+    {
+        return view('analytics_order_created');
     }
 
     public function conditions()
@@ -76,9 +105,15 @@ class PageController extends Controller
     {
         $current_session_id = null;
         $session_stop_time = null;
+        $order_id = null;
         $user_money = 0;
 
         if (Auth::user()) {
+
+            if (Auth::user()->order) {
+                return redirect()->route('analyticsOrderCreated');
+            }
+
             $user_money = Auth::user()->check;
             if (Auth::user()->current_session_id !== null) {
                 $session = Session::find(Auth::user()->current_session_id);

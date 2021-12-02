@@ -163,6 +163,12 @@
                     Results will vary based on hardware and internet performance.
                     Advertising data is subject to change at any time without prior notice.
                 </p>
+                <p class="lead mb-1">
+                    After confirmation of payment, you will be contacted by our manager using the contact information provided during registration to provide a license to use ELANNCE analytics.
+                </p>
+                <p class="lead mb-1">
+                    You can read our <a href="{{ route('conditions') }}">terms and conditions</a>.
+                </p>
         </div>
 
 {{--        <div class="row d-flex justify-content-center">--}}
