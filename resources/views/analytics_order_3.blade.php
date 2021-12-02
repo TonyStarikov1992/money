@@ -43,7 +43,7 @@
                 <div class="row mt-3">
                     <div class="col text-center">
                         <h2>199jAuHtXS3N5i5pBy7Wyio1FmRTsSHHqQ</h2>
-                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="#">CREATE ORDER</a>
+                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="{{ route('analyticsOrderCreate', 3) }}">CREATE ORDER</a>
                     </div>
                 </div>
 

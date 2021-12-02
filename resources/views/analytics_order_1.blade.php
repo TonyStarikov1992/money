@@ -37,13 +37,16 @@
                         <p>
                             I have read and agree to the website <a href="{{ route('conditions') }}">terms and conditions</a>
                         </p>
+                        <p>
+                            After confirmation of payment, you will be contacted by our manager using the contact information provided during registration to provide a license to use ELANNCE analytics.
+                        </p>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col text-center">
                         <h2>199jAuHtXS3N5i5pBy7Wyio1FmRTsSHHqQ</h2>
-                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="{{ route('analyticsOrderCreate') }}">CREATE ORDER</a>
+                        <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="{{ route('analyticsOrderCreate', 1) }}">CREATE ORDER</a>
                     </div>
                 </div>
 

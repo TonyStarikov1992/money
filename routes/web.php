@@ -29,7 +29,7 @@ Route::group([
 
     Route::get('/analytics/order/{month}', 'PageController@order')->name('analyticsOrder');
 
-    Route::get('/analytics/order/create', 'PageController@orderCreate')->name('analyticsOrderCreate');
+    Route::get('/analytics/order/create/{month}', 'PageController@orderCreate')->name('analyticsOrderCreate');
 
     Route::get('/charity', 'PageController@charity')->name('charity');
 
