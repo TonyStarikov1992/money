@@ -67,7 +67,7 @@ class OrderController extends Controller
     {
         if (Auth::user()->order) {
             $month = Auth::user()->order->type;
-            $expires_time = date('d-m-Y', Auth::user()->order->expires_time) ;
+            $expires_time = date('d-m-Y', Auth::user()->order->expires_time);
 
             if ($month == 1) {
                 $money = 2000;

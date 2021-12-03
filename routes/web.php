@@ -65,5 +65,6 @@ Route::group([
         Route::get('', 'HomeController@index')->name('adminHome');
 
         Route::resource('users', 'UserController');
+        Route::resource('orders', 'OrderController');
     });
 });
