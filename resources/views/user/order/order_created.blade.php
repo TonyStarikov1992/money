@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Analytics order 1 month')
+@section('title', 'Analytics order created')
 
 @section('main')
     <div class="container-fluid">
@@ -13,10 +13,14 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h1 class="display-6 fw-bold lh-1 mb-3">Order created</h1>
+                    <h1 class="display-6 fw-bold lh-1 mb-3">Order created successfully</h1>
                     <h3>
                         License validity period:
-                        3 month
+                        {{ $month }} month(s)
+                    </h3>
+                    <h3>
+                        License expires date:
+                        {{ $expires_time }}
                     </h3>
                     <h3>
                         License type:
@@ -24,7 +28,7 @@
                     </h3>
                     <h3>
                         Price:
-                        $5400 in BTC
+                        ${{ $money }} in BTC
                     </h3>
                     <h3>
                         Payment method:

@@ -56,7 +56,7 @@
                 <div class="col text-center">
                     <h2>1. Create order</h2>
                     <p class="lead">
-                        We require you to fill in basic information to generate your account and begin processing your order.
+                        <a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">register</a> new account. We require you to fill in basic information to generate your account and begin processing your order.
                     </p>
                 </div>
 
@@ -88,7 +88,7 @@
 
                         @auth()
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <a type="button" class="w-100 btn btn-lg btn-outline-primary px-4" href="/analytics/order/1">Create order</a>
+                                <a type="button" class="w-100 btn btn-lg btn-outline-primary px-4" href="{{ route('userOrder', 1) }}">Create order</a>
                             </div>
                         @endauth
 
@@ -114,7 +114,7 @@
 
                         @auth()
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="/analytics/order/3">Create order</a>
+                                <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="{{ route('userOrder', 3) }}">Create order</a>
                             </div>
                         @endauth
 
@@ -139,7 +139,7 @@
 
                         @auth()
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="/analytics/order/2">Create order</a>
+                                <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="{{ route('userOrder', 2) }}">Create order</a>
                             </div>
                         @endauth
 

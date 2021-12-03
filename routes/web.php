@@ -27,12 +27,6 @@ Route::group([
 
     Route::get('/analytics', 'PageController@analytics')->name('analytics');
 
-    Route::get('/analytics/order/{month}', 'PageController@order')->name('analyticsOrder');
-
-    Route::get('/analytics/order/create/{month}', 'PageController@orderCreate')->name('analyticsOrderCreate');
-
-    Route::get('/order/created', 'PageController@orderCreated')->name('analyticsOrderCreated');
-
     Route::get('/charity', 'PageController@charity')->name('charity');
 
     Route::get('/charity/{type}', 'PageController@charityPay')->name('charityPay');
@@ -46,12 +40,17 @@ Route::group([
     Route::middleware('auth')->group(function () {
 
         Route::group([
+            'middleware' => 'auth',
             'namespace' => 'User',
             'prefix' => 'user',
         ], function () {
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
+            Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');
 
+            Route::get('/order/{month}', 'OrderController@order')->name('userOrder');
+
+            Route::get('/order/create/{month}', 'OrderController@orderCreate')->name('userOrderCreate');
         });
     });
 

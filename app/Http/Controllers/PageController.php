@@ -42,60 +42,6 @@ class PageController extends Controller
         }
     }
 
-    public function order($month)
-    {
-        if (1 * $month < 4) {
-
-            if ($month == 1) {
-                $money = 2000;
-            } elseif ($month == 2) {
-                $money = 3800;
-            } elseif ($month == 3) {
-                $money = 5400;
-            } else {
-                return redirect()->route('analytics');
-            }
-
-            return view('analytics_order', compact('month', 'money'));
-
-        } else {
-            return redirect()->route('analytics');
-        }
-    }
-
-    public function orderCreate($month)
-    {
-        if ($month) {
-
-            $parameters = [];
-
-            $parameters['expires_time'] = time() + (2592000 * $month);
-
-            if (1 * $month < 4) {
-                $type = $month;
-            } else {
-                return redirect()->route('analytics');
-            }
-
-            $parameters['type'] = $type;
-
-            $userId = Auth::id();
-
-            $parameters['user_id'] = $userId;
-
-            Order::create($parameters);
-
-            return redirect()->route('analyticsOrderCreated');
-        } else {
-            return redirect()->route('analytics');
-        }
-    }
-
-    public function orderCreated()
-    {
-        return view('analytics_order_created');
-    }
-
     public function conditions()
     {
         return view('terms_and_conditions');
@@ -111,7 +57,7 @@ class PageController extends Controller
         if (Auth::user()) {
 
             if (Auth::user()->order) {
-                return redirect()->route('analyticsOrderCreated');
+                return redirect()->route('userOrderCreated');
             }
 
             $user_money = Auth::user()->check;
