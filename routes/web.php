@@ -48,6 +48,10 @@ Route::group([
 
             Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');
 
+            Route::get('/order-checked', 'OrderController@orderChecked')->name('userOrderChecked');
+
+            Route::get('/order-payed', 'OrderController@orderPayed')->name('userOrderPayed');
+
             Route::get('/order/{month}', 'OrderController@order')->name('userOrder');
 
             Route::get('/order/create/{month}', 'OrderController@orderCreate')->name('userOrderCreate');
@@ -64,7 +68,21 @@ Route::group([
     Route::group(['middleware' => 'is_admin'], function () {
         Route::get('', 'HomeController@index')->name('adminHome');
 
+
         Route::resource('users', 'UserController');
+
         Route::resource('orders', 'OrderController');
+
+        Route::get('/orders/{order}/edit_payment', 'OrderController@editPayment')->name('orders.edit_payment');
+
+        Route::post('/orders/{order}/edit_payment', 'OrderController@updatePayment')->name('orders.update_payment');
+
+        Route::get('/orders/{order}/edit_admin', 'OrderController@editAdmin')->name('orders.edit_admin');
+
+        Route::post('/orders/{order}/edit_admin', 'OrderController@updateAdmin')->name('orders.update_admin');
+
+        Route::get('/orders/{order}/edit_type', 'OrderController@editType')->name('orders.edit_type');
+
+        Route::post('/orders/{order}/edit_type', 'OrderController@updateType')->name('orders.update_type');
     });
 });

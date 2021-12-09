@@ -85,4 +85,36 @@ class OrderController extends Controller
 
         return view('user.order.order_created', compact('month', 'money', 'expires_time'));
     }
+
+    public function orderChecked()
+    {
+        if (Auth::user()->order->admin_status) {
+
+            $month = Auth::user()->order->type;
+
+            $expires_time = date('d-m-Y', Auth::user()->order->expires_time);
+
+            if ($month == 1) {
+                $money = 2000;
+            } elseif ($month == 2) {
+                $money = 3800;
+            } elseif ($month == 3) {
+                $money = 5400;
+            } else {
+                return redirect()->route('analytics');
+            }
+
+        } else {
+            return redirect()->route('analytics');
+        }
+
+        return view('user.order.order_checked', compact('month', 'money', 'expires_time'));
+    }
+
+    public function orderPayed()
+    {
+        $user = Auth::user();
+
+        return view('user.order.order_payed', compact('user'));
+    }
 }

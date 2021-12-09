@@ -49,16 +49,26 @@ class PageController extends Controller
 
     public function analytics()
     {
-        $current_session_id = null;
-        $session_stop_time = null;
-        $order_id = null;
-        $user_money = 0;
-
         if (Auth::user()) {
 
-            if (Auth::user()->order) {
-                return redirect()->route('userOrderCreated');
+            if (Auth::user()->license_type) {
+                return redirect()->route('userOrderPayed');
             }
+
+            if (Auth::user()->order) {
+
+                if (Auth::user()->order->admin_status == 1) {
+
+                    return redirect()->route('userOrderChecked');
+
+                }
+
+                return redirect()->route('userOrderCreated');
+
+            }
+
+
+
 
             $user_money = Auth::user()->check;
             if (Auth::user()->current_session_id !== null) {
@@ -79,6 +89,6 @@ class PageController extends Controller
             }
         }
 
-        return view('analytics', compact('current_session_id', 'session_stop_time', 'user_money'));
+        return view('analytics');
     }
 }
