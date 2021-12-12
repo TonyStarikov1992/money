@@ -33,10 +33,6 @@ Route::group([
 
     Route::get('/conditions', 'PageController@conditions')->name('conditions');
 
-    Route::post('session/start', 'SessionController@start')->name('sessionStart');
-
-    Route::post('session/stop', 'SessionController@stop')->name('sessionStop');
-
     Route::middleware('auth')->group(function () {
 
         Route::group([
@@ -44,6 +40,9 @@ Route::group([
             'namespace' => 'User',
             'prefix' => 'user',
         ], function () {
+
+            Route::resource('sessions', 'SessionController');
+
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
             Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');
@@ -66,8 +65,8 @@ Route::group([
     'prefix' => 'admin',
 ], function () {
     Route::group(['middleware' => 'is_admin'], function () {
-        Route::get('', 'HomeController@index')->name('adminHome');
 
+        Route::get('', 'HomeController@index')->name('adminHome');
 
         Route::resource('users', 'UserController');
 

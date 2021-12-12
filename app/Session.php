@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $fillable = ['status', 'start_time', 'stop_time', 'user_id'];
+    protected $fillable = [
+        'status',
+        'start_time',
+        'stop_time',
+        'user_id',
+        'rate',
+        'start_rate',
+        'stop_rate',
+    ];
 
     public function deals()
     {

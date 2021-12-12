@@ -14,7 +14,7 @@
 
                 <div class="col-lg-6">
                     <h1 class="display-6 fw-bold lh-1 mb-3">Order created successfully.</h1>
-                    <h2 class="display-6 fw-bold lh-1 mb-3">Waiting for administrator check.</h2>
+                    <h2 class="display-6 fw-bold lh-1 mb-3">Waiting for administrator check and payment.</h2>
                     <h3>
                         License validity period:
                         {{ $month }} month(s)

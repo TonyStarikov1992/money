@@ -66,27 +66,6 @@ class PageController extends Controller
                 return redirect()->route('userOrderCreated');
 
             }
-
-
-
-
-            $user_money = Auth::user()->check;
-            if (Auth::user()->current_session_id !== null) {
-                $session = Session::find(Auth::user()->current_session_id);
-                if ($session->stop_time <= time()) {
-                    $session->status = 0;
-                    $session->save();
-
-                    Auth::user()->current_session_id = null;
-                    Auth::user()->save();
-                }
-            }
-
-            if (Auth::user()->current_session_id) {
-                $current_session_id = Auth::user()->current_session_id;
-                $current_session = Session::find($current_session_id);
-                $session_stop_time = $current_session->stop_time;
-            }
         }
 
         return view('analytics');

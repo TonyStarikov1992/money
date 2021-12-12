@@ -19,6 +19,10 @@ class CreateDealsTable extends Migration
             $table->integer('bonus')->nullable();
             $table->integer('status')->default(0);
             $table->integer('time')->nullable();
+            $table->integer('start_time')->nullable();
+            $table->integer('duration')->nullable();
+            $table->string('sell_or_buy')->nullable();
+            $table->string('ticker')->nullable();
             $table->timestamps();
         });
     }

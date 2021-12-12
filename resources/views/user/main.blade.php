@@ -4,10 +4,30 @@
 
 @section('main')
     <div class="row">
+
         <div class="col">
 
-            @if($current_session_rate)
-                <h3>Current session rate: {{ $current_session_rate }}$</h3>
+            <h3>
+                License validity period:
+                {{ $user->license_type }} month(s)
+            </h3>
+            <h3>
+                License expires date:
+                {{ date('d-m-Y G:i:s', $user->license_expires_time) }}
+            </h3>
+
+            @if($user->current_session_id)
+                <h3>Current session start rate: {{ $current_session->start_rate }}$</h3>
+                <h3>Current session rate: {{ $current_session->rate }}$</h3>
+                <h3>Current session start time: {{ date('d-m-Y G:i:s', $current_session->start_time) }}</h3>
+                <h3>Current session stop time: {{ date('d-m-Y G:i:s', $current_session->stop_time) }}</h3>
+
+            @else()
+                <h3>
+                    To start trading go to
+                    <a href="{{ route('sessions.index') }}">Sessions</a>
+                    and start your trading session.
+                </h3>
             @endif
 
             <h2>Deals:</h2>
@@ -26,10 +46,9 @@
                 </thead>
 
                 <tbody>
-                @foreach(Auth::user()->sessions()->orderBy('id', 'DESC')->get() as $session)
+                @foreach($sessions as $session)
 
-                    {{--                        @foreach($session->deals as $deal)--}}
-                    @foreach($session->deals()->orderBy('id', 'DESC')->get() as $deal)
+                    @foreach($session->deals()->orderBy('id', 'desc')->get() as $deal)
                         @if($deal->status == 1)
 
                             <tr>
@@ -50,6 +69,7 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
     <!-- /container -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Deal;
 use App\Http\Controllers\Controller;
 use App\Session;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,13 +13,16 @@ class HomeUserController extends Controller
 {
     public function index()
     {
-        $deals = null;
-        $sessions = null;
-        $current_session_rate = null;
 
         $user = Auth::user();
 
-        $user_check = $user->check;
+        if (!$user->order) {
+            return view('user.make_order');
+        } elseif ($user->order->payment_status == 0) {
+            return view('user.pay_order');
+        }
+
+        $current_session = null;
 
         if ($user->current_session_id !== null) {
             $current_session = Session::find($user->current_session_id);
@@ -35,24 +39,24 @@ class HomeUserController extends Controller
                 }
 
             }
-
-            $current_session_rate = $current_session->rate;
         }
 
         if ($user->current_session_id !== null) {
             $session = Session::find($user->current_session_id);
             if ($session->stop_time <= time()) {
-                Auth::user()->check += $session->rate;
+                $user->check += $session->rate;
+                $session->stop_rate = $session->rate;
                 $session->rate = 0;
                 $session->status = 0;
                 $session->save();
 
-                Auth::user()->current_session_id = null;
-                Auth::user()->save();
+                $user->current_session_id = null;
+                $user->save();
             }
         }
 
-        $sessions = $user->sessions()->orderBy('id', 'DESC')->get();
-        return view('user.main', compact('sessions', 'deals', 'user_check', 'current_session_rate'));
+        $sessions = $user->sessions()->orderBy('id', 'desc')->get();
+
+        return view('user.main', compact('user', 'current_session', 'sessions'));
     }
 }

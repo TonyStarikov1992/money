@@ -50,43 +50,22 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <span class="fs-4">User money: {{ $user_check }}$</span>
+                        <span class="fs-4">User money: {{ Auth::user()->check }}$</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-user"></i>
-                            Profile
+                        <a class="nav-link" href="{{ route('userHome') }}">
+                            Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-money-check-alt"></i>
-                            Deposit
+                        <a class="nav-link" href="{{ route('sessions.index') }}">
+                            Sessions
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-hand-holding-usd"></i>
-                            Withdrawal
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-map-marked-alt"></i>
-                            Address
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-history"></i>
-                            Dials history
-                        </a>
-                    </li>
                     </li>
                     <li class="nav-item">
                         <form action="{{ url('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-link"><i class="fas fa-sign-out-alt"></i>Logout</button>
+                            <button type="submit" class="btn btn-link">Logout</button>
                         </form>
                     </li>
 

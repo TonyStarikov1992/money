@@ -13,7 +13,11 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h1 class="display-6 fw-bold lh-1 mb-3">Order checked by administrator and payed successfully!</h1>
+                    <h1 class="display-6 fw-bold lh-1 mb-3">
+                        Order checked by administrator and payed successfully! Check your
+                        <a href="{{ route('userHome') }}">Home</a>
+                        page.
+                    </h1>
                     <h3>
                         License validity period:
                         {{ $user->license_type }} month(s)
