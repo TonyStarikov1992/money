@@ -137,7 +137,7 @@ class SessionController extends Controller
 
                     $duration = random_int(1200, 1800);
 
-                    $deal->duration = $duration/60;
+                    $deal->duration = $duration;
 
                     $deal_time = $time + $duration;
 
