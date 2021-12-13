@@ -7,19 +7,19 @@
 
         <h1>PAYMENT REQUESTS</h1>
 
-        <a class="btn btn-success" type="button" href="{{ route('requests.create') }}">MAKE REQUEST</a>
+        <a class="btn btn-success" type="button" href="{{ route('payments.create') }}">MAKE PAYMENT</a>
 
         <hr>
 
                 <div class="row d-flex justify-content-center">
                     <div class="col">
 
-                            <h2>REQUESTS LIST</h2>
+                            <h2>PAYMENTS LIST</h2>
 
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Request id</th>
+                                        <th scope="col">Payment id</th>
                                         <th scope="col">Rate</th>
                                         <th scope="col">Get / Pay</th>
                                         <th scope="col">Time</th>
@@ -28,15 +28,15 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($paymentRequests as $paymentRequest)
+                                @foreach($payments as $payment)
 
                                     <tr>
-                                        <th scope="row">{{ $paymentRequest->id }}</th>
-                                        <td>{{ $paymentRequest->rate }}$</td>
-                                        <td>{{ $paymentRequest->type }}</td>
-                                        <td>{{ date("Y-m-d G:i:s", $paymentRequest->time)  }}</td>
+                                        <th scope="row">{{ $payment->id }}</th>
+                                        <td>{{ $payment->rate }}$</td>
+                                        <td>{{ $payment->type }}</td>
+                                        <td>{{ date("Y-m-d G:i:s", $payment->time)  }}</td>
                                         <td>
-                                            @if($paymentRequest->status == 0) processing @endif
+                                            @if($payment->status == 0) processing @else done @endif
                                         </td>
                                     </tr>
 

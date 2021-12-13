@@ -50,18 +50,18 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-{{--                        <span class="fs-4">User money: {{ $user_check }}$</span>--}}
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('users.index') }}">
-                            <i class="fas fa-user"></i>
                             Users
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('orders.index') }}">
-                            <i class="fas fa-user"></i>
-                            Orders
+                            Analytics orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('fees.index') }}">
+                            Payment request
                         </a>
                     </li>
                     <li class="nav-item">

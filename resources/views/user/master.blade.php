@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('requests.index') }}">
+                        <a class="nav-link" href="{{ route('payments.index') }}">
                             Payment request
                         </a>
                     </li>

@@ -43,7 +43,7 @@ Route::group([
 
             Route::resource('sessions', 'SessionController');
 
-            Route::resource('requests', 'PaymentRequestController');
+            Route::resource('payments', 'PaymentController');
 
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
@@ -73,6 +73,10 @@ Route::group([
         Route::resource('users', 'UserController');
 
         Route::resource('orders', 'OrderController');
+
+        Route::resource('fees', 'FeeController');
+
+        Route::get('/fees/{fee}/edit_payment', 'FeeController@editPayment')->name('fees.edit_payment');
 
         Route::get('/orders/{order}/edit_payment', 'OrderController@editPayment')->name('orders.edit_payment');
 

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\PaymentRequest;
+use App\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PaymentRequestController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,12 @@ class PaymentRequestController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $payments = $user->payments;
+
+//        dd($payments);
+
+        return view('user.payment.index', compact('payments'));
     }
 
     /**
@@ -25,7 +31,8 @@ class PaymentRequestController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view('user.payment.create', compact('user'));
     }
 
     /**
@@ -36,16 +43,24 @@ class PaymentRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $parameters = $request->all();
+
+        $parameters['time'] = time();
+        $parameters['user_id'] = $user->id;
+
+        Payment::create($parameters);
+
+        return redirect()->route('payments.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\PaymentRequest  $paymentRequest
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(PaymentRequest $paymentRequest)
+    public function show(Payment $payment)
     {
         //
     }
@@ -53,10 +68,10 @@ class PaymentRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PaymentRequest  $paymentRequest
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(PaymentRequest $paymentRequest)
+    public function edit(Payment $payment)
     {
         //
     }
@@ -65,10 +80,10 @@ class PaymentRequestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PaymentRequest  $paymentRequest
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PaymentRequest $paymentRequest)
+    public function update(Request $request, Payment $payment)
     {
         //
     }
@@ -76,10 +91,10 @@ class PaymentRequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PaymentRequest  $paymentRequest
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PaymentRequest $paymentRequest)
+    public function destroy(Payment $payment)
     {
         //
     }
