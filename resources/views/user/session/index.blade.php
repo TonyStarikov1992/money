@@ -7,6 +7,8 @@
 
         <h1>SESSIONS</h1>
 
+        <hr>
+
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
 
@@ -50,7 +52,7 @@
                                 </div>
 
                                 <p class="mb-3">
-                                    Choose the tickers, with you dont want to trade
+                                    Choose the tickers, with you dont want to trade.
                                 </p>
 
 

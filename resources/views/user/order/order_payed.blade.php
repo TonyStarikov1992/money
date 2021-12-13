@@ -20,11 +20,11 @@
                     </h1>
                     <h3>
                         License validity period:
-                        {{ $user->license_type }} month(s)
+                        {{ $user->order->type }} month(s)
                     </h3>
                     <h3>
                         License expires date:
-                        {{ date('d-m-Y', $user->license_expires_time) }}
+                        {{ date('d-m-Y', $user->order->expires_time) }}
                     </h3>
                 </div>
 

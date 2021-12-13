@@ -43,6 +43,8 @@ Route::group([
 
             Route::resource('sessions', 'SessionController');
 
+            Route::resource('requests', 'PaymentRequestController');
+
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
             Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');

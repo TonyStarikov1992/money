@@ -57,6 +57,11 @@
                             Home
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('requests.index') }}">
+                            Payment request
+                        </a>
+                    </li>
                     @if( Auth::user()->current_order_id )
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('sessions.index') }}">
