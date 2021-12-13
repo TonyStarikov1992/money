@@ -26,8 +26,9 @@ class User extends Authenticatable
         'password',
         'status',
         'check',
-        'license_type',
-        'license_expires_time',
+        'current_order_id',
+        'current_session_id',
+        'is_admin',
     ];
 
     /**

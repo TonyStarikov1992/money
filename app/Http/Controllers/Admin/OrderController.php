@@ -162,9 +162,9 @@ class OrderController extends Controller
 
                 $user_parameters['check'] = $user->check + 2000;
 
-                $user_parameters['license_type'] = $order->type;
+                $user_parameters['current_order_id'] = $order->id;
 
-                $user_parameters['license_expires_time'] = time() + ($order->type * 2592000);
+                $parameters['expires_time'] = time() + ($order->type * 2592000);
 
                 $user->update($user_parameters);
 
@@ -176,9 +176,9 @@ class OrderController extends Controller
 
                 $user_parameters['check'] = $user->check + 3800;
 
-                $user_parameters['license_type'] = $order->type;
+                $user_parameters['current_order_id'] = $order->id;
 
-                $user_parameters['license_expires_time'] = time() + ($order->type * 2592000);
+                $parameters['expires_time'] = time() + ($order->type * 2592000);
 
                 $user->update($user_parameters);
 
@@ -190,9 +190,9 @@ class OrderController extends Controller
 
                 $user_parameters['check'] = $user->check + 5400;
 
-                $user_parameters['license_type'] = $order->type;
+                $user_parameters['current_order_id'] = $order->id;
 
-                $user_parameters['license_expires_time'] = time() + ($order->type * 2592000);
+                $parameters['expires_time'] = time() + ($order->type * 2592000);
 
                 $user->update($user_parameters);
 

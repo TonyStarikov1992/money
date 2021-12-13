@@ -57,11 +57,13 @@
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('sessions.index') }}">
-                            Sessions
-                        </a>
-                    </li>
+                    @if( Auth::user()->current_order_id )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('sessions.index') }}">
+                                Sessions
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <form action="{{ url('logout') }}" method="POST">
                             @csrf

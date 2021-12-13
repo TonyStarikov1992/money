@@ -51,7 +51,7 @@ class PageController extends Controller
     {
         if (Auth::user()) {
 
-            if (Auth::user()->license_type) {
+            if (Auth::user()->current_order_id) {
                 return redirect()->route('userOrderPayed');
             }
 
