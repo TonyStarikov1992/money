@@ -17,6 +17,7 @@ class Quickdeal extends Model
         'sell_or_buy',
         'sign',
         'rate',
+        'processing',
     ];
 
     public function user()
