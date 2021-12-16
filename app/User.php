@@ -28,6 +28,7 @@ class User extends Authenticatable
         'check',
         'current_order_id',
         'current_session_id',
+        'quickdeal_id',
         'is_admin',
     ];
 
@@ -57,6 +58,11 @@ class User extends Authenticatable
     public function sessions()
     {
         return $this->hasMany(Session::class);
+    }
+
+    public function quickdeals()
+    {
+        return $this->hasMany(Quickdeal::class);
     }
 
     public function payments()

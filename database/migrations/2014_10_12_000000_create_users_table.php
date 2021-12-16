@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('check')->nullable();
             $table->integer('current_order_id')->nullable();
             $table->integer('current_session_id')->nullable();
+            $table->integer('quickdeal_id')->default(0);
             $table->integer('is_admin')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

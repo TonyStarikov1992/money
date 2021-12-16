@@ -21,7 +21,31 @@ class PageController extends Controller
 
     public function trading()
     {
-        return view('trading');
+
+        $allTickers = [
+            'BTC',
+            'SHIB',
+            'ETH',
+            'DOGE',
+            'XRP',
+            'MATIC',
+            'ADA',
+            'SOL',
+            'DATA',
+            'BNB',
+            'BTTN',
+            'PZM',
+            'pDOTn',
+            'XLM',
+            'TRX',
+            'HT',
+            'DOT',
+            'LINK',
+            'BCH',
+            'LTC',
+        ];
+
+        return view('trading', compact('allTickers'));
     }
 
     public function charity()
