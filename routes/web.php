@@ -27,6 +27,8 @@ Route::group([
 
         Route::resource('deposits', 'DepositController');
 
+        Route::resource('withdrawals', 'WithdrawalController');
+
         Route::get('/fees/{fee}/edit_payment', 'FeeController@editPayment')->name('fees.edit_payment');
 
         Route::get('/orders/{order}/edit_payment', 'OrderController@editPayment')->name('orders.edit_payment');
