@@ -47,6 +47,8 @@ Route::group([
 
             Route::resource('quickdeals', 'QuickdealController');
 
+            Route::resource('deposits', 'DepositController');
+
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
             Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');
