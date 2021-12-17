@@ -82,6 +82,8 @@ Route::group([
 
             Route::resource('deposit', 'DepositController');
 
+            Route::resource('withdrawal', 'WithdrawalController');
+
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
             Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');

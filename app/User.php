@@ -29,6 +29,7 @@ class User extends Authenticatable
         'current_order_id',
         'current_session_id',
         'quickdeal_id',
+        'withdrawals_id',
         'is_admin',
     ];
 
@@ -73,6 +74,11 @@ class User extends Authenticatable
     public function deposits()
     {
         return $this->hasMany(Deposit::class);
+    }
+
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
     }
 
     public function order()
