@@ -9,7 +9,7 @@
 
         <hr>
 
-        <form method="POST" action="{{ route('deposits.store') }}">
+        <form method="POST" action="{{ route('deposit.store') }}">
             @csrf
 
             <div class="input-group flex-nowrap mb-3">

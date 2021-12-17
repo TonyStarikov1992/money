@@ -7,7 +7,7 @@
 
         <h1>DEPOSITS</h1>
 
-        <a class="btn btn-success" type="button" href="{{ route('deposits.create') }}">MAKE DEPOSIT</a>
+        <a class="btn btn-success" type="button" href="{{ route('deposit.create') }}">MAKE DEPOSIT</a>
 
         <hr>
 

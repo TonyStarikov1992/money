@@ -60,8 +60,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('fees.index') }}">
-                            Payment request
+                        <a class="nav-link" href="{{ route('deposits.index') }}">
+                            Deposits
                         </a>
                     </li>
                     <li class="nav-item">

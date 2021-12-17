@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('deposits.index') }}">
+                        <a class="nav-link" href="{{ route('deposit.index') }}">
                             Deposits
                         </a>
                     </li>

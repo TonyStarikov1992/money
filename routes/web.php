@@ -11,6 +11,39 @@
 |
 */
 
+
+Route::group([
+    'middleware' => 'auth',
+    'namespace' => 'Admin',
+    'prefix' => 'admin',
+], function () {
+    Route::group(['middleware' => 'is_admin'], function () {
+
+        Route::get('', 'HomeController@index')->name('adminHome');
+
+        Route::resource('users', 'UserController');
+
+        Route::resource('orders', 'OrderController');
+
+        Route::resource('deposits', 'DepositController');
+
+        Route::get('/fees/{fee}/edit_payment', 'FeeController@editPayment')->name('fees.edit_payment');
+
+        Route::get('/orders/{order}/edit_payment', 'OrderController@editPayment')->name('orders.edit_payment');
+
+        Route::post('/orders/{order}/edit_payment', 'OrderController@updatePayment')->name('orders.update_payment');
+
+        Route::get('/orders/{order}/edit_admin', 'OrderController@editAdmin')->name('orders.edit_admin');
+
+        Route::post('/orders/{order}/edit_admin', 'OrderController@updateAdmin')->name('orders.update_admin');
+
+        Route::get('/orders/{order}/edit_type', 'OrderController@editType')->name('orders.edit_type');
+
+        Route::post('/orders/{order}/edit_type', 'OrderController@updateType')->name('orders.update_type');
+    });
+});
+
+
 Route::group([
 ], function () {
     Auth::routes([
@@ -47,7 +80,7 @@ Route::group([
 
             Route::resource('quickdeals', 'QuickdealController');
 
-            Route::resource('deposits', 'DepositController');
+            Route::resource('deposit', 'DepositController');
 
             Route::get('/home', 'HomeUserController@index')->name('userHome');
 
@@ -63,35 +96,4 @@ Route::group([
         });
     });
 
-});
-
-Route::group([
-    'middleware' => 'auth',
-    'namespace' => 'Admin',
-    'prefix' => 'admin',
-], function () {
-    Route::group(['middleware' => 'is_admin'], function () {
-
-        Route::get('', 'HomeController@index')->name('adminHome');
-
-        Route::resource('users', 'UserController');
-
-        Route::resource('orders', 'OrderController');
-
-        Route::resource('fees', 'FeeController');
-
-        Route::get('/fees/{fee}/edit_payment', 'FeeController@editPayment')->name('fees.edit_payment');
-
-        Route::get('/orders/{order}/edit_payment', 'OrderController@editPayment')->name('orders.edit_payment');
-
-        Route::post('/orders/{order}/edit_payment', 'OrderController@updatePayment')->name('orders.update_payment');
-
-        Route::get('/orders/{order}/edit_admin', 'OrderController@editAdmin')->name('orders.edit_admin');
-
-        Route::post('/orders/{order}/edit_admin', 'OrderController@updateAdmin')->name('orders.update_admin');
-
-        Route::get('/orders/{order}/edit_type', 'OrderController@editType')->name('orders.edit_type');
-
-        Route::post('/orders/{order}/edit_type', 'OrderController@updateType')->name('orders.update_type');
-    });
 });

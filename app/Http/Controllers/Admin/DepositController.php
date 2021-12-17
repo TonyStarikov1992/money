@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Deposit;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class DepositController extends Controller
 {
@@ -16,10 +16,9 @@ class DepositController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $deposits = $user->deposits->all();
+        $deposits = Deposit::all();
 
-        return view('user.deposit.index', compact('deposits', 'user'));
+        return view('admin.deposits.index', compact('deposits'));
     }
 
     /**
@@ -29,8 +28,7 @@ class DepositController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        return view('user.deposit.create', compact('user'));
+        //
     }
 
     /**
@@ -41,14 +39,7 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $parameters = $request->all();
-        $parameters['user_id'] = $user->id;
-        $parameters['time'] = time();
-
-        Deposit::create($parameters);
-
-        return redirect()->route('deposit.index');
+        //
     }
 
     /**
@@ -70,7 +61,9 @@ class DepositController extends Controller
      */
     public function edit(Deposit $deposit)
     {
-        //
+        $user = $deposit->user;
+//        dd($user);
+        return view('admin.deposits.edit', compact('deposit', 'user'));
     }
 
     /**
@@ -82,7 +75,25 @@ class DepositController extends Controller
      */
     public function update(Request $request, Deposit $deposit)
     {
-        //
+        $parameters = $request->all();
+
+        if (array_key_exists('payment_status', $parameters)) {
+
+            $parameters['payment_status'] = 1;
+
+            $parameters['status'] = 1;
+
+            $user = User::find($deposit->user_id);
+
+            $user_parameters['check'] = $user->check + $deposit->rate;
+
+            $user->update($user_parameters);
+
+        }
+
+        $deposit->update($parameters);
+
+        return redirect()->route('deposits.index');
     }
 
     /**
