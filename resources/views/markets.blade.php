@@ -13,7 +13,15 @@
                     <div class="col-lg-6 mx-auto">
                         <p class="lead mb-4">This widget displays crypto assets and sorts them by market cap.</p>
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{ route('register') }}">Trade with Elannce</a>
+
+                            @auth()
+                                <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{ route('trading') }}">Trade with Elannce</a>
+                            @endauth
+
+                            @guest()
+                                <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{ route('register') }}">Trade with Elannce</a>
+                            @endguest
+
                         </div>
                     </div>
                 </div>
