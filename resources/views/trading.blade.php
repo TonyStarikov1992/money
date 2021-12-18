@@ -21,6 +21,14 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="col">
+
+                        <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script><div id="coinmarketcap-widget-marquee" coins="1,1027,825,5994,74,52,3890,2010,5426,2143,1839,1681,512,1958,2502,6636,1975,1831,2" currency="USD" theme="light" transparent="false" show-symbol-logo="true"></div>
+
+                        <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinPriceBlock.js"></script><div id="coinmarketcap-widget-coin-price-block" coins="1,1027,825,5994,74,52,3890,2010,5426,2143,1839,1681,512,1958,2502,6636,1975,1831,2" currency="USD" theme="light" transparent="false" show-symbol-logo="true"></div>
+
+                    </div>
                 @endguest
 
                 @auth()
@@ -50,6 +58,7 @@
                             <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinPriceBlock.js"></script><div id="coinmarketcap-widget-coin-price-block" coins="1,1027,825,5994,74,52,3890,2010,5426,2143,1839,1681,512,1958,2502,6636,1975,1831,2" currency="USD" theme="light" transparent="false" show-symbol-logo="true"></div>
 
                         </div>
+
                     </div>
 
                     <div class="row d-flex justify-content-center">
