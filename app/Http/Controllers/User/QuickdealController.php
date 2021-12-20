@@ -75,7 +75,7 @@ class QuickdealController extends Controller
 
                 $bonus = $rate/100 * $random_percent;
 
-                if ($random_sign > 15) {
+                if ($random_sign > 5) {
                     $bonus = -$bonus;
                 }
 
