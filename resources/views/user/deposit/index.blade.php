@@ -41,15 +41,13 @@
                         </tbody>
                     </table>
 
-                    <a class="btn btn-success" type="button" href="{{ route('deposit.create') }}">MAKE DEPOSIT</a>
-
                 @else
 
                     <h2>YOU HAVE NO DEPOSITS YET</h2>
 
-                    <a class="btn btn-success" type="button" href="{{ route('deposit.create') }}">MAKE DEPOSIT</a>
-
                 @endif
+
+                <a class="btn btn-success" type="button" href="{{ route('deposit.create') }}">MAKE DEPOSIT</a>
 
             </div>
 
