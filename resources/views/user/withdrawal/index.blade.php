@@ -5,12 +5,6 @@
 @section('main')
     <div class="container">
 
-        <h1>WITHDRAWALS</h1>
-
-        <a class="btn btn-success" type="button" href="{{ route('withdrawal.create') }}">MAKE WITHDRAWAL</a>
-
-        <hr>
-
         <div class="row d-flex justify-content-center">
 
             <div class="col">
@@ -43,6 +37,8 @@
 
                     </tbody>
                 </table>
+
+                <a class="btn btn-success" type="button" href="{{ route('withdrawal.create') }}">MAKE WITHDRAWAL</a>
 
 
             </div>

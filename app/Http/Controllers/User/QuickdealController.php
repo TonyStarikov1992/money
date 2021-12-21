@@ -16,9 +16,32 @@ class QuickdealController extends Controller
      */
     public function index()
     {
+        $allTickers = [
+            'BTC',
+            'SHIB',
+            'ETH',
+            'DOGE',
+            'XRP',
+            'MATIC',
+            'ADA',
+            'SOL',
+            'DATA',
+            'BNB',
+            'BTTN',
+            'PZM',
+            'pDOTn',
+            'XLM',
+            'TRX',
+            'HT',
+            'DOT',
+            'LINK',
+            'BCH',
+            'LTC',
+        ];
+
         $user = Auth::user();
 
-        $quickdeals = $user->quickdeals;
+        $quickdeals = $user->quickdeals()->orderBy('id', 'DESC')->get();;
 
         foreach ($quickdeals as $quickdeal) {
 
@@ -37,7 +60,7 @@ class QuickdealController extends Controller
 
         }
 
-        return view('user.quickdeal.index', compact('quickdeals'));
+        return view('user.quickdeal.index', compact('quickdeals', 'allTickers'));
     }
 
     /**

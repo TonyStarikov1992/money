@@ -26,6 +26,7 @@
         </a>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ route('main') }}" class="nav-link px-2 link-dark">Home</a></li>
             <li><a href="{{ route('markets') }}" class="nav-link px-2 link-dark">Markets</a></li>
             <li><a href="{{ route('trading') }}" class="nav-link px-2 link-dark">Trading</a></li>
             <li><a href="{{ route('analytics') }}" class="nav-link px-2 link-dark">Analitics</a></li>

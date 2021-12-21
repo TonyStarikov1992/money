@@ -78,7 +78,11 @@ Route::group([
 
             Route::resource('sessions', 'SessionController');
 
-            Route::resource('payments', 'PaymentController');
+            Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
+
+            Route::get('/analytic', 'HomeUserController@userAnalytics')->name('userAnalytics');
+
+            Route::get('/charity', 'HomeUserController@userCharity')->name('userCharity');
 
             Route::resource('quickdeals', 'QuickdealController');
 
