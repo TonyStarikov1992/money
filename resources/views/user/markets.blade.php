@@ -15,7 +15,7 @@
                         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 
                             @auth()
-                                <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{ route('trading') }}">Trade with Elannce</a>
+                                <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{ route('quickdeals.index') }}">Trade with Elannce</a>
                             @endauth
 
                             @guest()
