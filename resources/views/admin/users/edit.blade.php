@@ -71,9 +71,9 @@
 
                 <div class="input-group flex-nowrap mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="addon-wrapping">Password</span>
+                        <span class="input-group-text" id="addon-wrapping">New password</span>
                     </div>
-                    <input type="text" name="password" id="password" value="{{ $user->password }}" class="form-control" placeholder="Enter password" aria-describedby="addon-wrapping">
+                    <input type="text" name="password" id="password" class="form-control" placeholder="Enter password" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="input-group flex-nowrap mb-3">
@@ -82,14 +82,6 @@
                     </div>
                     <input type="text" name="check" id="check" value="{{ $user->check }}" class="form-control" placeholder="500" aria-describedby="addon-wrapping">
                 </div>
-
-                {{--            <div class="input-group flex-nowrap mb-3">--}}
-                {{--                <div class="input-group-prepend">--}}
-                {{--                    <span class="input-group-text" id="addon-wrapping">Is admin</span>--}}
-                {{--                </div>--}}
-                {{--                <input type="text" name="is_admin" id="is_admin" class="form-control" placeholder="500" aria-describedby="addon-wrapping">--}}
-                {{--                --}}{{--                <small id="emailHelp" class="form-text text-muted">Minimum 8 symbols.</small>--}}
-                {{--            </div>--}}
 
                 <button type="submit" class="btn btn-success mt-3">EDIT</button>
 

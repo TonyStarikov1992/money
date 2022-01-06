@@ -18,9 +18,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Second Name</th>
+                                <th scope="col">BOT</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Check</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Functions</th>
                             </tr>
                         </thead>
@@ -29,9 +30,19 @@
                             @if($user->is_admin == 0)
                                 <tr @if($user->status == 1) class="bg-warning" @endif>
                                     <th scope="row">{{ $user->id }}</th>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->surname }}</td>
+                                    <td>@if($user->is_bot == 1) YES @endif </td>
+                                    <td>{{ $user->email }}</td>
                                     <td>{{ $user->check }}$</td>
+                                    <td
+                                        @if( $user->withdrawals_id != null )
+                                            class="bg-danger"
+                                        @elseif( ( ($user->last_visit - time()) / (60*60) ) <= 12 )
+                                            class="bg-success"
+                                        @elseif( ( ($user->last_visit - time()) / (60*60) ) >= 12 )
+                                            class="bg-warning"
+                                        @endif
+                                    >
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('users.edit', $user) }}"><button type="button" class="btn btn-link">EDIT</button></a>

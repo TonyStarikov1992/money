@@ -30,6 +30,9 @@ class CreateUsersTable extends Migration
             $table->integer('withdrawals_id')->nullable();
             $table->integer('quickdeal_id')->default(0);
             $table->integer('is_admin')->default(0);
+            $table->integer('is_bot')->default(0);
+            $table->integer('register_time')->default(0);
+            $table->integer('last_visit')->default(time());
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

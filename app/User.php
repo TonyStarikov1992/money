@@ -31,6 +31,9 @@ class User extends Authenticatable
         'quickdeal_id',
         'withdrawals_id',
         'is_admin',
+        'is_bot',
+        'register_time',
+        'last_visit',
     ];
 
     /**

@@ -16,6 +16,10 @@ class QuickdealController extends Controller
      */
     public function index()
     {
+        Auth::user()->last_visit = time();
+
+        Auth::user()->save();
+
         $allTickers = [
             'BTC',
             'SHIB',
