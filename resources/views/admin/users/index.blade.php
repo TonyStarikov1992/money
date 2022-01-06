@@ -21,6 +21,7 @@
                                 <th scope="col">BOT</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Check</th>
+                                <th scope="col">Last visit</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Functions</th>
                             </tr>
@@ -33,6 +34,7 @@
                                     <td>@if($user->is_bot == 1) YES @endif </td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->check }}$</td>
+                                    <td>{{ date("Y-m-d G:i:s", $user->last_visit)  }}</td>
                                     <td
                                         @if( $user->withdrawals_id != null )
                                             class="bg-danger"

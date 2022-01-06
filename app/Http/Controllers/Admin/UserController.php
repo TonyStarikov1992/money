@@ -208,6 +208,8 @@ class UserController extends Controller
 
         $parameters['register_time'] = time();
 
+        $parameters['last_visit'] = time();
+
         User::create($parameters);
 
         return redirect()->route('users.index');
