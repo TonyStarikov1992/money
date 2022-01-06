@@ -23,8 +23,6 @@ class CreateSessionsTable extends Migration
             $table->integer('start_rate')->nullable();
             $table->integer('stop_rate')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

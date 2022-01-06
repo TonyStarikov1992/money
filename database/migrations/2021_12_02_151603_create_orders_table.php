@@ -21,8 +21,6 @@ class CreateOrdersTable extends Migration
             $table->integer('type')->default(0);
             $table->integer('expires_time')->default(0);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
