@@ -29,8 +29,6 @@ Route::group([
 
         Route::resource('withdrawals', 'WithdrawalController');
 
-        Route::get('/fees/{fee}/edit_payment', 'FeeController@editPayment')->name('fees.edit_payment');
-
         Route::get('/orders/{order}/edit_payment', 'OrderController@editPayment')->name('orders.edit_payment');
 
         Route::post('/orders/{order}/edit_payment', 'OrderController@updatePayment')->name('orders.update_payment');
@@ -45,9 +43,43 @@ Route::group([
     });
 });
 
+Route::group([
+    'middleware' => 'auth',
+    'namespace' => 'User',
+    'prefix' => 'user',
+], function () {
+
+    Route::resource('sessions', 'SessionController');
+
+    Route::resource('quickdeals', 'QuickdealController');
+
+    Route::resource('deposit', 'DepositController');
+
+    Route::resource('withdrawal', 'WithdrawalController');
+
+    Route::resource('order', 'OrderController');
+
+    Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
+
+    Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
+
+    Route::get('/analytic', 'HomeUserController@userAnalytics')->name('userAnalytics');
+
+    Route::get('/charity', 'HomeUserController@userCharity')->name('userCharity');
+
+    Route::get('/charity/covid', 'HomeUserController@userCharityPayCovid')->name('userCharityPayCovid');
+
+    Route::get('/charity/food', 'HomeUserController@userCharityPayFood')->name('userCharityPayFood');
+
+    Route::get('/charity/earth', 'HomeUserController@userCharityPayEarth')->name('userCharityPayEarth');
+
+    Route::get('/home', 'HomeUserController@index')->name('userHome');
+});
+
 
 Route::group([
 ], function () {
+
     Auth::routes([
         'reset' => false,
         'confirm' => false,
@@ -64,44 +96,11 @@ Route::group([
 
     Route::get('/charity', 'PageController@charity')->name('charity');
 
-    Route::get('/charity/{type}', 'PageController@charityPay')->name('charityPay');
+    Route::get('/charity/covid', 'PageController@charityPayCovid')->name('charityPayCovid');
+
+    Route::get('/charity/food', 'PageController@charityPayFood')->name('charityPayFood');
+
+    Route::get('/charity/earth', 'PageController@charityPayEarth')->name('charityPayEarth');
 
     Route::get('/conditions', 'PageController@conditions')->name('conditions');
-
-    Route::middleware('auth')->group(function () {
-
-        Route::group([
-            'middleware' => 'auth',
-            'namespace' => 'User',
-            'prefix' => 'user',
-        ], function () {
-
-            Route::resource('sessions', 'SessionController');
-
-            Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
-
-            Route::get('/analytic', 'HomeUserController@userAnalytics')->name('userAnalytics');
-
-            Route::get('/charity', 'HomeUserController@userCharity')->name('userCharity');
-
-            Route::resource('quickdeals', 'QuickdealController');
-
-            Route::resource('deposit', 'DepositController');
-
-            Route::resource('withdrawal', 'WithdrawalController');
-
-            Route::get('/home', 'HomeUserController@index')->name('userHome');
-
-            Route::get('/order-created', 'OrderController@orderCreated')->name('userOrderCreated');
-
-            Route::get('/order-checked', 'OrderController@orderChecked')->name('userOrderChecked');
-
-            Route::get('/order-payed', 'OrderController@orderPayed')->name('userOrderPayed');
-
-            Route::get('/order/{month}', 'OrderController@order')->name('userOrder');
-
-            Route::get('/order/create/{month}', 'OrderController@orderCreate')->name('userOrderCreate');
-        });
-    });
-
 });

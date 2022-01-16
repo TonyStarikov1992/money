@@ -19,6 +19,44 @@ class SessionController extends Controller
     {
         $user = Auth::user();
 
+        $current_session = null;
+
+        if ($user->current_session_id != null) {
+            $current_session = Session::find($user->current_session_id);
+            $deals = $current_session->deals;
+
+            foreach ($deals as $deal) {
+                if ($deal->time <= time() and $deal->status != 1) {
+                    $this_deal = Deal::find($deal->id);
+
+                    if (($current_session->rate + $this_deal->bonus) <= 0 ) {
+
+                    } else {
+                        $current_session->rate += $this_deal->bonus;
+                        $this_deal->status = 1;
+                        $this_deal->save();
+                    }
+
+                    $current_session->save();
+                }
+
+            }
+        }
+
+        if ($user->current_session_id != null) {
+            $session = Session::find($user->current_session_id);
+            if ($session->stop_time <= time()) {
+                $user->check += $session->rate;
+                $session->stop_rate = $session->rate;
+                $session->rate = 0;
+                $session->status = 0;
+                $session->save();
+
+                $user->current_session_id = null;
+                $user->save();
+            }
+        }
+
         $sessions = $user->sessions;
 
         $current_session_id = null;
@@ -31,7 +69,15 @@ class SessionController extends Controller
             $session_stop_time = $session->stop_time;
         }
 
-        return view('user.session.index', compact('user', 'current_session_id', 'session', 'session_stop_time', 'sessions'));
+        $current_session = Session::find($user->current_session_id);
+
+        $deals = null;
+
+        if ($current_session) {
+            $deals = $current_session->deals;
+        }
+
+        return view('user.session.index', compact('user', 'current_session_id', 'session', 'session_stop_time', 'sessions', 'deals'));
     }
 
     /**
@@ -90,11 +136,14 @@ class SessionController extends Controller
             if ($rate < 200 and (Auth::user()->check - $rate) < 0) {
                 return redirect()->route('sessions.index');
             }
-            if (Auth::user()->current_session_id === null) {
+            if (Auth::user()->current_session_id == null) {
                 $session = Session::create();
                 $session->user_id = Auth::user()->id;
                 $session->start_time = time();
                 $session_stop_time = time() + (3600 * $hour);
+
+                $session_duration = 3600 * $hour;
+
                 $session->stop_time = $session_stop_time;
                 $session->rate = $rate;
                 $session->start_rate = $rate;
@@ -198,7 +247,7 @@ class SessionController extends Controller
     public function destroy(Session $session)
     {
         if (Auth::user()) {
-            if (Auth::user()->current_session_id !== null) {
+            if (Auth::user()->current_session_id != null) {
                 $session = Session::find(Auth::user()->current_session_id);
                 $session->status = 0;
                 Auth::user()->check += $session->rate;

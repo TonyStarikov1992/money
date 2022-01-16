@@ -6,21 +6,25 @@
     <!--Main layout-->
         <div class="container mt-5">
             <!--Section: Content-->
-            <section class="text-center">
+            <section class="text-center h-100">
 
-                <div class="row d-flex justify-content-center">
-                    <div class="col-6">
-                        <form method="POST" action="{{ route('login') }}">
+                <div class="row">
+                    <div class="col d-flex align-items-center" style="min-height: 70vh">
+                        <form class="mx-auto w-50" method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+                            <div class="input-group flex-nowrap mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Email</span>
+                                </div>
+                                <input type="text" name="email" id="email" class="form-control" placeholder="Enter email" aria-describedby="addon-wrapping">
                             </div>
 
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+                            <div class="input-group flex-nowrap mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Password</span>
+                                </div>
+                                <input name="password" type="password" id="password" class="form-control" placeholder="Enter password" aria-describedby="addon-wrapping">
                             </div>
 
                             <button type="submit" class="btn btn-primary m-3">Submit</button>

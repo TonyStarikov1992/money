@@ -21,31 +21,12 @@ class PageController extends Controller
 
     public function trading()
     {
+        return view('trading');
+    }
 
-        $allTickers = [
-            'BTC',
-            'SHIB',
-            'ETH',
-            'DOGE',
-            'XRP',
-            'MATIC',
-            'ADA',
-            'SOL',
-            'DATA',
-            'BNB',
-            'BTTN',
-            'PZM',
-            'pDOTn',
-            'XLM',
-            'TRX',
-            'HT',
-            'DOT',
-            'LINK',
-            'BCH',
-            'LTC',
-        ];
-
-        return view('trading', compact('allTickers'));
+    public function analytics()
+    {
+        return view('analytics');
     }
 
     public function charity()
@@ -53,45 +34,23 @@ class PageController extends Controller
         return view('charity');
     }
 
-    public function charityPay($type)
+    public function charityPayCovid()
     {
-        if ($type == 'covid') {
-            return view('charity_covid');
-        } elseif ($type == 'food') {
-            return view('charity_food');
-        }  elseif ($type == 'earth') {
-            return view('charity_earth');
-        } else {
-            return redirect()->route('charity');
-        }
+        return view('charity_covid');
+    }
+
+    public function charityPayFood()
+    {
+        return view('charity_food');
+    }
+
+    public function charityPayEarth()
+    {
+        return view('charity_earth');
     }
 
     public function conditions()
     {
-        return view('terms_and_conditions');
-    }
-
-    public function analytics()
-    {
-        if (Auth::user()) {
-
-            if (Auth::user()->current_order_id) {
-                return redirect()->route('userOrderPayed');
-            }
-
-            if (Auth::user()->order) {
-
-                if (Auth::user()->order->admin_status == 1) {
-
-                    return redirect()->route('userOrderChecked');
-
-                }
-
-                return redirect()->route('userOrderCreated');
-
-            }
-        }
-
-        return view('analytics');
+        return view('conditions');
     }
 }

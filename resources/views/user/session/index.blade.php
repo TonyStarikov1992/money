@@ -22,6 +22,8 @@
                                     STOP
                                 </button>
                             </form>
+
+
                         @endif
 
                         @if(!$current_session_id and $user->check > 0)
@@ -227,37 +229,43 @@
 
                             <h2>SESSIONS LIST</h2>
 
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Session id</th>
-                                    <th scope="col">Start time</th>
-                                    <th scope="col">Stop time</th>
-                                    <th scope="col">Start rate</th>
-                                    <th scope="col">Stop rate</th>
-                                    <th scope="col"></th>
-                                </tr>
-                                </thead>
+                            @if(count($sessions) <= 0)
+                                <h2>YOUR SESSIONS LIST IS EMPTY</h2>
+                            @else
 
-                                <tbody>
-                                @foreach($sessions as $session)
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Session id</th>
+                                        <th scope="col">Start time</th>
+                                        <th scope="col">Stop time</th>
+                                        <th scope="col">Start rate</th>
+                                        <th scope="col">Stop rate</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
 
-                                    @if($session->id != $user->current_session_id )
+                                    <tbody>
+                                    @foreach($sessions as $session)
 
-                                        <tr>
-                                            <th scope="row">{{ $session->id }}</th>
-                                            <td>{{ date("Y-m-d G:i:s", $session->start_time)  }}</td>
-                                            <td>{{ date("Y-m-d G:i:s", $session->stop_time)  }}</td>
-                                            <td>{{ $session->start_rate }}$</td>
-                                            <td>{{ $session->stop_rate }}$</td>
-                                            <td><a href="{{ route('sessions.show', $session) }}"><button type="button" class="btn btn-link">SHOW</button></a></td>
-                                        </tr>
-                                    @endif
+                                        @if($session->id != $user->current_session_id )
 
-                                @endforeach
+                                            <tr>
+                                                <th scope="row">{{ $session->id }}</th>
+                                                <td>{{ date("Y-m-d G:i:s", $session->start_time)  }}</td>
+                                                <td>{{ date("Y-m-d G:i:s", $session->stop_time)  }}</td>
+                                                <td>{{ $session->start_rate }}$</td>
+                                                <td>{{ $session->stop_rate }}$</td>
+                                                <td><a href="{{ route('sessions.show', $session) }}"><button type="button" class="btn btn-link">SHOW</button></a></td>
+                                            </tr>
+                                        @endif
 
-                                </tbody>
-                            </table>
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
+
+                            @endif
 
 
                     </div>

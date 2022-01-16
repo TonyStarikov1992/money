@@ -6,64 +6,90 @@
     <!--Main layout-->
     <div class="container mt-5">
         <!--Section: Content-->
-        <section class="text-center">
+        <section class="text-center h-100">
 
-            <div class="row d-flex justify-content-center">
-                <div class="col-6">
-                    <form method="POST" action="{{ route('register') }}">
+            <div class="row">
+                <div class="col d-flex align-items-center" style="min-height: 70vh">
+                    <form class="mx-auto w-50" method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input name="name" type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="First name">
-                            {{--                            <small id="emailHelp" class="form-text text-muted">Some text.</small>--}}
+
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Name</span>
+                            </div>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="First name" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="surname">Surname</label>
-                            <input name="surname" type="text" class="form-control" id="surname" aria-describedby="emailHelp" placeholder="Last name">
-                            {{--                            <small id="emailHelp" class="form-text text-muted">Some text.</small>--}}
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Surname</span>
+                            </div>
+                            <input type="text" name="surname" id="surname" class="form-control" placeholder="Last name" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="country">Country</label>
-                            <input name="country" type="text" class="form-control" id="country" aria-describedby="emailHelp" placeholder="Enter country">
-                            {{--                            <small id="emailHelp" class="form-text text-muted">Some text.</small>--}}
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Country</span>
+                            </div>
+                            <input type="text" name="country" id="country" class="form-control" placeholder="Ukraine" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="birthday">Birthday</label>
-                            <input name="birthday" type="text" class="form-control" id="birthday" aria-describedby="emailHelp" placeholder="17.06.1992">
-                            {{--                            <small id="emailHelp" class="form-text text-muted">Some text.</small>--}}
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Birthday</span>
+                            </div>
+                            <input type="text" name="birthday" id="birthday" class="mask-birthday form-control" placeholder="dd.mm.yyyy" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="locale">Time Zone</label>
-                            <input name="locale" type="text" class="form-control" id="locale" aria-describedby="emailHelp" placeholder="UTC +3">
-                            {{--                            <small id="emailHelp" class="form-text text-muted">Some text.</small>--}}
+                        <script>
+                            $('.mask-birthday').mask('99.99.9999', {placeholder: "dd.mm.yyyy" });
+                        </script>
+
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Time Zone UTC +/-</span>
+                            </div>
+                            <input type="text" name="locale" id="locale" class="mask-locale form-control" placeholder="+3" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+                        <script>
+                            $.mask.definitions['~']='[+-]';
+                            $('.mask-locale').mask('~9');
+                        </script>
+
+
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Email</span>
+                            </div>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Enter email" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input name="phone" type="tel" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="+380634139684">
-{{--                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Phone</span>
+                            </div>
+                            <input type="text" name="phone" id="phone" class="mask-phone form-control" placeholder="+380634139684" aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="Password">Password</label>
-                            <input name="password" type="password" class="form-control" id="Password" placeholder="Enter password">
-                            <small id="emailHelp" class="form-text text-muted">Minimum 8 symbols.</small>
+                        <script>
+                            $('.mask-phone').mask('+99 (999) 9999999');
+                        </script>
+
+
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Password</span>
+                            </div>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Minimum 8 symbols." aria-describedby="addon-wrapping">
                         </div>
 
-                        <div class="form-group">
-                            <label for="password_confirmation">Password confirm</label>
-                            <input name="password_confirmation" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password">
-{{--                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+                        <div class="input-group flex-nowrap mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Password confirm</span>
+                            </div>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Minimum 8 symbols." aria-describedby="addon-wrapping">
                         </div>
 
                         <button type="submit" class="btn btn-primary m-3">Submit</button>

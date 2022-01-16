@@ -1,6 +1,6 @@
-@extends('master')
+@extends('user.master')
 
-@section('title', 'Analytics order 1 month')
+@section('title', 'CREATE ANALYTICS ORDER')
 
 @section('main')
     <div class="container-fluid">
@@ -13,10 +13,14 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h1 class="display-6 fw-bold lh-1 mb-3">Create new order</h1>
+                    <h1 class="display-6 fw-bold lh-1 mb-3">Create new Analytics order</h1>
                     <h3>
                         License validity period:
-                        {{ $month }} month(s)
+                        {{ $type }} month(s)
+                    </h3>
+                    <h3>
+                        License expires date:
+                        {{ date("Y-m-d", $expires_time)  }}
                     </h3>
                     <h3>
                         License type:
@@ -40,9 +44,11 @@
                         <p>
                             After confirmation of payment, you will be contacted by our manager using the contact information provided during registration to provide a license to use ELANNCE analytics.
                         </p>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="{{ route('userOrderCreate', $month) }}">Create order</a>
-                        </div>
+                        <form method="POST" action="{{ route('order.store') }}">
+                            @csrf
+                            <input type="hidden" id="custId" name="type" value="{{ $type }}">
+                            <button type="submit" class="btn btn-primary btn-lg">Create new order</button>
+                        </form>
                     </div>
                 </div>
 

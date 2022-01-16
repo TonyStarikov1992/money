@@ -26,8 +26,18 @@ class HomeUserController extends Controller
         return view('user.charity');
     }
 
-    public function userAnalytics()
+    public function userCharityPayCovid()
     {
-        return view('user.analytics');
+        return view('user.charity_covid');
+    }
+
+    public function userCharityPayFood()
+    {
+        return view('user.charity_food');
+    }
+
+    public function userCharityPayEarth()
+    {
+        return view('user.charity_earth');
     }
 }

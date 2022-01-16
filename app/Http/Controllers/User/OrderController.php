@@ -9,112 +9,119 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function order($month)
-    {
-        if (1 * $month < 4) {
-
-            if ($month == 1) {
-                $money = 2000;
-            } elseif ($month == 2) {
-                $money = 3800;
-            } elseif ($month == 3) {
-                $money = 5400;
-            } else {
-                return redirect()->route('analytics');
-            }
-
-            return view('user.order.main', compact('month', 'money'));
-
-        } else {
-            return redirect()->route('analytics');
-        }
-    }
-
-    public function orderCreate($month)
-    {
-        if ($month) {
-
-            $parameters = [];
-
-            if ((int)$month < 4) {
-
-                $parameters['type'] = $month;
-
-                $parameters['expires_time'] = time() + (2592000 * $month);
-
-            } else {
-
-                return redirect()->route('analytics');
-
-            }
-
-            $userId = Auth::id();
-
-            $parameters['user_id'] = $userId;
-
-            Order::create($parameters);
-
-            return redirect()->route('userOrderCreated');
-
-        } else {
-
-            return redirect()->route('analytics');
-
-        }
-    }
-
-    public function orderCreated()
-    {
-        if (Auth::user()->order) {
-            $month = Auth::user()->order->type;
-            $expires_time = date('d-m-Y', Auth::user()->order->expires_time);
-
-            if ($month == 1) {
-                $money = 2000;
-            } elseif ($month == 2) {
-                $money = 3800;
-            } elseif ($month == 3) {
-                $money = 5400;
-            } else {
-                return redirect()->route('analytics');
-            }
-
-        } else {
-            return redirect()->route('analytics');
-        }
-
-        return view('user.order.order_created', compact('month', 'money', 'expires_time'));
-    }
-
-    public function orderChecked()
-    {
-        if (Auth::user()->order->admin_status) {
-
-            $month = Auth::user()->order->type;
-
-            $expires_time = date('d-m-Y', Auth::user()->order->expires_time);
-
-            if ($month == 1) {
-                $money = 2000;
-            } elseif ($month == 2) {
-                $money = 3800;
-            } elseif ($month == 3) {
-                $money = 5400;
-            } else {
-                return redirect()->route('analytics');
-            }
-
-        } else {
-            return redirect()->route('analytics');
-        }
-
-        return view('user.order.order_checked', compact('month', 'money', 'expires_time'));
-    }
-
-    public function orderPayed()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
         $user = Auth::user();
 
-        return view('user.order.order_payed', compact('user'));
+        $order = Order::find($user->current_order_id);
+
+        if ($order) {
+            return redirect()->route('order.show', $order);
+        }
+
+        return view('user.order.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create($type)
+    {
+        if ($type == 1) {
+            $money = 2000;
+        } elseif ($type == 2) {
+            $money = 3800;
+        } elseif ($type == 3) {
+            $money = 5400;
+        } else {
+            return redirect()->route('user.order.index');
+        }
+
+        $expires_time = time() + (2592000 * $type);
+
+        return view('user.order.create', compact('type','money', 'expires_time'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $parameters = $request->all();
+
+        $type = $parameters['type'];
+
+        if ((int)$type < 4) {
+
+            $parameters['expires_time'] = time() + (2592000 * $type);
+
+            $user = Auth::user();
+
+            $parameters['user_id'] = $user->id;
+
+            $order = Order::create($parameters);
+
+            $user->current_order_id = $order->id;
+
+            $user->save();
+
+        }
+
+        return redirect()->route('order.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Order $order)
+    {
+        return view('user.order.show', compact('order'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Order $order)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Order $order)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Order $order)
+    {
+        //
     }
 }

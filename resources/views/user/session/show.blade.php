@@ -37,7 +37,7 @@
                         <td>{{ $deal->sell_or_buy }}</td>
                         <td>@if($deal->start_time){{ date("Y-m-d H:i:s", $deal->start_time)  }}@endif</td>
                         <td>@if($deal->time){{ date("Y-m-d H:i:s", $deal->time)  }}@endif</td>
-                        <td>@if($deal->duration){{ $deal->duration }} min @endif</td>
+                        <td>@if($deal->duration){{ $deal->duration / 60 }} min @endif</td>
                         <td>{{ $deal->id }}</td>
                         <td>{{ $deal->bonus }}$</td>
                     </tr>

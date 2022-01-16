@@ -74,7 +74,7 @@ class QuickdealController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('quickdeals.index');
     }
 
     /**
@@ -88,7 +88,7 @@ class QuickdealController extends Controller
 
         if (Auth::user()) {
 
-            if (Auth::user()->check - $rate < 0) {
+            if ((Auth::user()->check - $rate) < 0) {
                 return redirect()->route('quickdeals.index');
             }
 
@@ -115,8 +115,6 @@ class QuickdealController extends Controller
                 $parameters['start_time'] = time();
 
                 $parameters['stop_time'] = time() + $time;
-
-//                dd($parameters['rate']);
 
                 $quickdeal = Quickdeal::create($parameters);
 

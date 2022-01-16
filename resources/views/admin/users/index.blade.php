@@ -22,6 +22,8 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Check</th>
                                 <th scope="col">Last visit</th>
+                                <th scope="col">Analytics</th>
+                                <th scope="col">Analytics Work</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Functions</th>
                             </tr>
@@ -35,12 +37,14 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->check }}$</td>
                                     <td>{{ date("Y-m-d G:i:s", $user->last_visit)  }}</td>
+                                    <td>@if($user->current_order_id != null) YES @endif </td>
+                                    <td>@if($user->current_session_id != null) YES @endif </td>
                                     <td
                                         @if( $user->withdrawals_id != null )
                                             class="bg-danger"
-                                        @elseif( ( ($user->last_visit - time()) / (60*60) ) <= 12 )
+                                        @elseif( ( ( time() - $user->last_visit) / 3600 ) <= 12 )
                                             class="bg-success"
-                                        @elseif( ( ($user->last_visit - time()) / (60*60) ) >= 12 )
+                                        @else( ( ( time() - $user->last_visit) / 3600 ) >= 12 )
                                             class="bg-warning"
                                         @endif
                                     >

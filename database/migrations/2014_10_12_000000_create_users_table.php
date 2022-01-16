@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('current_order_id')->nullable();
             $table->integer('current_session_id')->nullable();
             $table->integer('withdrawals_id')->nullable();
+            $table->integer('deposit_id')->nullable();
             $table->integer('quickdeal_id')->default(0);
             $table->integer('is_admin')->default(0);
             $table->integer('is_bot')->default(0);

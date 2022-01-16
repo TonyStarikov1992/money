@@ -30,6 +30,7 @@ class User extends Authenticatable
         'current_session_id',
         'quickdeal_id',
         'withdrawals_id',
+        'deposit_id',
         'is_admin',
         'is_bot',
         'register_time',

@@ -1,6 +1,6 @@
-@extends('master')
+@extends('user.master')
 
-@section('title', 'Analytics order payed')
+@section('title', 'Analytics order')
 
 @section('main')
     <div class="container-fluid">
@@ -15,16 +15,16 @@
                 <div class="col-lg-6">
                     <h1 class="display-6 fw-bold lh-1 mb-3">
                         Order checked by administrator and payed successfully! Check your
-                        <a href="{{ route('userHome') }}">Home</a>
+                        <a href="{{ route('sessions.index') }}">Session</a>
                         page.
                     </h1>
                     <h3>
                         License validity period:
-                        {{ $user->order->type }} month(s)
+                        {{ $order->type }} month(s)
                     </h3>
                     <h3>
                         License expires date:
-                        {{ date('d-m-Y', $user->order->expires_time) }}
+                        {{ date('d-m-Y', $order->expires_time) }}
                     </h3>
                 </div>
 

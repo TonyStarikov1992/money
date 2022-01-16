@@ -1,6 +1,6 @@
 @extends('user.master')
 
-@section('title', 'QUICKDEAL REQUESTS')
+@section('title', 'QUICKDEALS')
 
 @section('main')
     <div class="container">

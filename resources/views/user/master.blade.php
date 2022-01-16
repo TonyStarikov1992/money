@@ -29,7 +29,7 @@
             <li><a href="{{ route('userHome') }}" class="nav-link px-2 link-dark">Home</a></li>
             <li><a href="{{ route('userMarkets') }}" class="nav-link px-2 link-dark">Markets</a></li>
             <li><a href="{{ route('quickdeals.index') }}" class="nav-link px-2 link-dark">Trading</a></li>
-            <li><a href="{{ route('userAnalytics') }}" class="nav-link px-2 link-dark">Analytics</a></li>
+            <li><a href="{{ route('order.index') }}" class="nav-link px-2 link-dark">Analytics</a></li>
             <li><a href="{{ route('userCharity') }}" class="nav-link px-2 link-dark">Charity</a></li>
             <li><a href="{{ route('deposit.index') }}" class="nav-link px-2 link-dark">Deposits</a></li>
             <li><a href="{{ route('withdrawal.index') }}" class="nav-link px-2 link-dark">Withdrawals</a></li>
@@ -42,12 +42,6 @@
         </ul>
 
         <div class="col-md-3 text-end">
-            @guest()
-                <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
-                <a class="btn btn btn-primary" href="{{ route('register') }}">Sign-up</a>
-            @endguest
-
-
             @auth()
                 @if(Auth::user()->isAdmin())
                     <a class="btn btn-outline-primary me-2" href="{{ route('adminHome') }}">Admin</a>
