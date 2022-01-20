@@ -26,31 +26,23 @@ class SessionController extends Controller
             $deals = $current_session->deals;
 
             foreach ($deals as $deal) {
-                if ($deal->time <= time() and $deal->status != 1) {
-                    $this_deal = Deal::find($deal->id);
+                if ($deal->stop_time <= time() and $deal->status != 1) {
 
-                    if (($current_session->rate + $this_deal->bonus) <= 0 ) {
-
-                    } else {
-                        $current_session->rate += $this_deal->bonus;
-                        $this_deal->status = 1;
-                        $this_deal->save();
-                    }
+                    $current_session->rate += $deal->bonus;
+                    $deal->status = 1;
+                    $deal->save();
 
                     $current_session->save();
                 }
 
             }
-        }
 
-        if ($user->current_session_id != null) {
-            $session = Session::find($user->current_session_id);
-            if ($session->stop_time <= time()) {
-                $user->check += $session->rate;
-                $session->stop_rate = $session->rate;
-                $session->rate = 0;
-                $session->status = 0;
-                $session->save();
+            if ($current_session->stop_time <= time()) {
+                $user->check += $current_session->rate;
+                $current_session->stop_rate = $current_session->rate;
+                $current_session->rate = 0;
+                $current_session->status = 0;
+                $current_session->save();
 
                 $user->current_session_id = null;
                 $user->save();
@@ -62,18 +54,15 @@ class SessionController extends Controller
         $current_session_id = null;
         $session = null;
         $session_stop_time = null;
+        $deals = null;
 
         if ($user->current_session_id) {
             $current_session_id = $user->current_session_id;
             $session = Session::find($current_session_id);
             $session_stop_time = $session->stop_time;
-        }
 
-        $current_session = Session::find($user->current_session_id);
+            $current_session = $session;
 
-        $deals = null;
-
-        if ($current_session) {
             $deals = $current_session->deals;
         }
 
@@ -127,74 +116,86 @@ class SessionController extends Controller
         $tickers = $request->tickers;
 
         if ($tickers === null) {
-            $res = $allTickers;
+            $tickers = $allTickers;
         } else {
-            $res = array_diff($allTickers, $tickers);
+            $tickers = array_diff($allTickers, $tickers);
         }
 
-        if (Auth::user()) {
-            if ($rate < 200 and (Auth::user()->check - $rate) < 0) {
+        $user = Auth::user();
+
+        if ($user) {
+
+            if ($rate < 200 and $hour <= 0 and ($user->check - $rate) < 0) {
+
                 return redirect()->route('sessions.index');
+
             }
-            if (Auth::user()->current_session_id == null) {
-                $session = Session::create();
-                $session->user_id = Auth::user()->id;
-                $session->start_time = time();
-                $session_stop_time = time() + (3600 * $hour);
 
-                $session_duration = 3600 * $hour;
-
-                $session->stop_time = $session_stop_time;
-                $session->rate = $rate;
-                $session->start_rate = $rate;
-                $session->save();
-
-                Auth::user()->check -= $rate;
-
-                Auth::user()->current_session_id = $session->id;
-                Auth::user()->save();
+            if ($user->current_session_id == null) {
 
                 $time = time();
 
+                $session_parameters['user_id'] = $user->id;
+                $session_parameters['start_time'] = $time;
+
+                $session_stop_time = $time + (3600 * $hour);
+
+                $session_parameters['stop_time'] = $session_stop_time;
+                $session_parameters['start_rate'] = $rate;
+                $session_parameters['rate'] = $rate;
+
+                $session = Session::create($session_parameters);
+
+                $user->check -= $rate;
+
+                $user->current_session_id = $session->id;
+                $user->save();
+
                 while ($time <= $session_stop_time) {
 
-                    $num = array_rand($res);
-
-                    $deal = Deal::create(['session_id' => $session->id]);
-
-                    $deal->start_time = $time;
-
-                    $random_percent = random_int(1, 2);
-
-                    $random_sign = random_int(1, 20);
-
-                    $deal->ticker = $res[$num];
-
-                    $bonus = ($rate/100) * $random_percent;
-
-                    if ($random_sign > 15) {
-                        $bonus = -$bonus;
-                    }
-
-                    if ($random_sign > 10) {
-                        $deal->sell_or_buy = 'sell';
-                    } else {
-                        $deal->sell_or_buy = 'buy';
-                    }
-
-                    $deal->bonus = $bonus;
+                    $deal_parameters['session_id'] = $session->id;
+                    $deal_parameters['start_time'] = $time;
 
                     $duration = random_int(1200, 1800);
 
-                    $deal->duration = $duration;
+                    $deal_parameters['duration'] = $duration;
+                    $deal_parameters['duration_min'] = (int)($duration/60);
+                    $deal_parameters['stop_time'] = $time + $duration;
+                    $deal_parameters['ticker'] = $tickers[array_rand($tickers)];
 
-                    $deal_time = $time + $duration;
+                    $random_percent = random_int(1, 2);
 
-                    $deal->time = $deal_time;
+                    $deal_parameters['percent'] = $random_percent;
+
+                    $random_sign = random_int(1, 1000);
+
+                    $bonus = (int)($rate/100) * $random_percent;
+
+                    if ($random_sign > 250) {
+                        $bonus = -$bonus;
+                    }
+
+                    $deal_parameters['bonus'] = $bonus;
+
+                    if ($random_sign > 500) {
+                        $sell_or_buy = 'sell';
+                    } else {
+                        $sell_or_buy = 'buy';
+                    }
+
+                    $deal_parameters['sell_or_buy'] = $sell_or_buy;
+
+                    $rate += $bonus;
 
                     $time += $duration;
 
-                    $deal->save();
+                    $deal_parameters['current_session_rate'] = $rate;
+
+                    if ($rate <= 0 or $time >= $session_stop_time) {
+                        break;
+                    }
+
+                    Deal::create($deal_parameters);
                 }
 
             }
@@ -246,17 +247,20 @@ class SessionController extends Controller
      */
     public function destroy(Session $session)
     {
-        if (Auth::user()) {
-            if (Auth::user()->current_session_id != null) {
-                $session = Session::find(Auth::user()->current_session_id);
+        $user = Auth::user();
+
+        if ($user) {
+            if ($user->current_session_id != null) {
+                $session = Session::find($user->current_session_id);
                 $session->status = 0;
-                Auth::user()->check += $session->rate;
+                $user->check += $session->rate;
                 $session->stop_rate = $session->rate;
                 $session->rate = 0;
+                $session->stop_time = time();
                 $session->save();
 
-                Auth::user()->current_session_id = null;
-                Auth::user()->save();
+                $user->current_session_id = null;
+                $user->save();
             }
         }
 

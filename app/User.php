@@ -35,6 +35,7 @@ class User extends Authenticatable
         'is_bot',
         'register_time',
         'last_visit',
+        'settings_update_time',
     ];
 
     /**

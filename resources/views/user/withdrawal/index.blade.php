@@ -46,7 +46,12 @@
 
                 @endif
 
-                <a class="btn btn-success" type="button" href="{{ route('withdrawal.create') }}">MAKE WITHDRAWAL</a>
+                @if((Auth::user()->settings_update_time - time()) >= 0)
+                    <h2>YOU CHANGE YOUR SETTINGS {{ date("Y-m-d H:i:s", Auth::user()->settings_update_time) }}, YOU CAN NOT MAKE NEW WITHDRAWAL NEXT 3 DAYS AFTER CHANGING ANY SETTING!!!</h2>
+                @else
+                    <a class="btn btn-success" type="button" href="{{ route('withdrawal.create') }}">MAKE WITHDRAWAL</a>
+                @endif
+
 
 
             </div>

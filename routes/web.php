@@ -59,6 +59,12 @@ Route::group([
 
     Route::resource('order', 'OrderController');
 
+    Route::resource('setting', 'SettingController');
+
+//    Route::get('/setting', 'SettingController@index')->name('setting.index');
+//
+//    Route::post('/setting', 'SettingController@update')->name('setting.update');
+
     Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
 
     Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -256,13 +257,15 @@ class UserController extends Controller
     {
         $parameters = $request->all();
 
-        if ($user->password != $request->password) {
+        if ($user->password != bcrypt($request->password)) {
             $parameters['password'] = bcrypt($parameters['password']);
         }
 
+        $parameters['settings_update_time'] = time() + (60*60*24*3);
+
         $user->update($parameters);
 
-        return redirect()->route('users.index');
+        return redirect()->route('setting.index');
     }
 
     /**

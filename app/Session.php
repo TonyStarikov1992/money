@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
     protected $fillable = [
+        'user_id',
         'status',
         'start_time',
         'stop_time',
-        'user_id',
-        'rate',
         'start_rate',
+        'rate',
         'stop_rate',
     ];
 

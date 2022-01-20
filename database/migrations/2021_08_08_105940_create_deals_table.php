@@ -15,14 +15,17 @@ class CreateDealsTable extends Migration
     {
         Schema::create('deals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('session_id');
-            $table->integer('bonus')->nullable();
+            $table->integer('session_id')->nullable();
             $table->integer('status')->default(0);
-            $table->integer('time')->nullable();
             $table->integer('start_time')->nullable();
             $table->integer('duration')->nullable();
-            $table->string('sell_or_buy')->nullable();
+            $table->integer('duration_min')->nullable();
+            $table->integer('stop_time')->nullable();
             $table->string('ticker')->nullable();
+            $table->integer('percent')->nullable();
+            $table->integer('bonus')->nullable();
+            $table->string('sell_or_buy')->nullable();
+            $table->integer('current_session_rate')->nullable();
             $table->timestamps();
         });
     }

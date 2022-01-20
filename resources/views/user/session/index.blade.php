@@ -13,7 +13,7 @@
                     <div class="col-12">
 
                         @if($session_stop_time)
-                            <h3>Session stop time: {{ date("Y-m-d H:i:s", $session_stop_time)  }}</h3>
+                            <h3>Current session stop time: {{ date("Y-m-d H:i:s", $session_stop_time)  }}</h3>
 
                             <form action="{{ route('sessions.destroy', $session)}}" method="POST">
                                 @method('DELETE')
@@ -22,6 +22,47 @@
                                     STOP
                                 </button>
                             </form>
+
+                        <section class="my-3">
+                            <h2>Current session deals:</h2>
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Ticker</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Start time</th>
+                                    <th scope="col">Stop time</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Deal id</th>
+                                    <th scope="col">Bonus</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                @foreach($session->deals as $deal)
+
+                                    @if($deal->status == 1)
+
+                                        <tr>
+                                            <th scope="row">{{ $deal->ticker }}</th>
+                                            <td>{{ $deal->sell_or_buy }}</td>
+                                            <td>@if($deal->start_time){{ date("Y-m-d H:i:s", $deal->start_time)  }}@endif</td>
+                                            <td>@if($deal->time){{ date("Y-m-d H:i:s", $deal->time)  }}@endif</td>
+                                            <td>@if($deal->duration_min){{ $deal->duration_min }} min @endif</td>
+                                            <td>{{ $deal->id }}</td>
+                                            <td>{{ $deal->bonus }}$</td>
+                                        </tr>
+
+                                    @endif
+
+                                @endforeach
+
+                                </tbody>
+
+                            </table>
+                        </section>
 
 
                         @endif

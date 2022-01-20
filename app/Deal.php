@@ -8,13 +8,16 @@ class Deal extends Model
 {
     protected $fillable = [
         'session_id',
-        'bonus',
         'status',
-        'time',
         'start_time',
         'duration',
+        'duration_min',
+        'stop_time',
+        'ticker',
+        'percent',
+        'bonus',
         'sell_or_buy',
-        'ticker'
+        'current_session_rate',
     ];
 
     public function session()

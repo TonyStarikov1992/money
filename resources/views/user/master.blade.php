@@ -20,39 +20,44 @@
 
 
 <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-        <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <span class="fs-4 fw-bold text-primary">ELANNCE</span>
-        </a>
+    <header class="py-3 mb-4">
+        <div class="row">
+            <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <span class="fs-4 fw-bold text-primary">ELANNCE</span>
+            </a>
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{{ route('userHome') }}" class="nav-link px-2 link-dark">Home</a></li>
-            <li><a href="{{ route('userMarkets') }}" class="nav-link px-2 link-dark">Markets</a></li>
-            <li><a href="{{ route('quickdeals.index') }}" class="nav-link px-2 link-dark">Trading</a></li>
-            <li><a href="{{ route('order.index') }}" class="nav-link px-2 link-dark">Analytics</a></li>
-            <li><a href="{{ route('userCharity') }}" class="nav-link px-2 link-dark">Charity</a></li>
-            <li><a href="{{ route('deposit.index') }}" class="nav-link px-2 link-dark">Deposits</a></li>
-            <li><a href="{{ route('withdrawal.index') }}" class="nav-link px-2 link-dark">Withdrawals</a></li>
+            <div class="col text-end">
+                @auth()
+                    @if(Auth::user()->isAdmin())
+                        <a class="btn btn-outline-primary me-2" href="{{ route('adminHome') }}">Admin</a>
+                    @else
+                        <a class="btn btn-outline-primary me-2" href="{{ route('userHome') }}">Home | Check : {{ Auth::user()->check }}$</a>
+                    @endif
+                    <form class="d-inline" id="logout-form" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn btn-primary">Logout</button>
+                    </form>
+                @endauth
+            </div>
+        </div>
 
-            @if( Auth::user()->current_order_id )
+        <div class="row">
+            <ul class="nav col mb-2 justify-content-center mb-md-0">
+                <li><a href="{{ route('userHome') }}" class="nav-link px-2 link-dark">Home</a></li>
+                <li><a href="{{ route('userMarkets') }}" class="nav-link px-2 link-dark">Markets</a></li>
+                <li><a href="{{ route('quickdeals.index') }}" class="nav-link px-2 link-dark">Trading</a></li>
+                <li><a href="{{ route('order.index') }}" class="nav-link px-2 link-dark">Analytics</a></li>
+                <li><a href="{{ route('userCharity') }}" class="nav-link px-2 link-dark">Charity</a></li>
+                <li><a href="{{ route('deposit.index') }}" class="nav-link px-2 link-dark">Deposits</a></li>
+                <li><a href="{{ route('withdrawal.index') }}" class="nav-link px-2 link-dark">Withdrawals</a></li>
+                <li><a href="{{ route('setting.index') }}" class="nav-link px-2 link-dark">Settings</a></li>
 
-                <li><a href="{{ route('sessions.index') }}" class="nav-link px-2 link-dark">Sessions</a></li>
+                @if( Auth::user()->current_order_id )
 
-            @endif
-        </ul>
+                    <li><a href="{{ route('sessions.index') }}" class="nav-link px-2 link-dark">Sessions</a></li>
 
-        <div class="col-md-3 text-end">
-            @auth()
-                @if(Auth::user()->isAdmin())
-                    <a class="btn btn-outline-primary me-2" href="{{ route('adminHome') }}">Admin</a>
-                @else
-                    <a class="btn btn-outline-primary me-2" href="{{ route('userHome') }}">Home | Check : {{ Auth::user()->check }}$</a>
                 @endif
-                <form class="d-inline" id="logout-form" action="{{ url('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn btn-primary">Logout</button>
-                </form>
-            @endauth
+            </ul>
         </div>
     </header>
 

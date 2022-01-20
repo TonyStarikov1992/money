@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->integer('status')->nullable();
-            $table->integer('check')->nullable();
+            $table->integer('check')->default(0);
             $table->integer('current_order_id')->nullable();
             $table->integer('current_session_id')->nullable();
             $table->integer('withdrawals_id')->nullable();
@@ -33,7 +33,8 @@ class CreateUsersTable extends Migration
             $table->integer('is_admin')->default(0);
             $table->integer('is_bot')->default(0);
             $table->integer('register_time')->default(0);
-            $table->integer('last_visit')->default(time());
+            $table->integer('last_visit')->nullable();
+            $table->integer('settings_update_time')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

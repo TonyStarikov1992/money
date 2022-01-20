@@ -15,12 +15,12 @@ class CreateSessionsTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->nullable();
             $table->integer('status')->default(1);
             $table->integer('start_time')->nullable();
             $table->integer('stop_time')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('rate')->nullable();
             $table->integer('start_rate')->nullable();
+            $table->integer('rate')->nullable();
             $table->integer('stop_rate')->nullable();
             $table->timestamps();
         });
