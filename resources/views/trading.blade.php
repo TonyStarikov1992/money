@@ -60,7 +60,7 @@
                                         "COINBASE:BCHUSD",
                                         "COINBASE:LTCUSD",
                                     ],
-                                    "locale": "ru"
+                                    "locale": "en"
                                 }
                             );
                         </script>

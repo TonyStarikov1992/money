@@ -68,7 +68,7 @@
     <footer class="pt-5">
 
         <div class="d-flex justify-content-center py-4 border-top text-center">
-            <p class="text-center">© 2021 ELANNCE. All rights reserved.</p>
+            <p class="text-center">© {{ date("Y") }} ELANNCE. All rights reserved.</p>
         </div>
     </footer>
 </div>
