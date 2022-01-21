@@ -25,7 +25,7 @@
                     <!-- TradingView Widget BEGIN -->
                     <div class="tradingview-widget-container" style="height: 600px">
                         <div class="h-100" id="watchlist"></div>
-                        <div class="tradingview-widget-copyright"><a href="https://ru.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">График AAPL</span></a> от TradingView</div>
+                        <div class="tradingview-widget-copyright"><a href="https://ru.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">Chart by TradingView</span></a></div>
                         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                         <script type="text/javascript">
                             new TradingView.widget(
