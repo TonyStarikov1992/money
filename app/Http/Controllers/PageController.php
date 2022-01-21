@@ -53,4 +53,9 @@ class PageController extends Controller
     {
         return view('conditions');
     }
+
+    public function agreement()
+    {
+        return view('agreement');
+    }
 }

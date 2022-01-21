@@ -61,10 +61,6 @@ Route::group([
 
     Route::resource('setting', 'SettingController');
 
-//    Route::get('/setting', 'SettingController@index')->name('setting.index');
-//
-//    Route::post('/setting', 'SettingController@update')->name('setting.update');
-
     Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
 
     Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
@@ -108,5 +104,7 @@ Route::group([
 
     Route::get('/charity/earth', 'PageController@charityPayEarth')->name('charityPayEarth');
 
-    Route::get('/conditions', 'PageController@conditions')->name('conditions');
+    Route::get('/privacy', 'PageController@conditions')->name('conditions');
+
+    Route::get('/agreement', 'PageController@agreement')->name('agreement');
 });

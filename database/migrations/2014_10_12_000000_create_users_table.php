@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->integer('register_time')->default(0);
             $table->integer('last_visit')->nullable();
             $table->integer('settings_update_time')->nullable();
+            $table->integer('agreement')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

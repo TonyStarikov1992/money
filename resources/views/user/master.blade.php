@@ -67,9 +67,24 @@
 
     <footer class="pt-5">
 
-        <div class="d-flex justify-content-center py-4 border-top text-center">
-            <p class="text-center">© {{ date("Y") }} ELANNCE. All rights reserved.</p>
+        <div class="row">
+            <div class="col text-start">
+                <p>
+                    <a href = "mailto: support@elannce.com">support@elannce.com</a>
+                </p>
+            </div>
+            <div class="col text-center">
+                <p class="text-center">
+                    © {{ date("Y") }} ELANNCE. All rights reserved.
+                </p>
+            </div>
+            <div class="col text-end">
+                <p>
+                    <a href="{{ route('conditions') }}">Terms and conditions</a>
+                </p>
+            </div>
         </div>
+
     </footer>
 </div>
 

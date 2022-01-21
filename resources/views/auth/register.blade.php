@@ -92,6 +92,13 @@
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Minimum 8 symbols." aria-describedby="addon-wrapping">
                         </div>
 
+                        <div class="form-check text-start">
+                            <input class="form-check-input" name="agreement" type="checkbox" value="1" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                <a href="{{ route('agreement') }}">USER AGREEMENT</a>
+                            </label>
+                        </div>
+
                         <button type="submit" class="btn btn-primary m-3">Submit</button>
                     </form>
                 </div>
