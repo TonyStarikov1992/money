@@ -80,7 +80,7 @@ class SettingController extends Controller
         if ($parameters['password']) {
             $parameters['password'] = bcrypt($parameters['password']);
         } else {
-            $parameters['password'] = $setting->password;
+             unset($parameters['password']);
         }
 
         $setting->update($parameters);

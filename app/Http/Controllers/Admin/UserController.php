@@ -257,15 +257,17 @@ class UserController extends Controller
     {
         $parameters = $request->all();
 
-        if ($user->password != bcrypt($request->password)) {
+        if ($parameters['password']) {
             $parameters['password'] = bcrypt($parameters['password']);
+        } else {
+            unset($parameters['password']);
         }
 
         $parameters['settings_update_time'] = time() + (60*60*24*3);
 
         $user->update($parameters);
 
-        return redirect()->route('setting.index');
+        return redirect()->route('users.edit', $user);
     }
 
     /**
