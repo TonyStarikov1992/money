@@ -27,66 +27,26 @@
 
 <div class="container">
 
-    @auth()
-
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-            <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <span class="fs-4 fw-bold text-primary">ELANNCE</span>
-            </a>
-
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="{{ route('userHome') }}" class="nav-link px-2 link-dark">Home</a></li>
-                <li><a href="{{ route('userMarkets') }}" class="nav-link px-2 link-dark">Markets</a></li>
-                <li><a href="{{ route('quickdeals.index') }}" class="nav-link px-2 link-dark">Trading</a></li>
-{{--                <li><a href="{{ route('userAnalytics') }}" class="nav-link px-2 link-dark">Analytics</a></li>--}}
-                <li><a href="{{ route('userCharity') }}" class="nav-link px-2 link-dark">Charity</a></li>
-                <li><a href="{{ route('deposit.index') }}" class="nav-link px-2 link-dark">Deposits</a></li>
-                <li><a href="{{ route('withdrawal.index') }}" class="nav-link px-2 link-dark">Withdrawals</a></li>
-
-                @if( Auth::user()->current_order_id )
-
-{{--                    <li><a href="{{ route('sessions.index') }}" class="nav-link px-2 link-dark">Sessions</a></li>--}}
-
-                @endif
-            </ul>
-
-            <div class="col-md-3 text-end">
-
-                @if(Auth::user()->isAdmin())
-                    <a class="btn btn-outline-primary me-2" href="{{ route('adminHome') }}">Admin</a>
-                @else
-                    <a class="btn btn-outline-primary me-2" href="{{ route('userHome') }}">Home | Check : {{ Auth::user()->check }}$</a>
-                @endif
-
-                <form class="d-inline" id="logout-form" action="{{ url('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn btn-primary">Logout</button>
-                </form>
-
-            </div>
-        </header>
-
-    @endauth
-
     @guest()
 
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-                <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <span class="fs-4 fw-bold text-primary">ELANNCE</span>
-                </a>
+            <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
+                <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+            </a>
 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="{{ route('main') }}" class="nav-link px-2 link-dark">Home</a></li>
-                    <li><a href="{{ route('markets') }}" class="nav-link px-2 link-dark">Markets</a></li>
-                    <li><a href="{{ route('trading') }}" class="nav-link px-2 link-dark">Trading</a></li>
-                    <li><a href="{{ route('analytics') }}" class="nav-link px-2 link-dark">Analitics</a></li>
-                    <li><a href="{{ route('charity') }}" class="nav-link px-2 link-dark">Charity</a></li>
-                </ul>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{{ route('main') }}" class="nav-link px-2 link-dark">Home</a></li>
+                <li><a href="{{ route('markets') }}" class="nav-link px-2 link-dark">Markets</a></li>
+                <li><a href="{{ route('trading') }}" class="nav-link px-2 link-dark">Trading</a></li>
+                <li><a href="{{ route('analytics') }}" class="nav-link px-2 link-dark">Analitics</a></li>
+                <li><a href="{{ route('charity') }}" class="nav-link px-2 link-dark">Charity</a></li>
+            </ul>
 
-                <div class="col-md-3 text-end">
-                    <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
-                    <a class="btn btn btn-primary" href="{{ route('register') }}">Sign-up</a>
-                </div>
+            <div class="col-md-3 text-end">
+                <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
+                <a class="btn btn btn-primary" href="{{ route('register') }}">Sign-up</a>
+            </div>
         </header>
 
     @endguest
