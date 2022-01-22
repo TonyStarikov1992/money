@@ -76,9 +76,31 @@
             </div>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="row mb-3 text-center">
 
-            <div class="col">
+            <div class="col-3">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">5 days / Trial</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$500 on check</h1>
+
+                        @if(Auth::user()->check >= 500)
+
+                            @auth()
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                    <a type="button" class="w-100 btn btn-lg btn-outline-primary px-4" href="{{ route('order.create', 4) }}">Create order</a>
+                                </div>
+                            @endauth
+
+                        @endif
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
                         <h4 class="my-0 fw-normal">1 month / Starter</h4>
@@ -95,7 +117,25 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-3">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">2 months / Pro</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$3800</h1>
+
+                        @auth()
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="{{ route('order.create', 2) }}">Create order</a>
+                            </div>
+                        @endauth
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
 
                     <div class="card-header py-3 text-white bg-primary border-primary">
@@ -113,24 +153,6 @@
 
                     </div>
 
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">2 months / Pro</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$3800</h1>
-
-                        @auth()
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <a type="button" class="w-100 btn btn-lg btn-primary px-4" href="{{ route('order.create', 2) }}">Create order</a>
-                            </div>
-                        @endauth
-
-                    </div>
                 </div>
             </div>
 

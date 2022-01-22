@@ -20,7 +20,7 @@
                     </h1>
                     <h3>
                         License validity period:
-                        {{ $order->type }} month(s)
+                        @if($order->type == 4) 5 days @else {{ $order->type }} month(s) @endif
                     </h3>
                     <h3>
                         License expires date:

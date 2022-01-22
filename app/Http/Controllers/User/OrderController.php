@@ -36,15 +36,19 @@ class OrderController extends Controller
     {
         if ($type == 1) {
             $money = 2000;
+            $expires_time = time() + (2592000 * $type);
         } elseif ($type == 2) {
             $money = 3800;
+            $expires_time = time() + (2592000 * $type);
         } elseif ($type == 3) {
             $money = 5400;
+            $expires_time = time() + (2592000 * $type);
+        } elseif ($type == 4) {
+            $money = 0;
+            $expires_time = time() + (60*60*24*5);
         } else {
             return redirect()->route('user.order.index');
         }
-
-        $expires_time = time() + (2592000 * $type);
 
         return view('user.order.create', compact('type','money', 'expires_time'));
     }
@@ -61,9 +65,13 @@ class OrderController extends Controller
 
         $type = $parameters['type'];
 
-        if ((int)$type < 4) {
+        if ((int)$type < 5) {
 
-            $parameters['expires_time'] = time() + (2592000 * $type);
+            if ($type == 4) {
+                $parameters['expires_time'] = time() + (60*60*24*5);
+            } else {
+                $parameters['expires_time'] = time() + (2592000 * $type);
+            }
 
             $user = Auth::user();
 

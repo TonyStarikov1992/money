@@ -16,7 +16,7 @@
                     <h1 class="display-6 fw-bold lh-1 mb-3">Create new Analytics order</h1>
                     <h3>
                         License validity period:
-                        {{ $type }} month(s)
+                        @if($type == 4) 5 days @else {{ $type }} month(s) @endif
                     </h3>
                     <h3>
                         License expires date:
@@ -24,16 +24,24 @@
                     </h3>
                     <h3>
                         License type:
-                        Advanced
+                        @if($type == 4) Trial
+                        @elseif($type == 1) Starter
+                        @elseif($type == 2) Pro
+                        @elseif($type == 3) Enterprise
+                        @endif
                     </h3>
+
                     <h3>
                         Price:
                         ${{ $money }} in BTC
                     </h3>
-                    <h3>
-                        Payment method:
-                        BTC (bitcoin)
-                    </h3>
+
+                    @if($type != 4)
+                        <h3>
+                            Payment method:
+                            BTC (bitcoin)
+                        </h3>
+                    @endif
                 </div>
 
                 <div class="row mt-3">
