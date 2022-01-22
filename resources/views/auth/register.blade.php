@@ -31,7 +31,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Country</span>
                             </div>
-                            <input type="text" name="country" id="country" class="form-control" placeholder="Ukraine" aria-describedby="addon-wrapping">
+                            <input type="text" name="country" id="country" class="form-control" placeholder="United Kingdom" aria-describedby="addon-wrapping">
                         </div>
 
                         <div class="input-group flex-nowrap mb-3">
@@ -63,18 +63,18 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Email</span>
                             </div>
-                            <input type="text" name="email" id="email" class="form-control" placeholder="Enter email" aria-describedby="addon-wrapping">
+                            <input type="text" name="email" id="email" class="form-control" placeholder="email@mail.com" aria-describedby="addon-wrapping">
                         </div>
 
                         <div class="input-group flex-nowrap mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Phone</span>
                             </div>
-                            <input type="text" name="phone" id="phone" class="mask-phone form-control" placeholder="+380634139684" aria-describedby="addon-wrapping">
+                            <input type="text" name="phone" id="phone" class="mask-phone form-control" placeholder="+44 123 456 7890" aria-describedby="addon-wrapping">
                         </div>
 
                         <script>
-                            $('.mask-phone').mask('+99 (999) 9999999');
+                            $('.mask-phone').mask('+99 999 999 9999');
                         </script>
 
 

@@ -35,7 +35,7 @@ class RegisterController extends Controller
         if (Auth::user()->isAdmin()) {
             return route('adminHome');
         } else {
-            return route('trading');
+            return route('quickdeals.index');
         }
     }
 
