@@ -121,6 +121,13 @@ class SessionController extends Controller
             $tickers = array_diff($allTickers, $tickers);
         }
 
+        if ($tickers == null) {
+            $request->session()->flash('message', 'You must leave at least one ticker!');
+            return redirect()->route('sessions.index');
+        }
+
+//        dd($tickers);
+
         $user = Auth::user();
 
         if ($user) {

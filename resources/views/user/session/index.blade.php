@@ -5,6 +5,16 @@
 @section('main')
     <div class="container">
 
+        @if ($message = Session::get('message'))
+
+            <div class="alert alert-success alert-block">
+
+                <strong>{{ $message }}</strong>
+
+            </div>
+
+        @endif
+
         <h1>SESSIONS</h1>
 
         <hr>
