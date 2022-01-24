@@ -38,15 +38,15 @@
 
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th scope="col">Ticker</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Start time</th>
-                                    <th scope="col">Stop time</th>
-                                    <th scope="col">Duration</th>
-                                    <th scope="col">Deal id</th>
-                                    <th scope="col">Bonus</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col">Ticker</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Start time</th>
+                                        <th scope="col">Stop time</th>
+                                        <th scope="col">Duration</th>
+                                        <th scope="col">Deal id</th>
+                                        <th scope="col">Bonus</th>
+                                    </tr>
                                 </thead>
 
                                 <tbody>
