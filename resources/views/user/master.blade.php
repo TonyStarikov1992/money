@@ -86,6 +86,9 @@
             <div class="col text-center">
                 <p class="text-center">
                     © {{ date("Y") }} ELANNCE. All rights reserved.
+                    <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.freekassa.ru/banners/small-white-1.png" title="Прием платежей на сайте для физических лиц и т.д.">
+                    </a>
                 </p>
             </div>
             <div class="col text-end">
