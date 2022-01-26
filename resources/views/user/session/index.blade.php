@@ -24,6 +24,8 @@
 
                         @if($session_stop_time)
                             <h3>Current session stop time: {{ date("Y-m-d H:i:s", $session_stop_time) }}</h3>
+                            <h3>Current session start rate: {{ $session->start_rate }}$</h3>
+                            <h3>Current session rate: {{ $session->rate }}$</h3>
 
                             <form action="{{ route('sessions.destroy', $session)}}" method="POST">
                                 @method('DELETE')
