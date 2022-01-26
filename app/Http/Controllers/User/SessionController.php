@@ -188,17 +188,17 @@ class SessionController extends Controller
 
                     $deal_parameters['percent'] = $random_percent;
 
-                    $random_sign = random_int(1, 1000);
+                    $random_sign = random_int(1, 10);
 
                     $bonus = (int)($rate/100) * $random_percent;
 
-                    if ($random_sign > 250) {
+                    if ($random_sign >= 8) {
                         $bonus = -$bonus;
                     }
 
                     $deal_parameters['bonus'] = $bonus;
 
-                    if ($random_sign > 500) {
+                    if ($random_sign > 5) {
                         $sell_or_buy = 'sell';
                     } else {
                         $sell_or_buy = 'buy';
