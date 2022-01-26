@@ -17,6 +17,29 @@ class SessionController extends Controller
      */
     public function index()
     {
+        $allTickers = [
+            'BTC',
+            'SHIB',
+            'ETH',
+            'DOGE',
+            'XRP',
+            'MATIC',
+            'ADA',
+            'SOL',
+            'DATA',
+            'BNB',
+            'BTTN',
+            'PZM',
+            'pDOTn',
+            'XLM',
+            'TRX',
+            'HT',
+            'DOT',
+            'LINK',
+            'BCH',
+            'LTC',
+        ];
+
         $user = Auth::user();
 
         $current_session = null;
@@ -66,7 +89,22 @@ class SessionController extends Controller
             $deals = $current_session->deals;
         }
 
-        return view('user.session.index', compact('user', 'current_session_id', 'session', 'session_stop_time', 'sessions', 'deals'));
+        return view('user.session.index', compact('allTickers', 'user', 'current_session_id', 'session', 'session_stop_time', 'sessions', 'deals'));
+    }
+
+    /**
+     * Display a listing of user sessions.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function history()
+    {
+
+        $user = Auth::user();
+
+        $sessions = $user->sessions;
+
+        return view('user.session.history', compact('user', 'sessions'));
     }
 
     /**
@@ -84,28 +122,6 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        $allTickers = [
-            'BTC',
-            'SHIB',
-            'ETH',
-            'DOGE',
-            'XRP',
-            'MATIC',
-            'ADA',
-            'SOL',
-            'DATA',
-            'BNB',
-            'BTTN',
-            'PZM',
-            'pDOTn',
-            'XLM',
-            'TRX',
-            'HT',
-            'DOT',
-            'LINK',
-            'BCH',
-            'LTC',
-        ];
 
         $rate = null;
         $hour = null;
@@ -115,10 +131,9 @@ class SessionController extends Controller
         $hour = $request->hour;
         $tickers = $request->tickers;
 
-        if ($tickers === null) {
-            $tickers = $allTickers;
-        } else {
-            $tickers = array_diff($allTickers, $tickers);
+        if ($rate == null) {
+            $request->session()->flash('message', 'Enter the rate!');
+            return redirect()->route('sessions.index');
         }
 
         if ($tickers == null) {
@@ -126,7 +141,6 @@ class SessionController extends Controller
             return redirect()->route('sessions.index');
         }
 
-//        dd($tickers);
 
         $user = Auth::user();
 

@@ -105,219 +105,36 @@
                                 </div>
 
                                 <p class="mb-3">
-                                    Choose the tickers, with you dont want to trade.
+                                    By default, session will start with all tickers. Unchoose the tickers, you dont want to trade.
                                 </p>
 
 
                                 <div class="row">
 
-                                    <div class="col">
+                                    @foreach($allTickers as $ticker)
 
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="BTC" id="BTC">
-                                            <label class="form-check-label" for="BTC">
-                                                BTC
-                                            </label>
+                                        <div class="col-2">
+
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" name="tickers[]" value="{{ $ticker }}" id="{{ $ticker }}" checked>
+                                                <label class="form-check-label" for="{{ $ticker }}">
+                                                    {{ $ticker }}
+                                                </label>
+                                            </div>
+
                                         </div>
 
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="SHIB" id="SHIB">
-                                            <label class="form-check-label" for="SHIB">
-                                                SHIB
-                                            </label>
-                                        </div>
+                                    @endforeach
 
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="ETH" id="ETH">
-                                            <label class="form-check-label" for="ETH">
-                                                ETH
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="DOGE" id="DOGE">
-                                            <label class="form-check-label" for="DOGE">
-                                                DOGE
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="XRP" id="XRP">
-                                            <label class="form-check-label" for="XRP">
-                                                XRP
-                                            </label>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col">
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="MATIC" id="MATIC">
-                                            <label class="form-check-label" for="MATIC">
-                                                MATIC
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="ADA" id="ADA">
-                                            <label class="form-check-label" for="ADA">
-                                                ADA
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="SOL" id="SOL">
-                                            <label class="form-check-label" for="SOL">
-                                                SOL
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="DATA" id="DATA">
-                                            <label class="form-check-label" for="DATA">
-                                                DATA
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="BNB" id="BNB">
-                                            <label class="form-check-label" for="BNB">
-                                                BNB
-                                            </label>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col">
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="BTTN" id="BTTN">
-                                            <label class="form-check-label" for="BTTN">
-                                                BTTN
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="PZM" id="PZM">
-                                            <label class="form-check-label" for="PZM">
-                                                PZM
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="pDOTn" id="pDOTn">
-                                            <label class="form-check-label" for="pDOTn">
-                                                pDOTn
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="XLM" id="XLM">
-                                            <label class="form-check-label" for="XLM">
-                                                XLM
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="TRX" id="TRX">
-                                            <label class="form-check-label" for="TRX">
-                                                TRX
-                                            </label>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col">
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="HT" id="HT">
-                                            <label class="form-check-label" for="HT">
-                                                HT
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="DOT" id="DOT">
-                                            <label class="form-check-label" for="DOT">
-                                                DOT
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="LINK" id="LINK">
-                                            <label class="form-check-label" for="LINK">
-                                                LINK
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="BCH" id="BCH">
-                                            <label class="form-check-label" for="BCH">
-                                                BCH
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="checkbox" name="tickers[]" value="LTC" id="LTC">
-                                            <label class="form-check-label" for="LTC">
-                                                LTC
-                                            </label>
-                                        </div>
-
-                                    </div>
 
                                 </div>
 
                                 <button type="submit" class="my-3 btn btn-primary">
                                     START
                                 </button>
-                                @csrf
+
                             </form>
                         @endif
-
-
-
-                            <h2>SESSIONS LIST</h2>
-
-                            @if(count($sessions) <= 0)
-                                <h2>YOUR SESSIONS LIST IS EMPTY</h2>
-                            @else
-
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Session id</th>
-                                        <th scope="col">Start time</th>
-                                        <th scope="col">Stop time</th>
-                                        <th scope="col">Start rate</th>
-                                        <th scope="col">Stop rate</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    @foreach($sessions as $session)
-
-                                        @if($session->id != $user->current_session_id )
-
-                                            <tr>
-                                                <th scope="row">{{ $session->id }}</th>
-                                                <td>{{ date("Y-m-d G:i:s", $session->start_time)  }}</td>
-                                                <td>{{ date("Y-m-d G:i:s", $session->stop_time)  }}</td>
-                                                <td>{{ $session->start_rate }}$</td>
-                                                <td>{{ $session->stop_rate }}$</td>
-                                                <td><a href="{{ route('sessions.show', $session) }}"><button type="button" class="btn btn-link">SHOW</button></a></td>
-                                            </tr>
-                                        @endif
-
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
-
-                            @endif
-
 
                     </div>
 

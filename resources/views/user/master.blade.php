@@ -27,14 +27,6 @@
             <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
         </a>
 
-{{--        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">--}}
-{{--            <li><a href="{{ route('main') }}" class="nav-link px-2 link-dark">Home</a></li>--}}
-{{--            <li><a href="{{ route('markets') }}" class="nav-link px-2 link-dark">Markets</a></li>--}}
-{{--            <li><a href="{{ route('trading') }}" class="nav-link px-2 link-dark">Trading</a></li>--}}
-{{--            <li><a href="{{ route('analytics') }}" class="nav-link px-2 link-dark">Analitics</a></li>--}}
-{{--            <li><a href="{{ route('charity') }}" class="nav-link px-2 link-dark">Charity</a></li>--}}
-{{--        </ul>--}}
-
         <div class="col-md-5 text-end">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,6 +46,8 @@
                     @if( Auth::user()->current_order_id )
 
                         <li><a href="{{ route('sessions.index') }}" class="dropdown-item">Sessions</a></li>
+
+                        <li><a href="{{ route('sessions.history') }}" class="dropdown-item">Sessions history</a></li>
 
                     @endif
 

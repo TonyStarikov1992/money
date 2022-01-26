@@ -51,6 +51,8 @@ Route::group([
 
     Route::resource('sessions', 'SessionController');
 
+    Route::get('/history', 'SessionController@history')->name('sessions.history');
+
     Route::resource('quickdeals', 'QuickdealController');
 
     Route::resource('deposit', 'DepositController');
