@@ -65,7 +65,7 @@
         </div>
     </header>
 
-    <main style="min-height: 50vh" role="main">
+    <main style="min-height: 75vh" role="main">
         @yield('main')
     </main>
 
