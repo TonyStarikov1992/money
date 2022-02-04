@@ -16,10 +16,44 @@ class DepositController extends Controller
      */
     public function index()
     {
+        $fk_merchant_id = '10000000000'; //merchant_id ID магазина в freekassa.ru https://merchant.freekassa.ru/settings
+        $fk_merchant_key = 'secret'; //Секретное слово https://merchant.freekassa.ru/settings
+        $fk_currency = 'USD'; // Валюта платежа (RUB,USD,EUR,UAH,KZT)
+
         $user = Auth::user();
         $deposits = $user->deposits->all();
 
-        return view('user.deposit.index', compact('deposits', 'user'));
+        return view('user.deposit.index', compact('deposits', 'user', 'fk_merchant_id', 'fk_merchant_key', 'fk_currency'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function success()
+    {
+        echo 'success';
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deny()
+    {
+        echo 'deny';
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function result()
+    {
+        echo 'result';
     }
 
     /**

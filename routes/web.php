@@ -63,6 +63,12 @@ Route::group([
 
     Route::resource('setting', 'SettingController');
 
+    Route::get('/payment/success', 'DepositController@success')->name('payment.success');
+
+    Route::get('/payment/deny', 'DepositController@deny')->name('payment.deny');
+
+    Route::get('/payment/result', 'DepositController@result')->name('payment.result');
+
     Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
 
     Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
