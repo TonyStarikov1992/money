@@ -45,7 +45,7 @@ class PaymentController extends Controller
         $parameters = $request->all();
 
         $merchant_id = '10866';
-        $secret_word = 'яейпермне якнбн 1';
+        $secret_word = 'xpSXe0iNCx4!b0[';
         $order_id = Auth::user()->id;
         $order_amount = $parameters['oa'];
 
