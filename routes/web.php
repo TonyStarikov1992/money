@@ -48,6 +48,14 @@ Route::group([
     'namespace' => 'User',
     'prefix' => 'user',
 ], function () {
+    Route::post('/payment', 'PaymentController@payment')->name('payment');
+
+    Route::get('/payment/success', 'PaymentController@success')->name('payment.success');
+
+    Route::get('/payment/deny', 'PaymentController@deny')->name('payment.deny');
+
+    Route::get('/payment/result', 'PaymentController@result')->name('payment.result');
+
 
     Route::resource('sessions', 'SessionController');
 
@@ -62,12 +70,6 @@ Route::group([
     Route::resource('order', 'OrderController');
 
     Route::resource('setting', 'SettingController');
-
-    Route::get('/payment/success', 'DepositController@success')->name('payment.success');
-
-    Route::get('/payment/deny', 'DepositController@deny')->name('payment.deny');
-
-    Route::get('/payment/result', 'DepositController@result')->name('payment.result');
 
     Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
 

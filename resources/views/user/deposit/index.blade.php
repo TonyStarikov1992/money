@@ -16,15 +16,21 @@
                 <p class="text-center">TO MAKE A DEPOSIT BY CREDIT CARD, PLEASE FEEL THE CARD INFO BELOW.</p>
 
 {{--                <form method='get' action='https://www.free-kassa.ru/merchant/cash.php'>--}}
-{{--                    <input type='hidden' name='m' value='{{ $merchant_id }}'>--}}
-{{--                    <input type='hidden' name='oa' value='{{ $order_amount }}'>--}}
-{{--                    <input type='hidden' name='o' value='{{ $order_id }}'>--}}
-{{--                    <input type='hidden' name='s' value='{{ $sign }}'>--}}
-{{--                    <input type='hidden' name='i' value='1'>--}}
-{{--                    <input type='hidden' name='lang' value='ru'>--}}
-{{--                    <input type='hidden' name='us_login' value='{{ $user_login }}'>--}}
-{{--                    <input type='submit' name='pay' value='Оплатить'>--}}
-{{--                </form>--}}
+                <form class="text-center" method="POST" action="{{ route('payment') }}">
+
+                    @csrf
+
+                    <div class="input-group flex-nowrap mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">ORDER AMOUNT</span>
+                        </div>
+                        <input type="text" name="oa" id="oa" class="form-control" placeholder="500" aria-describedby="addon-wrapping">
+                        <span class="input-group-text">.00 $</span>
+                    </div>
+
+                    <button type="submit" name="pay" class="btn btn-success mt-3">MAKE DEPOSIT</button>
+
+                </form>
 
             </div>
 

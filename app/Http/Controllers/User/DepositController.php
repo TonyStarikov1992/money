@@ -6,6 +6,7 @@ use App\Deposit;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class DepositController extends Controller
 {
@@ -24,36 +25,6 @@ class DepositController extends Controller
         $deposits = $user->deposits->all();
 
         return view('user.deposit.index', compact('deposits', 'user', 'fk_merchant_id', 'fk_merchant_key', 'fk_currency'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function success()
-    {
-        echo 'success';
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function deny()
-    {
-        echo 'deny';
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function result()
-    {
-        echo 'result';
     }
 
     /**
