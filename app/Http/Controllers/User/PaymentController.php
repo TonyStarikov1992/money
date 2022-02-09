@@ -48,10 +48,18 @@ class PaymentController extends Controller
         $secret_word = 'xpSXe0iNCx4!b0[';
         $order_id = Auth::user()->id;
         $order_amount = $parameters['oa'];
+        $currency = 'USD';
 
-        $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$order_id);
+        $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$currency.':'.$order_id);
 
-        $url = 'https://www.free-kassa.ru/merchant/cash.php?oa='.$order_amount.'&'.'m='.$merchant_id.'&'.'o='.$order_id.'&'.'s='.$sign.'&'.'i=94';
+//        $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$order_id);
+
+//        $url = 'https://www.free-kassa.ru/merchant/cash.php?oa='.$order_amount.'&'.'m='.$merchant_id.'&'.'o='.$order_id.'&'.'s='.$sign.'&'.'i=94';
+
+//        $url = 'http://www.free-kassa.ru/merchant/cash.php?m='.$merchant_id.'&oa='.$order_amount.'&s='.$sign.'&o='.$order_id;
+
+        $url = 'https://pay.freekassa.ru/?m='.$merchant_id.'&oa='.$order_amount.'&i=&currency='.$currency.'&em=&phone=&o='.$order_id.'&pay=PAY&s='.$sign;
+
         return redirect()->away($url);
     }
 }
