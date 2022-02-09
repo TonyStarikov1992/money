@@ -51,7 +51,7 @@ class PaymentController extends Controller
 
         $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$order_id);
 
-        $url = 'https://www.free-kassa.ru/merchant/cash.php?oa='.$order_amount.'&'.'m='.$merchant_id.'&'.'o='.$order_id.'&'.'s='.$sign.'&'.'i=1';
+        $url = 'https://www.free-kassa.ru/merchant/cash.php?oa='.$order_amount.'&'.'m='.$merchant_id.'&'.'o='.$order_id.'&'.'s='.$sign.'&'.'i=94';
         return redirect()->away($url);
     }
 }
