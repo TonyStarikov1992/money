@@ -19,7 +19,7 @@ class PaymentController extends Controller
      */
     public function success()
     {
-        return view('user.deposit.deny');
+        return view('user.deposit.success');
     }
 
     /**
@@ -59,28 +59,32 @@ class PaymentController extends Controller
     {
         $parameters = $request->all();
 
-        $merchant_id = '10866';
-        $secret_word = 'xpSXe0iNCx4!b0[';
+        if ((int)$parameters['oa'] > 0) {
+            $merchant_id = '10866';
+            $secret_word = 'xpSXe0iNCx4!b0[';
 
-        $us_id = Auth::user()->id;
+            $us_id = Auth::user()->id;
 
-        $order_id = md5($us_id.':'.$secret_word);
+            $order_id = md5($us_id.':'.$secret_word);
 
-        $order_amount = $parameters['oa'];
+            $order_amount = $parameters['oa'];
 
-        $currency = 'USD';
+            $currency = 'USD';
 
-        $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$currency.':'.$order_id);
+            $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$currency.':'.$order_id);
 
-        $deposit_parameters['user_id'] = $us_id;
-        $deposit_parameters['order_amount'] = $order_amount;
-        $deposit_parameters['order_id'] = $order_id;
-        $deposit_parameters['time'] = time();
+            $deposit_parameters['user_id'] = $us_id;
+            $deposit_parameters['order_amount'] = $order_amount;
+            $deposit_parameters['order_id'] = $order_id;
+            $deposit_parameters['time'] = time();
 
-        Deposit::create($deposit_parameters);
+            Deposit::create($deposit_parameters);
 
-        $url = 'https://pay.freekassa.ru/?m='.$merchant_id.'&oa='.$order_amount.'&i=&currency='.$currency.'&em=&phone=&o='.$order_id.'&pay=PAY&s='.$sign.'&us_id='.$us_id;
+            $url = 'https://pay.freekassa.ru/?m='.$merchant_id.'&oa='.$order_amount.'&i=&currency='.$currency.'&em=&phone=&o='.$order_id.'&pay=PAY&s='.$sign.'&us_id='.$us_id;
 
-        return redirect()->away($url);
+            return redirect()->away($url);
+        }
+
+        return redirect()->route('deposit.index');
     }
 }
