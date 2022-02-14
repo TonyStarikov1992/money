@@ -21,9 +21,7 @@
                                         <th scope="col">User id</th>
                                         <th scope="col">Rate</th>
                                         <th scope="col">Time</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Payment status</th>
-                                        <th scope="col">Functions</th>
+{{--                                        <th scope="col">Functions</th>--}}
                                     </tr>
                                 </thead>
 
@@ -33,33 +31,24 @@
                                     <tr>
                                         <th scope="row">{{ $deposit->id }}</th>
                                         <th scope="row">{{ $deposit->user_id }}</th>
-                                        <td>{{ $deposit->rate }}$</td>
+                                        <td>{{ $deposit->order_amount }}$</td>
                                         <td>{{ date("Y-m-d G:i:s", $deposit->time)  }}</td>
-                                        <td>
-                                            @if($deposit->status == 0) processing @else done @endif
-                                        </td>
-                                        <td scope="row">
-                                            @if($deposit->payment_status == 0)
-                                                NO
-                                            @else()
-                                                YES
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="{{ route('deposits.show', $deposit) }}"><button type="button" class="btn btn-link">SHOW</button></a>
 
-                                                @if($deposit->payment_status == 0)
-                                                    <a href="{{ route('deposits.edit', $deposit) }}"><button type="button" class="btn btn-link">EDIT</button></a>
+{{--                                        <td>--}}
+{{--                                            <div class="btn-group">--}}
+{{--                                                <a href="{{ route('deposits.show', $deposit) }}"><button type="button" class="btn btn-link">SHOW</button></a>--}}
+
+{{--                                                @if($deposit->payment_status == 0)--}}
+{{--                                                    <a href="{{ route('deposits.edit', $deposit) }}"><button type="button" class="btn btn-link">EDIT</button></a>--}}
 {{--                                                    <form id="delete-form" action="{{ route('fees.destroy', $fee) }}" method="POST">--}}
 {{--                                                        @method('DELETE')--}}
 {{--                                                        @csrf--}}
 {{--                                                        <button type="submit" class="btn btn-link">DELETE</button>--}}
 {{--                                                    </form>--}}
-                                                @endif
+{{--                                                @endif--}}
 
-                                            </div>
-                                        </td>
+{{--                                            </div>--}}
+{{--                                        </td>--}}
                                     </tr>
 
                                 @endforeach

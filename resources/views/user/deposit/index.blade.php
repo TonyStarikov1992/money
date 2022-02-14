@@ -17,7 +17,7 @@
 
                     <div class="input-group flex-nowrap mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping">ORDER AMOUNT</span>
+                            <span class="input-group-text" id="addon-wrapping">DEPOSIT AMOUNT</span>
                         </div>
                         <input type="text" name="oa" id="oa" class="form-control" placeholder="500" aria-describedby="addon-wrapping">
                         <span class="input-group-text">.00 $</span>
