@@ -16,11 +16,10 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->nullable();
-            $table->integer('rate')->nullable();
-            $table->integer('admin_status')->default(0);
-            $table->integer('payment_status')->default(0);
-            $table->integer('time')->nullable();
+            $table->integer('order_amount')->nullable();
+            $table->string('order_id')->nullable();
             $table->integer('status')->default(0);
+            $table->integer('time')->nullable();
             $table->timestamps();
         });
     }

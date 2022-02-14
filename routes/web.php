@@ -43,6 +43,9 @@ Route::group([
     });
 });
 
+
+Route::get('user/payment/result', 'User\PaymentController@result')->name('payment.result');
+
 Route::group([
     'middleware' => 'auth',
     'namespace' => 'User',
@@ -53,9 +56,6 @@ Route::group([
     Route::get('/payment/success', 'PaymentController@success')->name('payment.success');
 
     Route::get('/payment/deny', 'PaymentController@deny')->name('payment.deny');
-
-    Route::get('/payment/result', 'PaymentController@result')->name('payment.result');
-
 
     Route::resource('sessions', 'SessionController');
 

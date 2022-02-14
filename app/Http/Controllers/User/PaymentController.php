@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Deposit;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +19,7 @@ class PaymentController extends Controller
      */
     public function success()
     {
-        echo 'success';
+        return view('user.deposit.deny');
     }
 
     /**
@@ -27,7 +29,7 @@ class PaymentController extends Controller
      */
     public function deny()
     {
-        echo 'deny';
+        return view('user.deposit.deny');
     }
 
     /**
@@ -35,9 +37,22 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function result()
+    public function result(Request $request)
     {
-        echo 'result';
+        $parameters = $request->all();
+
+        if ($parameters['MERCHANT_ID'] == '10866'){
+            $deposit = Deposit::where('order_id', $parameters['MERCHANT_ORDER_ID'])->first();
+
+            $user = User::where('id', $deposit->user_id)->first();
+
+            $user->check += $parameters['AMOUNT'];
+            $user->save();
+
+            $deposit->status = 1;
+            $deposit->save();
+        }
+
     }
 
     public function payment(Request $request)
@@ -46,19 +61,25 @@ class PaymentController extends Controller
 
         $merchant_id = '10866';
         $secret_word = 'xpSXe0iNCx4!b0[';
-        $order_id = Auth::user()->id;
+
+        $us_id = Auth::user()->id;
+
+        $order_id = md5($us_id.':'.$secret_word);
+
         $order_amount = $parameters['oa'];
+
         $currency = 'USD';
 
         $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$currency.':'.$order_id);
 
-//        $sign = md5($merchant_id.':'.$order_amount.':'.$secret_word.':'.$order_id);
+        $deposit_parameters['user_id'] = $us_id;
+        $deposit_parameters['order_amount'] = $order_amount;
+        $deposit_parameters['order_id'] = $order_id;
+        $deposit_parameters['time'] = time();
 
-//        $url = 'https://www.free-kassa.ru/merchant/cash.php?oa='.$order_amount.'&'.'m='.$merchant_id.'&'.'o='.$order_id.'&'.'s='.$sign.'&'.'i=94';
+        Deposit::create($deposit_parameters);
 
-//        $url = 'http://www.free-kassa.ru/merchant/cash.php?m='.$merchant_id.'&oa='.$order_amount.'&s='.$sign.'&o='.$order_id;
-
-        $url = 'https://pay.freekassa.ru/?m='.$merchant_id.'&oa='.$order_amount.'&i=&currency='.$currency.'&em=&phone=&o='.$order_id.'&pay=PAY&s='.$sign;
+        $url = 'https://pay.freekassa.ru/?m='.$merchant_id.'&oa='.$order_amount.'&i=&currency='.$currency.'&em=&phone=&o='.$order_id.'&pay=PAY&s='.$sign.'&us_id='.$us_id;
 
         return redirect()->away($url);
     }

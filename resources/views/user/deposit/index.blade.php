@@ -5,17 +5,12 @@
 @section('main')
     <div class="container">
 
-        <a href="{{ route('payment.success') }}">success</a>
-        <a href="{{ route('payment.deny') }}">deny</a>
-        <a href="{{ route('payment.result') }}">result</a>
-
         <div class="row">
 
             <div class="col-6 ">
 
                 <p class="text-center">TO MAKE A DEPOSIT BY CREDIT CARD, PLEASE FEEL THE CARD INFO BELOW.</p>
 
-{{--                <form method='get' action='https://www.free-kassa.ru/merchant/cash.php'>--}}
                 <form class="text-center" method="POST" action="{{ route('payment') }}">
 
                     @csrf

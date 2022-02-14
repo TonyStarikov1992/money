@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->integer('status')->nullable();
-            $table->integer('check')->default(0);
+            $table->float('check')->default(0);
             $table->integer('current_order_id')->nullable();
             $table->integer('current_session_id')->nullable();
             $table->integer('withdrawals_id')->nullable();

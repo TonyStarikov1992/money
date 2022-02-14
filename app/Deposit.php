@@ -8,12 +8,9 @@ class Deposit extends Model
 {
     protected $fillable = [
         'user_id',
-        'rate',
-        'admin_status',
-        'payment_status',
+        'order_amount',
+        'order_id',
         'time',
-        'status',
-        'processing',
     ];
 
     public function user()
