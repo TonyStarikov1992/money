@@ -131,7 +131,7 @@ class SessionController extends Controller
         $hour = $request->hour;
         $tickers = $request->tickers;
 
-        if ($rate == null) {
+        if ($rate == null or !is_numeric($rate)) {
             $request->session()->flash('message', 'Enter the rate!');
             return redirect()->route('sessions.index');
         }
@@ -184,7 +184,7 @@ class SessionController extends Controller
                     $deal_parameters['stop_time'] = $time + $duration;
                     $deal_parameters['ticker'] = $tickers[array_rand($tickers)];
 
-                    $random_percent = random_int(1, 2);
+                    $random_percent = random_int(8, 10);
 
                     $deal_parameters['percent'] = $random_percent;
 
