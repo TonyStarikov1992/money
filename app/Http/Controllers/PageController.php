@@ -58,4 +58,34 @@ class PageController extends Controller
     {
         return view('agreement');
     }
+
+    public function listing()
+    {
+        return view('listing');
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function heatmap()
+    {
+        return view('heatmap');
+    }
+
+    public function faq()
+    {
+        return view('faq');
+    }
+
+    public function policy()
+    {
+        return view('policy');
+    }
+
+    public function risk()
+    {
+        return view('risk');
+    }
 }

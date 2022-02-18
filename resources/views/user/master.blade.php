@@ -69,30 +69,106 @@
         @yield('main')
     </main>
 
-    <footer class="pt-5">
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
 
-        <div class="row">
-            <div class="col text-start">
-                <p>
-                    <a href = "mailto: support@elannce.com">support@elannce.com</a>
-                </p>
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-sm-start mt-5 pt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+
+                    <!-- Grid column -->
+                    <div class="col-3 mb-4 mx-auto">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="{{ route('analytics') }}" class="text-reset">Analytics</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('trading') }}" class="text-reset">Trading</a>
+                        </p>
+                        <p>
+                            <a href="https://trustwallet.com/" target="_blank" class="text-reset">Trustwallet</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('listing') }}" class="text-reset">Listing</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('charity') }}" class="text-reset">Charity</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-3 mb-4 mx-auto">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Information
+                        </h6>
+                        <p>
+                            <a href="{{ route('about') }}" class="text-reset">About Us</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('heatmap') }}" class="text-reset">Crypto Heatmap</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('markets') }}" class="text-reset">Crypto Screener</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('faq') }}" class="text-reset">FAQ</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-3 mb-4 mx-auto">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Company
+                        </h6>
+                        <p>
+                            <a href="{{ route('policy') }}" class="text-reset">AML/KYC Policy</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('conditions') }}" class="text-reset">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('risk') }}" class="text-reset">Risk Warning</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('agreement') }}" class="text-reset">Terms of use</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
             </div>
-            <div class="col text-center">
-                <p class="text-center">
-                    © {{ date("Y") }} ELANNCE. All rights reserved.
-                    <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.freekassa.ru/banners/small-white-1.png" title="Прием платежей на сайте для физических лиц и т.д.">
-                    </a>
-                </p>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="row p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            <div class="col text-start">
+                © {{ date("Y") }} ELANNCE. All rights reserved.
+                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.freekassa.ru/banners/small-white-1.png" title="Прием платежей на сайте для физических лиц и т.д.">
+                </a>
+                <img src="/images/bitcoin.svg" height="30px">
+                <img src="/images/visa.svg" height="30px">
+                <img src="/images/mastercard.svg" height="30px">
             </div>
             <div class="col text-end">
-                <p>
-                    <a href="{{ route('conditions') }}">Terms and conditions</a>
-                </p>
+                SERVER TIME: {{ date("Y-m-d G:i:s", time()) }}
             </div>
         </div>
-
+        <!-- Copyright -->
     </footer>
+    <!-- Footer -->
 </div>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

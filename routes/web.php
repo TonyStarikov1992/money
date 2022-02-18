@@ -114,7 +114,19 @@ Route::group([
 
     Route::get('/charity/earth', 'PageController@charityPayEarth')->name('charityPayEarth');
 
+    Route::get('/listing', 'PageController@listing')->name('listing');
+
+    Route::get('/about', 'PageController@about')->name('about');
+
+    Route::get('/heatmap', 'PageController@heatmap')->name('heatmap');
+
+    Route::get('/faq', 'PageController@faq')->name('faq');
+
+    Route::get('/policy', 'PageController@policy')->name('policy');
+
     Route::get('/privacy', 'PageController@conditions')->name('conditions');
+
+    Route::get('/risk', 'PageController@risk')->name('risk');
 
     Route::get('/agreement', 'PageController@agreement')->name('agreement');
 });

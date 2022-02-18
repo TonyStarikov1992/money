@@ -52,13 +52,27 @@
                 </p>
 
                 <ol>
-                    <li>the kinds of Personal Information which we may collect about you, the reasons for collecting this information, how it may be used and for how long we will keep it;</li>
-                    <li>our use of information regarding IP addresses and our use of cookies;</li>
-                    <li>disclosure of Personal Information to third parties;</li>
-                    <li>information on international data transfer;</li>
-                    <li>your ability to access, correct, update, restrict use, ask us to transfer and/or delete your Personal Information; </li>
-                    <li>the extent of automated decision-making or profiling that we carry out using your Personal Information;</li>
-                    <li>the security measures we have in place to prevent the loss, misuse, or alteration of Personal Information under our control, and your rights to lodge a complaint.</li>
+                    <li>
+                        the kinds of Personal Information which we may collect about you, the reasons for collecting this information, how it may be used and for how long we will keep it;
+                    </li>
+                    <li>
+                        our use of information regarding IP addresses and our use of cookies;
+                    </li>
+                    <li>
+                        disclosure of Personal Information to third parties;
+                    </li>
+                    <li>
+                        information on international data transfer;
+                    </li>
+                    <li>
+                        your ability to access, correct, update, restrict use, ask us to transfer and/or delete your Personal Information;
+                    </li>
+                    <li>
+                        the extent of automated decision-making or profiling that we carry out using your Personal Information;
+                    </li>
+                    <li>
+                        he security measures we have in place to prevent the loss, misuse, or alteration of Personal Information under our control, and your rights to lodge a complaint.
+                    </li>
                 </ol>
 
                 <h2>Gathering and Use of Personal Information</h2>
