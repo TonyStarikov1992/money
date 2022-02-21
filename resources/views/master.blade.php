@@ -144,6 +144,9 @@
                                 <a href="{{ route('about') }}" class="text-reset">About Us</a>
                             </p>
                             <p>
+                                <a href="{{ route('commissions') }}" class="text-reset">Commissions</a>
+                            </p>
+                            <p>
                                 <a href="{{ route('heatmap') }}" class="text-reset">Crypto Heatmap</a>
                             </p>
                             <p>

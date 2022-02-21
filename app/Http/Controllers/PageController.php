@@ -88,4 +88,9 @@ class PageController extends Controller
     {
         return view('risk');
     }
+
+    public function commissions()
+    {
+        return view('commissions');
+    }
 }

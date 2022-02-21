@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'About Us')
+@section('title', 'FAQ')
 
 @section('main')
     <div class="container-fluid">

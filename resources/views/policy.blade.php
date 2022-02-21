@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'About Us')
+@section('title', 'AML/KYC Policy')
 
 @section('main')
     <div class="container-fluid">

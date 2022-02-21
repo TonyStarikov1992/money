@@ -129,4 +129,6 @@ Route::group([
     Route::get('/risk', 'PageController@risk')->name('risk');
 
     Route::get('/agreement', 'PageController@agreement')->name('agreement');
+
+    Route::get('/commissions', 'PageController@commissions')->name('commissions');
 });
