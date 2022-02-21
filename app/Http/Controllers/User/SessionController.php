@@ -184,7 +184,7 @@ class SessionController extends Controller
                     $deal_parameters['stop_time'] = $time + $duration;
                     $deal_parameters['ticker'] = $tickers[array_rand($tickers)];
 
-                    $random_percent = random_int(8, 10);
+                    $random_percent = random_int(6, 7);
 
                     $deal_parameters['percent'] = $random_percent;
 
