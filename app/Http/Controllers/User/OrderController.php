@@ -34,14 +34,33 @@ class OrderController extends Controller
      */
     public function create($type)
     {
+        $user = Auth::user();
         if ($type == 1) {
             $money = 2000;
+
+            if ($user->check < 2000) {
+                session()->flash('message', 'NOT ENOUGH MONEY!');
+                return redirect()->route('order.index');
+            }
+
             $expires_time = time() + (2592000 * $type);
         } elseif ($type == 2) {
             $money = 3800;
+
+            if ($user->check < 3800) {
+                session()->flash('message', 'NOT ENOUGH MONEY!');
+                return redirect()->route('order.index');
+            }
+
             $expires_time = time() + (2592000 * $type);
         } elseif ($type == 3) {
             $money = 5400;
+
+            if ($user->check < 5400) {
+                session()->flash('message', 'NOT ENOUGH MONEY!');
+                return redirect()->route('order.index');
+            }
+
             $expires_time = time() + (2592000 * $type);
         } elseif ($type == 4) {
             $money = 0;

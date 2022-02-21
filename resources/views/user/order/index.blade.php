@@ -5,6 +5,16 @@
 @section('main')
     <div class="container-fluid">
 
+        @if ($message = Session::get('message'))
+
+            <div class="alert alert-success alert-block text-center">
+
+                <strong>{{ $message }}</strong>
+
+            </div>
+
+        @endif
+
         <div class="row flex-lg-row-reverse align-items-center g-5 mb-3 py-5">
 
             <div class="col-10 col-sm-8 col-lg-6">
