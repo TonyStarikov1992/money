@@ -41,19 +41,35 @@
                     <input type="text" name="country" id="country" value="{{ $user->country }}" class="form-control" placeholder="Country" aria-describedby="addon-wrapping">
                 </div>
 
+                <p class="text-start">Birthday</p>
+
                 <div class="input-group flex-nowrap mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="addon-wrapping">Birthday</span>
+                        <span class="input-group-text" id="addon-wrapping">Day</span>
                     </div>
-                    <input type="text" name="birthday" id="birthday" value="{{ $user->birthday }}" class="form-control" placeholder="17.06.1992" aria-describedby="addon-wrapping">
+                    <input type="text" name="birthday_day" id="birthday_day" value="{{ $user->birthday_day }}" class="form-control" placeholder="17.06.1992" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="input-group flex-nowrap mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="addon-wrapping">Time Zone</span>
+                        <span class="input-group-text" id="addon-wrapping">Month</span>
                     </div>
-                    <input type="text" name="locale" id="locale" value="{{ $user->locale }}" class="form-control" placeholder="UTC +3" aria-describedby="addon-wrapping">
+                    <input type="text" name="birthday_month" id="birthday_month" value="{{ $user->birthday_month }}" class="form-control" placeholder="17.06.1992" aria-describedby="addon-wrapping">
                 </div>
+
+                <div class="input-group flex-nowrap mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">Year</span>
+                    </div>
+                    <input type="text" name="birthday_year" id="birthday_year" value="{{ $user->birthday_year }}" class="form-control" placeholder="17.06.1992" aria-describedby="addon-wrapping">
+                </div>
+
+{{--                <div class="input-group flex-nowrap mb-3">--}}
+{{--                    <div class="input-group-prepend">--}}
+{{--                        <span class="input-group-text" id="addon-wrapping">Time Zone</span>--}}
+{{--                    </div>--}}
+{{--                    <input type="text" name="locale" id="locale" value="{{ $user->locale }}" class="form-control" placeholder="UTC +3" aria-describedby="addon-wrapping">--}}
+{{--                </div>--}}
 
                 <div class="input-group flex-nowrap mb-3">
                     <div class="input-group-prepend">

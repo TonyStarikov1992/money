@@ -182,7 +182,7 @@ class UserController extends Controller
         $month = $months[array_rand($months)];
         $year = $years[array_rand($years)];
 
-        $birthday = $day . '.' . $month . '.' . $year;
+//        $birthday = $day . '.' . $month . '.' . $year;
 
         $timezone = $timezones[array_rand($timezones)];
 
@@ -190,7 +190,7 @@ class UserController extends Controller
 
         $phone = '+38063' . $year . $day . $month;
 
-        return view('admin.users.create', compact('name', 'surname', 'country', 'birthday', 'timezone', 'email', 'phone'));
+        return view('admin.users.create', compact('name', 'surname', 'country', 'day', 'month', 'year', 'timezone', 'email', 'phone'));
     }
 
     /**
