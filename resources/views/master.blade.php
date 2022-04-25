@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="w-100" lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -25,11 +25,11 @@
 <body>
 
 
-<div class="container">
+<div class="container mx-xs-0">
 
     @auth()
 
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0">
             <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                 <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
                 <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
@@ -74,24 +74,88 @@
 
     @guest()
 
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-            <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
-                <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
-            </a>
+        <header class="row d-none d-lg-flex py-3 mb-0">
+            <div class="col-3 text-start my-auto">
+                <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                    <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
+                    <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                </a>
+            </div>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="{{ route('main') }}" class="nav-link px-2 link-dark">Home</a></li>
-                <li><a href="{{ route('markets') }}" class="nav-link px-2 link-dark">Markets</a></li>
-                <li><a href="{{ route('trading') }}" class="nav-link px-2 link-dark">Trading</a></li>
-                <li><a href="{{ route('analytics') }}" class="nav-link px-2 link-dark">Analytics</a></li>
-                <li><a href="{{ route('charity') }}" class="nav-link px-2 link-dark">Charity</a></li>
-            </ul>
+            <div class="col-6 text-center my-auto">
+                <ul class="nav mb-2 justify-content-center">
+                    <li><a href="{{ route('main') }}" class="nav-link px-2 link-dark">Home</a></li>
+                    <li><a href="{{ route('markets') }}" class="nav-link px-2 link-dark">Markets</a></li>
+                    <li><a href="{{ route('trading') }}" class="nav-link px-2 link-dark">Trading</a></li>
+                    <li><a href="{{ route('analytics') }}" class="nav-link px-2 link-dark">Analytics</a></li>
+                    <li><a href="{{ route('charity') }}" class="nav-link px-2 link-dark">Charity</a></li>
+                </ul>
+            </div>
 
-            <div class="col-md-3 text-end">
+            <div class="col-3 text-end my-auto">
                 <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
                 <a class="btn btn btn-primary" href="{{ route('register') }}">Sign-up</a>
             </div>
+        </header>
+
+        <header class="row d-none d-sm-flex d-lg-none py-1 mb-0">
+                <div class="col-3 text-start my-auto">
+                    <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                        <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
+                        <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                    </a>
+                </div>
+
+                <div class="col-9 text-end my-auto">
+
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            MENU
+                        </button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ route('main') }}" class="dropdown-item">Home</a></li>
+                            <li><a href="{{ route('markets') }}" class="dropdown-item">Markets</a></li>
+                            <li><a href="{{ route('trading') }}" class="dropdown-item">Trading</a></li>
+                            <li><a href="{{ route('analytics') }}" class="dropdown-item">Analytics</a></li>
+                            <li><a href="{{ route('charity') }}" class="dropdown-item">Charity</a></li>
+
+                        </ul>
+                    </div>
+
+                    <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn btn-primary" href="{{ route('register') }}">Sign-up</a>
+                </div>
+            </header>
+
+        <header class="row d-flex d-sm-none p-0 m-0 py-3 mb-4">
+                <div class="col-6 text-start p-0 m-0 my-auto">
+                    <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                        <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
+                        <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                    </a>
+                </div>
+
+                <div class="col-6 text-end p-0 m-0 my-auto">
+
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            MENU
+                        </button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ route('main') }}" class="dropdown-item">Home</a></li>
+                            <li><a href="{{ route('markets') }}" class="dropdown-item">Markets</a></li>
+                            <li><a href="{{ route('trading') }}" class="dropdown-item">Trading</a></li>
+                            <li><a href="{{ route('analytics') }}" class="dropdown-item">Analytics</a></li>
+                            <li><a href="{{ route('charity') }}" class="dropdown-item">Charity</a></li>
+                            <li><a href="{{ route('login') }}" class="dropdown-item">Login</a></li>
+                            <li><a href="{{ route('register') }}" class="dropdown-item">Sign-up</a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
         </header>
 
     @endguest
@@ -105,7 +169,7 @@
         <footer class="text-center text-lg-start bg-light text-muted">
 
             <!-- Section: Links  -->
-            <section class="">
+            <section>
                 <div class="container text-center text-sm-start mt-5 pt-5">
                     <!-- Grid row -->
                     <div class="row mt-3">
@@ -188,7 +252,7 @@
 
             <!-- Copyright -->
             <div class="row p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                <div class="col text-start">
+                <div class="col p-0 m-0 text-start">
                     © {{ date("Y") }} ELANNCE. All rights reserved.
                     <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer">
                         <img src="https://cdn.freekassa.ru/banners/small-white-1.png" title="Прием платежей на сайте для физических лиц и т.д.">
@@ -197,7 +261,7 @@
                     <img src="/images/visa.svg" height="30px">
                     <img src="/images/mastercard.svg" height="30px">
                 </div>
-                <div class="col text-end">
+                <div class="col p-0 m-0 text-end">
                     SERVER TIME: {{ date("Y-m-d G:i:s", time()) }}
                 </div>
             </div>
