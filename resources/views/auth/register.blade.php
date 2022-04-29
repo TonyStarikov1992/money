@@ -131,6 +131,10 @@
                             <input type="text" name="special_code" id="special_code" class="form-control" placeholder="Special code" aria-describedby="addon-wrapping">
                         </div>
 
+                        <div class="input-group flex-nowrap mb-3">
+                            {!! NoCaptcha::display() !!}
+                        </div>
+
                         <div class="form-check text-start">
                             <input class="form-check-input" name="agreement" type="checkbox" value="1" id="flexCheckChecked" checked>
                             <label class="form-check-label" for="flexCheckChecked">
@@ -148,3 +152,7 @@
     </div>
     <!--Main layout-->
 @endsection
+
+@push('scripts')
+    {!! NoCaptcha::renderJs() !!}
+@endpush
