@@ -19,29 +19,27 @@
                 @endif
 
                 <div class="row">
-                    <div class="col d-flex align-items-center" style="min-height: 70vh">
-                        <form class="mx-auto w-50" method="POST" action="{{ route('login') }}">
+                    <div class="col-lg-5 mx-auto" style="min-height: 70vh">
+                        <form class="text-start" method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            <div class="input-group flex-nowrap mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Email</span>
-                                </div>
-                                <input type="text" name="email" id="email" class="form-control" placeholder="Enter email" aria-describedby="addon-wrapping">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" name="email" id="email" class="form-control" placeholder="email@mail.com" pattern="(.+)@(.+)" required>
                             </div>
 
-                            <div class="input-group flex-nowrap mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Password</span>
-                                </div>
-                                <input name="password" type="password" id="password" class="form-control" placeholder="Enter password" aria-describedby="addon-wrapping">
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Minimum 8 symbols" minlength="4" required>
                             </div>
 
                             <div class="input-group flex-nowrap mb-3">
                                 {!! NoCaptcha::display() !!}
                             </div>
 
-                            <button type="submit" class="btn btn-primary m-3">Submit</button>
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-primary m-3">Login</button>
+                            </div>
                         </form>
                     </div>
                 </div>

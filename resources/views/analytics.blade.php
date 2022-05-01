@@ -50,8 +50,6 @@
         <div class="container px-4 py-5" id="featured-3">
             <h2 class="display-6 fw-bold lh-1 mb-3 pb-3 border-bottom text-center">Easy start</h2>
 
-            <h2 class="  text-center"></h2>
-
             <div class="row g-4 py-2 row-cols-1 row-cols-lg-3">
                 <div class="col text-center">
                     <h2>1. Create order</h2>
@@ -78,7 +76,9 @@
 
         <div class="row mb-3 text-center">
 
-            <div class="col-3">
+            <h2 class="display-6 fw-bold lh-1 mb-3 pb-3 border-bottom text-center">Offers</h2>
+
+            <div class="col-lg-3">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
                         <h4 class="my-0 fw-normal">5 days / Trial</h4>
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
                         <h4 class="my-0 fw-normal">1 month / Starter</h4>
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
                         <h4 class="my-0 fw-normal">2 months / Pro</h4>
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
 
                     <div class="card-header py-3 text-white bg-primary border-primary">

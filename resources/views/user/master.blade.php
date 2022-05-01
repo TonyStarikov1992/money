@@ -22,12 +22,11 @@
 <div class="container">
 
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-        <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
-            <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+        <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
+            <img src="/images/logo2.svg" alt="logo" height="30" class="d-inline-block my-auto">
         </a>
 
-        <div class="col-md-5 text-end">
+        <div class="col-md-10 text-end">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     MENU

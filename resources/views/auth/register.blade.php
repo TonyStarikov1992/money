@@ -19,27 +19,23 @@
             @endif
 
             <div class="row">
-                <div class="col d-flex align-items-center" style="min-height: 70vh">
-                    <form class="mx-auto w-50" method="POST" action="{{ route('register') }}">
+                <div class="col-lg-5 mx-auto" style="min-height: 70vh">
+                    <form class="text-start" method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Name</span>
-                            </div>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="First name" minlength="2" required aria-describedby="addon-wrapping">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="First name" minlength="2" required>
                         </div>
 
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Surname</span>
-                            </div>
-                            <input type="text" name="surname" id="surname" class="form-control" placeholder="Last name" minlength="2" required aria-describedby="addon-wrapping">
+                        <div class="mb-3">
+                            <label for="surname" class="form-label">Surname</label>
+                            <input type="text" name="surname" id="surname" class="form-control" placeholder="Last name" minlength="2" required>
                         </div>
 
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Country</label>
-                            <select name="country" id="country" class="form-select" id="inputGroupSelect01">
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <select name="country" id="country" class="form-select">
                                 <option value="" selected>Choose your country...</option>
                                 @foreach($countries as $country)
                                     <option value="{{ $country }}">{{ $country }}</option>
@@ -47,88 +43,53 @@
                             </select>
                         </div>
 
-                        <p class="text-start">Birthday</p>
+                        <label class="form-label">Birthday</label>
 
-                        <div class="input-group mb-3 w-50">
-                            <label class="input-group-text" for="inputGroupSelect01">Day</label>
-                            <select name="birthday_day" id="birthday_day" class="form-select" id="inputGroupSelect01">
-                                @for($i = 1; $i <= 31; $i++)
-                                    <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select>
+                        <div class="input-group date mb-3" id="datepicker">
+                            <input type="text" name="birthday" id="date" class="form-control"/>
+                            <span class="input-group-append">
+                              <span class="input-group-text bg-light d-block">
+                                <i class="fa fa-calendar"></i>
+                              </span>
+                            </span>
                         </div>
 
-                        <div class="input-group mb-3 w-50">
-                            <label class="input-group-text" for="inputGroupSelect01">Month</label>
-                            <select name="birthday_month" id="birthday_month" class="form-select" id="inputGroupSelect01">
-                                @foreach($months as $month_key => $month_value)
-                                    <option value="{{ $month_key }}">{{ $month_value }}</option>
-                                @endforeach
-                            </select>
+                        <script>
+                            $(function(){
+                                $('#datepicker').datepicker({
+                                    format: "dd-mm-yyyy",
+                                    autoclose: true
+                                });
+                            });
+                        </script>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="email@mail.com" pattern="(.+)@(.+)" required>
                         </div>
 
-                        <div class="input-group mb-3 w-50">
-                            <label class="input-group-text" for="inputGroupSelect01">Year</label>
-                            <select name="birthday_year" id="birthday_year" class="form-select" id="inputGroupSelect01">
-                                @for($i = (date("Y") - 18); $i >= 1940; $i--)
-                                    <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select>
-                        </div>
-
-
-{{--                        <div class="input-group flex-nowrap mb-3">--}}
-{{--                            <div class="input-group-prepend">--}}
-{{--                                <span class="input-group-text" id="addon-wrapping">Time Zone UTC +/-</span>--}}
-{{--                            </div>--}}
-{{--                            <input type="text" name="locale" id="locale" class="mask-locale form-control" placeholder="+3" aria-describedby="addon-wrapping">--}}
-{{--                        </div>--}}
-
-
-{{--                        <script>--}}
-{{--                            $.mask.definitions['~']='[+-]';--}}
-{{--                            $('.mask-locale').mask('~9');--}}
-{{--                        </script>--}}
-
-
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Email</span>
-                            </div>
-                            <input type="text" name="email" id="email" class="form-control" placeholder="email@mail.com" pattern="(.+)@(.+)" required aria-describedby="addon-wrapping">
-                        </div>
-
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Phone</span>
-                            </div>
-                            <input type="text" name="phone" id="phone" class="form-control mask-phone" placeholder="+441234567890" pattern="+(.+)" minlength="10" maxlength="18" required aria-describedby="addon-wrapping">
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" name="phone" id="phone" class="form-control mask-phone" placeholder="+441234567890" pattern="+(.+)" minlength="10" maxlength="18" required>
                         </div>
 
                         <script>
                             $('.mask-phone').mask('+999999999999');
                         </script>
 
-
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Password</span>
-                            </div>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Minimum 8 symbols." minlength="8" required aria-describedby="addon-wrapping">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Minimum 8 symbols" minlength="8" required>
                         </div>
 
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Password confirm</span>
-                            </div>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Minimum 8 symbols." minlength="8" required aria-describedby="addon-wrapping">
+                        <div class="mb-3">
+                            <label for="password_confirmation" class="form-label">Password confirm</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Minimum 8 symbols" minlength="8" required>
                         </div>
 
-                        <div class="input-group flex-nowrap mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Special code</span>
-                            </div>
-                            <input type="text" name="special_code" id="special_code" class="form-control" placeholder="Special code" aria-describedby="addon-wrapping">
+                        <div class="mb-3">
+                            <label for="secret_code" class="form-label">Secret code</label>
+                            <input type="password" name="secret_code" id="secret_code" class="form-control" placeholder="Enter your secret code if you have"  minlength="8" >
                         </div>
 
                         <div class="input-group flex-nowrap mb-3">

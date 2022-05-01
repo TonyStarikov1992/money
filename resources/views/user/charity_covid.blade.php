@@ -19,7 +19,7 @@
 
                 <div class="row mt-3">
                     <div class="col text-center">
-                        <h2>bc1qhvze5wadwdrmcjy4nqdd6mfnyzy7ar9jhs300d</h2>
+                        <h2 class="text-break">bc1qhvze5wadwdrmcjy4nqdd6mfnyzy7ar9jhs300d</h2>
                         <a type="button" class="btn btn-primary btn-lg px-5 my-3" href="#">Copy the crypto address</a>
                     </div>
                 </div>

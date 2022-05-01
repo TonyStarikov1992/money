@@ -14,8 +14,14 @@
         rel="stylesheet"
     />
 
-    <!-- Jquery 1.9 -->
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js" integrity="sha512-synHs+rLg2WDVE9U0oHVJURDCiqft60GcWOW7tXySy8oIr0Hjl3K9gv7Bq/gSj4NDVpc5vmsNkMGGJ6t2VpUMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--}}
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap datepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+
+    <!-- Bootstrap datepicker JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 
     <!-- Maskedinput 1.4.1 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -33,8 +39,7 @@
 
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0">
             <a href="{{ route('userHome') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
-                <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                <img src="/images/logo2.svg" alt="logo" height="60" class="d-inline-block">
             </a>
             <div class="col-md-5 text-end">
                 <div class="btn-group me-2">
@@ -79,8 +84,7 @@
         <header class="row d-none d-lg-flex py-3 mb-0">
             <div class="col-3 text-start my-auto">
                 <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
-                    <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                    <img src="/images/logo2.svg" alt="logo" height="30" class="d-inline-block my-auto">
                 </a>
             </div>
 
@@ -103,8 +107,7 @@
         <header class="row d-none d-sm-flex d-lg-none py-1 mb-0">
                 <div class="col-3 text-start my-auto">
                     <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                        <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
-                        <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                        <img src="/images/logo2.svg" alt="logo" height="30" class="d-inline-block my-auto">
                     </a>
                 </div>
 
@@ -133,8 +136,7 @@
         <header class="row d-flex d-sm-none p-0 m-0 py-3 mb-4">
                 <div class="col-6 text-start p-0 m-0 my-auto">
                     <a href="{{ route('main') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                        <img src="/images/logo.png" alt="" width="60" height="60" class="d-inline-block">
-                        <span class="mx-1 fs-4 fw-bold text-primary d-inline-block">ELANNCE</span>
+                        <img src="/images/logo2.svg" alt="logo" height="30" class="d-inline-block my-auto">
                     </a>
                 </div>
 
