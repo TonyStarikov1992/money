@@ -79,7 +79,7 @@
 
                         @endif
 
-                        @if(!$current_session_id and $user->check > 0)
+                        @if(!$current_session_id)
                             <p>Money: {{ $user->check }} $</p>
                             <form action="{{ route('sessions.store')}}" method="POST">
                                 @csrf
