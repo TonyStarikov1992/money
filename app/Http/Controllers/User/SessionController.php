@@ -133,8 +133,8 @@ class SessionController extends Controller
 
         $user = Auth::user();
 
-        if ($user->check < 1) {
-            $request->session()->flash('message', 'Not enough money to start new session!');
+        if ($user->check < 1 or ($user->check - $rate) < 0) {
+            $request->session()->flash('message', 'Not enough money to start new session! Rate to height.');
             return redirect()->route('sessions.index');
         }
 
