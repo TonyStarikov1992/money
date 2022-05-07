@@ -131,6 +131,13 @@ class SessionController extends Controller
         $hour = $request->hour;
         $tickers = $request->tickers;
 
+        $user = Auth::user();
+
+        if ($user->check < 1) {
+            $request->session()->flash('message', 'Not enough money to start new session!');
+            return redirect()->route('sessions.index');
+        }
+
         if ($rate == null or !is_numeric($rate)) {
             $request->session()->flash('message', 'Enter the rate!');
             return redirect()->route('sessions.index');
@@ -140,9 +147,6 @@ class SessionController extends Controller
             $request->session()->flash('message', 'You must leave at least one ticker!');
             return redirect()->route('sessions.index');
         }
-
-
-        $user = Auth::user();
 
         if ($user) {
 
