@@ -86,6 +86,10 @@ Route::group([
     Route::get('/charity/earth', 'HomeUserController@userCharityPayEarth')->name('userCharityPayEarth');
 
     Route::get('/home', 'HomeUserController@index')->name('userHome');
+
+    Route::get('/confirm', 'HomeUserController@confirm')->name('confirm');
+
+    Route::post('/confirm-check', 'HomeUserController@confirmCheck')->name('confirmCheck');
 });
 
 

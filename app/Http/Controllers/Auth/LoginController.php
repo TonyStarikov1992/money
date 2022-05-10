@@ -33,7 +33,11 @@ class LoginController extends Controller
         if (Auth::user()->isAdmin()) {
             return route('adminHome');
         } else {
-            return route('quickdeals.index');
+            if (Auth::user()->isConfirmed()) {
+                return route('quickdeals.index');
+            } else {
+                return route('confirm');
+            }
         }
     }
 

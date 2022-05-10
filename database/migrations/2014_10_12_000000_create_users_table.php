@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('password')->nullable();
             $table->string('secret_code')->nullable();
+            $table->string('confirm_code')->nullable();
+            $table->integer('confirm_status')->default(0);
             $table->string('user_code')->nullable();
             $table->integer('agreement')->default(1);
             $table->integer('status')->nullable();

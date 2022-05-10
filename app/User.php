@@ -24,6 +24,8 @@ class User extends Authenticatable
         'phone',
         'password',
         'secret_code',
+        'confirm_code',
+        'confirm_status',
         'user_code',
         'agreement',
         'status',
@@ -62,6 +64,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->is_admin == 1;
+    }
+
+    public function isConfirmed()
+    {
+        return $this->confirm_status == 1;
     }
 
     public function sessions()

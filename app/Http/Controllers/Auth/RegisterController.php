@@ -80,6 +80,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+//        $confirm_code =
+
         $user =  User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -88,6 +90,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'secret_code' => $data['secret_code'],
+            'confirm_code' => Hash::make($data['password']),
             'agreement' => $data['agreement'],
             'password' => Hash::make($data['password']),
         ]);

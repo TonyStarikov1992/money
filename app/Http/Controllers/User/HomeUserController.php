@@ -16,6 +16,27 @@ class HomeUserController extends Controller
         return view('user.main');
     }
 
+    public function confirm()
+    {
+        return view('auth.confirm');
+    }
+
+    public function confirmCheck(Request $request)
+    {
+        $parameters = $request->all();
+
+        if ($type = $parameters['confirm_code'] === Auth::user()->confirm_code) {
+            Auth::user()->confirm_status = 1;
+            Auth::user()->save();
+            session()->flash('message', 'CONFIRMATION SUCCESS.');
+            return redirect()->route('userHome');
+        } else {
+            session()->flash('message', 'CONFIRMATION ERROR. CHECK CODE.');
+            return redirect()->route('confirm');
+        }
+
+    }
+
     public function userMarkets()
     {
         return view('user.markets');
