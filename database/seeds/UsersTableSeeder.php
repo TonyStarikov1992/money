@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'is_admin' => 1,
                 'last_visit' => time(),
                 'check' => 500,
-
+                'confirm_status' => 1,
             ],
             [
                 'name' => 'user',
@@ -31,6 +31,7 @@ class UsersTableSeeder extends Seeder
                 'is_admin' => 0,
                 'last_visit' => time(),
                 'check' => 500,
+                'confirm_status' => 1,
             ],
             [
                 'name' => 'user1',
@@ -40,6 +41,7 @@ class UsersTableSeeder extends Seeder
                 'is_admin' => 0,
                 'last_visit' => time(),
                 'check' => 500,
+                'confirm_status' => 1,
             ],
             [
                 'name' => 'user2',
@@ -49,6 +51,7 @@ class UsersTableSeeder extends Seeder
                 'is_admin' => 0,
                 'last_visit' => time(),
                 'check' => 500,
+                'confirm_status' => 1,
             ],
             [
                 'name' => 'user3',
@@ -58,6 +61,7 @@ class UsersTableSeeder extends Seeder
                 'is_admin' => 0,
                 'last_visit' => time(),
                 'check' => 500,
+                'confirm_status' => 1,
             ],
         ]);
     }
