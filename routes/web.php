@@ -54,8 +54,6 @@ Route::group([
 
     Route::group([
         'middleware' => 'is_confirmed',
-        'namespace' => 'User',
-        'prefix' => 'user',
     ], function () {
         Route::post('/payment', 'PaymentController@payment')->name('payment');
 
