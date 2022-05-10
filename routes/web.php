@@ -51,41 +51,52 @@ Route::group([
     'namespace' => 'User',
     'prefix' => 'user',
 ], function () {
-    Route::post('/payment', 'PaymentController@payment')->name('payment');
 
-    Route::get('/payment/success', 'PaymentController@success')->name('payment.success');
+    Route::group([
+        'middleware' => 'is_confirmed',
+        'namespace' => 'User',
+        'prefix' => 'user',
+    ], function () {
+        Route::post('/payment', 'PaymentController@payment')->name('payment');
 
-    Route::get('/payment/deny', 'PaymentController@deny')->name('payment.deny');
+        Route::get('/payment/success', 'PaymentController@success')->name('payment.success');
 
-    Route::resource('sessions', 'SessionController');
+        Route::get('/payment/deny', 'PaymentController@deny')->name('payment.deny');
 
-    Route::get('/history', 'SessionController@history')->name('sessions.history');
+        Route::resource('sessions', 'SessionController');
 
-    Route::resource('quickdeals', 'QuickdealController');
+        Route::get('/history', 'SessionController@history')->name('sessions.history');
 
-    Route::resource('deposit', 'DepositController');
+        Route::resource('quickdeals', 'QuickdealController');
 
-    Route::resource('withdrawal', 'WithdrawalController');
+        Route::resource('deposit', 'DepositController');
 
-    Route::resource('order', 'OrderController');
+        Route::resource('withdrawal', 'WithdrawalController');
 
-    Route::resource('setting', 'SettingController');
+        Route::resource('order', 'OrderController');
 
-    Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
+        Route::resource('setting', 'SettingController');
 
-    Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
+        Route::get('/order/create/{type}', 'OrderController@create')->name('order.create');
 
-    Route::get('/analytic', 'HomeUserController@userAnalytics')->name('userAnalytics');
+        Route::get('/markets', 'HomeUserController@userMarkets')->name('userMarkets');
 
-    Route::get('/charity', 'HomeUserController@userCharity')->name('userCharity');
+        Route::get('/analytic', 'HomeUserController@userAnalytics')->name('userAnalytics');
 
-    Route::get('/charity/covid', 'HomeUserController@userCharityPayCovid')->name('userCharityPayCovid');
+        Route::get('/charity', 'HomeUserController@userCharity')->name('userCharity');
 
-    Route::get('/charity/food', 'HomeUserController@userCharityPayFood')->name('userCharityPayFood');
+        Route::get('/charity/covid', 'HomeUserController@userCharityPayCovid')->name('userCharityPayCovid');
 
-    Route::get('/charity/earth', 'HomeUserController@userCharityPayEarth')->name('userCharityPayEarth');
+        Route::get('/charity/food', 'HomeUserController@userCharityPayFood')->name('userCharityPayFood');
 
-    Route::get('/home', 'HomeUserController@index')->name('userHome');
+        Route::get('/charity/earth', 'HomeUserController@userCharityPayEarth')->name('userCharityPayEarth');
+
+        Route::get('/home', 'HomeUserController@index')->name('userHome');
+
+        Route::get('/confirm', 'HomeUserController@confirm')->name('confirm');
+
+        Route::post('/confirm-check', 'HomeUserController@confirmCheck')->name('confirmCheck');
+    });
 
     Route::get('/confirm', 'HomeUserController@confirm')->name('confirm');
 
